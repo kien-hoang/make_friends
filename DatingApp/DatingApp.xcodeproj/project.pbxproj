@@ -7,14 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */; };
 		139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F0272EEFE300F3B77F /* DatingAppApp.swift */; };
-		139D67F3272EEFE300F3B77F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F2272EEFE300F3B77F /* ContentView.swift */; };
 		139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F4272EEFE700F3B77F /* Assets.xcassets */; };
 		139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */; };
 		139D6802272EEFE700F3B77F /* DatingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D6801272EEFE700F3B77F /* DatingAppTests.swift */; };
 		139D680C272EEFE700F3B77F /* DatingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D680B272EEFE700F3B77F /* DatingAppUITests.swift */; };
 		139D680E272EEFE700F3B77F /* DatingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D680D272EEFE700F3B77F /* DatingAppUITestsLaunchTests.swift */; };
 		139D68D62731AB4700F3B77F /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D68D52731AB4600F3B77F /* XCAssets+Generated.swift */; };
+		139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D68DA2732FECC00F3B77F /* ChooseInterestedTagsView.swift */; };
+		139D68E82732FF7D00F3B77F /* Lexend-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68DF2732FF7B00F3B77F /* Lexend-Black.ttf */; };
+		139D68E92732FF7D00F3B77F /* Lexend-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E02732FF7B00F3B77F /* Lexend-Regular.ttf */; };
+		139D68EA2732FF7D00F3B77F /* Lexend-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E12732FF7B00F3B77F /* Lexend-SemiBold.ttf */; };
+		139D68EB2732FF7D00F3B77F /* Lexend-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E22732FF7C00F3B77F /* Lexend-Thin.ttf */; };
+		139D68EC2732FF7D00F3B77F /* Lexend-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E32732FF7C00F3B77F /* Lexend-Medium.ttf */; };
+		139D68ED2732FF7D00F3B77F /* Lexend-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E42732FF7C00F3B77F /* Lexend-ExtraBold.ttf */; };
+		139D68EE2732FF7D00F3B77F /* Lexend-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E52732FF7C00F3B77F /* Lexend-Light.ttf */; };
+		139D68EF2732FF7D00F3B77F /* Lexend-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E62732FF7D00F3B77F /* Lexend-Bold.ttf */; };
+		139D68F02732FF7D00F3B77F /* Lexend-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 139D68E72732FF7D00F3B77F /* Lexend-ExtraLight.ttf */; };
+		139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D68F22733003C00F3B77F /* View+Extensions.swift */; };
+		139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D68F42733006A00F3B77F /* Date+Extensions.swift */; };
+		139D68F7273300CC00F3B77F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D68F6273300CC00F3B77F /* Constants.swift */; };
+		139D68FE27342F9700F3B77F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 139D690027342F9700F3B77F /* Localizable.strings */; };
+		139D69032734322900F3B77F /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D69022734322900F3B77F /* Strings+Generated.swift */; };
+		139D690527343CF500F3B77F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D690427343CF500F3B77F /* String+Extensions.swift */; };
 		53CE6AE7B12D19A42F17D01C /* Pods_DatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */; };
 		E6338E6D19E4CAAA92FA171E /* Pods_DatingApp_DatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771A7638AD1C794773F262D8 /* Pods_DatingApp_DatingAppUITests.framework */; };
 		EA24D3CE0ADEE962EAADAC4E /* Pods_DatingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */; };
@@ -38,9 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
 		139D67ED272EEFE300F3B77F /* DatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139D67F0272EEFE300F3B77F /* DatingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppApp.swift; sourceTree = "<group>"; };
-		139D67F2272EEFE300F3B77F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		139D67F4272EEFE700F3B77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		139D67FD272EEFE700F3B77F /* DatingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +65,24 @@
 		139D680B272EEFE700F3B77F /* DatingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppUITests.swift; sourceTree = "<group>"; };
 		139D680D272EEFE700F3B77F /* DatingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		139D68D52731AB4600F3B77F /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		139D68DA2732FECC00F3B77F /* ChooseInterestedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInterestedTagsView.swift; sourceTree = "<group>"; };
+		139D68DF2732FF7B00F3B77F /* Lexend-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Black.ttf"; sourceTree = "<group>"; };
+		139D68E02732FF7B00F3B77F /* Lexend-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Regular.ttf"; sourceTree = "<group>"; };
+		139D68E12732FF7B00F3B77F /* Lexend-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-SemiBold.ttf"; sourceTree = "<group>"; };
+		139D68E22732FF7C00F3B77F /* Lexend-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Thin.ttf"; sourceTree = "<group>"; };
+		139D68E32732FF7C00F3B77F /* Lexend-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Medium.ttf"; sourceTree = "<group>"; };
+		139D68E42732FF7C00F3B77F /* Lexend-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-ExtraBold.ttf"; sourceTree = "<group>"; };
+		139D68E52732FF7C00F3B77F /* Lexend-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Light.ttf"; sourceTree = "<group>"; };
+		139D68E62732FF7D00F3B77F /* Lexend-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Bold.ttf"; sourceTree = "<group>"; };
+		139D68E72732FF7D00F3B77F /* Lexend-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-ExtraLight.ttf"; sourceTree = "<group>"; };
+		139D68F22733003C00F3B77F /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		139D68F42733006A00F3B77F /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		139D68F6273300CC00F3B77F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		139D68FA2734258600F3B77F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		139D68FF27342F9700F3B77F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		139D690127342F9B00F3B77F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		139D69022734322900F3B77F /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		139D690427343CF500F3B77F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		26C4C1C57B0B1B8AD1465351 /* Pods-DatingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatingApp.debug.xcconfig"; path = "Target Support Files/Pods-DatingApp/Pods-DatingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,9 +147,12 @@
 		139D67EF272EEFE300F3B77F /* DatingApp */ = {
 			isa = PBXGroup;
 			children = (
+				139D68FA2734258600F3B77F /* Info.plist */,
+				139D68F12732FF9800F3B77F /* Extensions */,
+				139D68DC2732FF2300F3B77F /* Resources */,
+				139D68D72732FE2A00F3B77F /* Scenes */,
 				139D68D32731AA7E00F3B77F /* Constants */,
 				139D67F0272EEFE300F3B77F /* DatingAppApp.swift */,
-				139D67F2272EEFE300F3B77F /* ContentView.swift */,
 				139D67F4272EEFE700F3B77F /* Assets.xcassets */,
 				139D67F6272EEFE700F3B77F /* Preview Content */,
 			);
@@ -151,8 +188,86 @@
 			isa = PBXGroup;
 			children = (
 				139D68D52731AB4600F3B77F /* XCAssets+Generated.swift */,
+				139D69022734322900F3B77F /* Strings+Generated.swift */,
+				139D68F6273300CC00F3B77F /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		139D68D72732FE2A00F3B77F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				139D68D82732FE8B00F3B77F /* Authentication */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		139D68D82732FE8B00F3B77F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				139D68D92732FEB200F3B77F /* ChooseInterestedTagsView */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		139D68D92732FEB200F3B77F /* ChooseInterestedTagsView */ = {
+			isa = PBXGroup;
+			children = (
+				139D68DA2732FECC00F3B77F /* ChooseInterestedTagsView.swift */,
+			);
+			path = ChooseInterestedTagsView;
+			sourceTree = "<group>";
+		};
+		139D68DC2732FF2300F3B77F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				139D68FB27342EE700F3B77F /* Localizations */,
+				139D68DD2732FF5C00F3B77F /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		139D68DD2732FF5C00F3B77F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				139D68DE2732FF6100F3B77F /* Lexend */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		139D68DE2732FF6100F3B77F /* Lexend */ = {
+			isa = PBXGroup;
+			children = (
+				139D68DF2732FF7B00F3B77F /* Lexend-Black.ttf */,
+				139D68E62732FF7D00F3B77F /* Lexend-Bold.ttf */,
+				139D68E42732FF7C00F3B77F /* Lexend-ExtraBold.ttf */,
+				139D68E72732FF7D00F3B77F /* Lexend-ExtraLight.ttf */,
+				139D68E52732FF7C00F3B77F /* Lexend-Light.ttf */,
+				139D68E32732FF7C00F3B77F /* Lexend-Medium.ttf */,
+				139D68E02732FF7B00F3B77F /* Lexend-Regular.ttf */,
+				139D68E12732FF7B00F3B77F /* Lexend-SemiBold.ttf */,
+				139D68E22732FF7C00F3B77F /* Lexend-Thin.ttf */,
+			);
+			path = Lexend;
+			sourceTree = "<group>";
+		};
+		139D68F12732FF9800F3B77F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				139D68F22733003C00F3B77F /* View+Extensions.swift */,
+				139D68F42733006A00F3B77F /* Date+Extensions.swift */,
+				139D690427343CF500F3B77F /* String+Extensions.swift */,
+				1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		139D68FB27342EE700F3B77F /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				139D690027342F9700F3B77F /* Localizable.strings */,
+			);
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 		56112E6C1643C7C9AFDE93D8 /* Frameworks */ = {
@@ -269,6 +384,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				vi,
 				Base,
 			);
 			mainGroup = 139D67E4272EEFE300F3B77F;
@@ -288,8 +404,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139D68EA2732FF7D00F3B77F /* Lexend-SemiBold.ttf in Resources */,
+				139D68FE27342F9700F3B77F /* Localizable.strings in Resources */,
+				139D68EE2732FF7D00F3B77F /* Lexend-Light.ttf in Resources */,
+				139D68EB2732FF7D00F3B77F /* Lexend-Thin.ttf in Resources */,
+				139D68ED2732FF7D00F3B77F /* Lexend-ExtraBold.ttf in Resources */,
+				139D68E82732FF7D00F3B77F /* Lexend-Black.ttf in Resources */,
+				139D68EF2732FF7D00F3B77F /* Lexend-Bold.ttf in Resources */,
+				139D68E92732FF7D00F3B77F /* Lexend-Regular.ttf in Resources */,
 				139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */,
 				139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */,
+				139D68EC2732FF7D00F3B77F /* Lexend-Medium.ttf in Resources */,
+				139D68F02732FF7D00F3B77F /* Lexend-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,8 +562,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				139D68D62731AB4700F3B77F /* XCAssets+Generated.swift in Sources */,
-				139D67F3272EEFE300F3B77F /* ContentView.swift in Sources */,
+				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
+				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
+				139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */,
+				139D690527343CF500F3B77F /* String+Extensions.swift in Sources */,
+				139D69032734322900F3B77F /* Strings+Generated.swift in Sources */,
+				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
+				139D68F7273300CC00F3B77F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +604,18 @@
 			targetProxy = 139D6808272EEFE700F3B77F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		139D690027342F9700F3B77F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				139D68FF27342F9700F3B77F /* en */,
+				139D690127342F9B00F3B77F /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		139D680F272EEFE700F3B77F /* Debug */ = {
@@ -531,6 +675,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -585,6 +730,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -602,6 +748,7 @@
 				DEVELOPMENT_TEAM = 36BF9P9PDN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DatingApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -633,6 +780,7 @@
 				DEVELOPMENT_TEAM = 36BF9P9PDN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DatingApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
