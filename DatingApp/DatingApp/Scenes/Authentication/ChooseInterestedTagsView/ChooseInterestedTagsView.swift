@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChooseInterestedTagsView: View {
+    @ObservedObject var viewModel = ChooseInterestedTagsViewModel()
+    
     // MARK: - Main body
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -26,18 +28,20 @@ struct ChooseInterestedTagsView: View {
             }
             .padding([.leading, .trailing], K.Constants.ScreenPadding)
             
-            InterestedTagsList()
+            InterestedTagsList(viewModel: viewModel)
                         
-            ContinueButton()
+            ContinueButton(viewModel: viewModel)
         }
     }
     
     // MARK: - ContinueButton
     struct ContinueButton: View {
+        @ObservedObject var viewModel: ChooseInterestedTagsViewModel
+        
         var body: some View {
             VStack() {
                 Button {
-                    print("NExt")
+                    viewModel.nextAction()
                 } label: {
                     Text("Tiếp tục")
                         .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)
@@ -62,26 +66,29 @@ struct ChooseInterestedTagsView: View {
     
     // MARK: - InterestedTagsList
     struct InterestedTagsList: View {
+        @ObservedObject var viewModel: ChooseInterestedTagsViewModel
         let columns = [GridItem(.flexible()),
                        GridItem(.flexible())]
-        let data = (1...20).map { "\($0)" }
         
         var body: some View {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(data, id: \.self) { item in
-                        if Int(item)! % 2 == 0 {
-                            Text("Cafe")
-                                .modifier(CommonStyle())
-                                .modifier(SelectedTag())
-                                
-                        } else {
-                            Text("Cafe Cafe Cafe Cafe Cafe Cafe Cafe Cafe")
-                                .modifier(CommonStyle())
-                                .modifier(NonSelectedTag())
+                    ForEach(viewModel.interestedTags, id: \.self) { item in
+                        Group {
+                            if viewModel.isSelectedTag(item) {
+                                Text(item.name)
+                                    .modifier(CommonStyle())
+                                    .modifier(SelectedTag())
+                            } else {
+                                Text(item.name)
+                                    .modifier(CommonStyle())
+                                    .modifier(NonSelectedTag())
+                            }
+                        }
+                        .onTapGesture {
+                            viewModel.onSelectTag(item)
                         }
                     }
-                    
                 }
                 .padding(.top, 2) // Avoid top shadow is clipped
                 .padding([.leading, .trailing, .bottom], K.Constants.ScreenPadding)
@@ -148,6 +155,5 @@ struct ChooseInterestedTagsView: View {
 struct ChooseInterestedTagsView_Previews: PreviewProvider {
     static var previews: some View {
         ChooseInterestedTagsView()
-            .previewDevice("iPhone 8")
     }
 }

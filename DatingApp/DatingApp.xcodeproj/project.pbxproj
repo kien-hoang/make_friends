@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */; };
+		1338BD42273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338BD41273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift */; };
+		1338BD472737F3D4009CA3C0 /* InterestedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338BD462737F3D4009CA3C0 /* InterestedTag.swift */; };
 		139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F0272EEFE300F3B77F /* DatingAppApp.swift */; };
 		139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F4272EEFE700F3B77F /* Assets.xcassets */; };
 		139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */; };
@@ -31,6 +33,7 @@
 		139D68FE27342F9700F3B77F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 139D690027342F9700F3B77F /* Localizable.strings */; };
 		139D69032734322900F3B77F /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D69022734322900F3B77F /* Strings+Generated.swift */; };
 		139D690527343CF500F3B77F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D690427343CF500F3B77F /* String+Extensions.swift */; };
+		13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EC72739841C00E798BF /* InterestedTagAPIManager.swift */; };
 		53CE6AE7B12D19A42F17D01C /* Pods_DatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */; };
 		E6338E6D19E4CAAA92FA171E /* Pods_DatingApp_DatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771A7638AD1C794773F262D8 /* Pods_DatingApp_DatingAppUITests.framework */; };
 		EA24D3CE0ADEE962EAADAC4E /* Pods_DatingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */; };
@@ -55,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
+		1338BD41273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInterestedTagsViewModel.swift; sourceTree = "<group>"; };
+		1338BD462737F3D4009CA3C0 /* InterestedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedTag.swift; sourceTree = "<group>"; };
 		139D67ED272EEFE300F3B77F /* DatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139D67F0272EEFE300F3B77F /* DatingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppApp.swift; sourceTree = "<group>"; };
 		139D67F4272EEFE700F3B77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 		139D690127342F9B00F3B77F /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		139D69022734322900F3B77F /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		139D690427343CF500F3B77F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		13DE8EC72739841C00E798BF /* InterestedTagAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedTagAPIManager.swift; sourceTree = "<group>"; };
 		26C4C1C57B0B1B8AD1465351 /* Pods-DatingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatingApp.debug.xcconfig"; path = "Target Support Files/Pods-DatingApp/Pods-DatingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +128,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1338BD432737F353009CA3C0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1338BD452737F3BA009CA3C0 /* InterestedTag */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1338BD442737F38C009CA3C0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8EC72739841C00E798BF /* InterestedTagAPIManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1338BD452737F3BA009CA3C0 /* InterestedTag */ = {
+			isa = PBXGroup;
+			children = (
+				1338BD462737F3D4009CA3C0 /* InterestedTag.swift */,
+			);
+			path = InterestedTag;
+			sourceTree = "<group>";
+		};
 		139D67E4272EEFE300F3B77F = {
 			isa = PBXGroup;
 			children = (
@@ -150,8 +180,10 @@
 				139D68FA2734258600F3B77F /* Info.plist */,
 				139D68F12732FF9800F3B77F /* Extensions */,
 				139D68DC2732FF2300F3B77F /* Resources */,
-				139D68D72732FE2A00F3B77F /* Scenes */,
 				139D68D32731AA7E00F3B77F /* Constants */,
+				1338BD442737F38C009CA3C0 /* Managers */,
+				1338BD432737F353009CA3C0 /* Models */,
+				139D68D72732FE2A00F3B77F /* Scenes */,
 				139D67F0272EEFE300F3B77F /* DatingAppApp.swift */,
 				139D67F4272EEFE700F3B77F /* Assets.xcassets */,
 				139D67F6272EEFE700F3B77F /* Preview Content */,
@@ -213,6 +245,7 @@
 		139D68D92732FEB200F3B77F /* ChooseInterestedTagsView */ = {
 			isa = PBXGroup;
 			children = (
+				1338BD41273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift */,
 				139D68DA2732FECC00F3B77F /* ChooseInterestedTagsView.swift */,
 			);
 			path = ChooseInterestedTagsView;
@@ -562,14 +595,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				139D68D62731AB4700F3B77F /* XCAssets+Generated.swift in Sources */,
+				1338BD472737F3D4009CA3C0 /* InterestedTag.swift in Sources */,
 				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
 				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
 				139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */,
 				139D690527343CF500F3B77F /* String+Extensions.swift in Sources */,
 				139D69032734322900F3B77F /* Strings+Generated.swift in Sources */,
+				13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */,
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
 				139D68F7273300CC00F3B77F /* Constants.swift in Sources */,
+				1338BD42273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
