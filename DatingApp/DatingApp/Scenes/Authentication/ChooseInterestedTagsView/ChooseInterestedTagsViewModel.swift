@@ -40,8 +40,7 @@ extension ChooseInterestedTagsViewModel {
             if let interestedTags = interestedTags {
                 self.interestedTags = interestedTags
             } else if let error = error {
-//                Helper.showToast(error?.localizedDescription)
-                print(error.localizedDescription)
+                Helper.showToast(error.localizedDescription)
             }
         }
     }

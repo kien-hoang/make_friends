@@ -20,13 +20,13 @@ extension View {
 
 // MARK: - Text
 extension View {
-    func style(font: K.Font, size: CGFloat, color: UIColor) -> some View {
+    func style(font: K.Fonts, size: CGFloat, color: UIColor) -> some View {
         self
             .font(font, size: size)
             .textColor(color)
     }
     
-    func font(_ font: K.Font, size: CGFloat) -> some View {
+    func font(_ font: K.Fonts, size: CGFloat) -> some View {
         self.font(.custom(font.rawValue, size: size))
     }
     

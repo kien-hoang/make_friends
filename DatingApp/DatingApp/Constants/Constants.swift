@@ -8,7 +8,7 @@
 import UIKit
 
 struct K {
-    enum Font: String {
+    enum Fonts: String {
         case lexendBlack = "Lexend-Black"
         case lexendBold = "Lexend-Bold"
         case lexendExtraBold = "Lexend-ExtraBold"
@@ -52,8 +52,8 @@ struct K {
             static let AccessToken = "accessToken"
         }
     }
-//    
-//    struct UserDefaults {
-//        static let Token = "token"
-//    }
+    
+    struct UserDefaults {
+        static let Token = "token"
+    }
 }

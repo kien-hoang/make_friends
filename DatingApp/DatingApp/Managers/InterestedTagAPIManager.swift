@@ -16,7 +16,7 @@ class InterestedTagAPIManager {
         let urlString = K.API.URL.BaseUrl + path
         let url = URL(string: urlString)!
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
+        Network.shared.request(url, method: .get, headers: Helper.defaultHeaders) { response in
             switch response.result {
             
             case .success(let result as [String:Any]):
