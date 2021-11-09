@@ -36,6 +36,8 @@
 		13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EC72739841C00E798BF /* InterestedTagAPIManager.swift */; };
 		13DE8ED1273ACC0F00E798BF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8ED0273ACC0F00E798BF /* Helper.swift */; };
 		13DE8ED3273ACD1C00E798BF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8ED2273ACD1C00E798BF /* Network.swift */; };
+		13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EDA273AD46500E798BF /* LoginView.swift */; };
+		13DE8EE0273AD54600E798BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13DE8EDF273AD54600E798BF /* LaunchScreen.storyboard */; };
 		53CE6AE7B12D19A42F17D01C /* Pods_DatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */; };
 		E6338E6D19E4CAAA92FA171E /* Pods_DatingApp_DatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771A7638AD1C794773F262D8 /* Pods_DatingApp_DatingAppUITests.framework */; };
 		EA24D3CE0ADEE962EAADAC4E /* Pods_DatingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */; };
@@ -93,6 +95,8 @@
 		13DE8EC72739841C00E798BF /* InterestedTagAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedTagAPIManager.swift; sourceTree = "<group>"; };
 		13DE8ED0273ACC0F00E798BF /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		13DE8ED2273ACD1C00E798BF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		13DE8EDA273AD46500E798BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		13DE8EDF273AD54600E798BF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26C4C1C57B0B1B8AD1465351 /* Pods-DatingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatingApp.debug.xcconfig"; path = "Target Support Files/Pods-DatingApp/Pods-DatingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +238,7 @@
 		139D68D72732FE2A00F3B77F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				13DE8EDC273AD4EF00E798BF /* LaunchScreen */,
 				139D68D82732FE8B00F3B77F /* Authentication */,
 			);
 			path = Scenes;
@@ -243,6 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				139D68D92732FEB200F3B77F /* ChooseInterestedTagsView */,
+				13DE8ED5273AD3AE00E798BF /* Signup */,
+				13DE8ED4273AD27800E798BF /* Login */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -315,6 +322,53 @@
 				13DE8ED2273ACD1C00E798BF /* Network.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		13DE8ED4273AD27800E798BF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8ED9273AD43700E798BF /* ForgotPassword */,
+				13DE8ED8273AD42300E798BF /* LoginPhone */,
+				13DE8ED7273AD41400E798BF /* Login */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		13DE8ED5273AD3AE00E798BF /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		13DE8ED7273AD41400E798BF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8EDA273AD46500E798BF /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		13DE8ED8273AD42300E798BF /* LoginPhone */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginPhone;
+			sourceTree = "<group>";
+		};
+		13DE8ED9273AD43700E798BF /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		13DE8EDC273AD4EF00E798BF /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8EDF273AD54600E798BF /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		56112E6C1643C7C9AFDE93D8 /* Frameworks */ = {
@@ -458,6 +512,7 @@
 				139D68ED2732FF7D00F3B77F /* Lexend-ExtraBold.ttf in Resources */,
 				139D68E82732FF7D00F3B77F /* Lexend-Black.ttf in Resources */,
 				139D68EF2732FF7D00F3B77F /* Lexend-Bold.ttf in Resources */,
+				13DE8EE0273AD54600E798BF /* LaunchScreen.storyboard in Resources */,
 				139D68E92732FF7D00F3B77F /* Lexend-Regular.ttf in Resources */,
 				139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */,
 				139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */,
@@ -611,6 +666,7 @@
 				139D68D62731AB4700F3B77F /* XCAssets+Generated.swift in Sources */,
 				1338BD472737F3D4009CA3C0 /* InterestedTag.swift in Sources */,
 				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
+				13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
 				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
 				139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */,
@@ -804,6 +860,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -836,6 +893,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

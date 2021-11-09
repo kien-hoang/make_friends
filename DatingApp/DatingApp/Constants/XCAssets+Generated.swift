@@ -32,6 +32,7 @@ internal enum Asset {
   }
   internal enum Global {
     internal static let icDefaultBack = ImageAsset(name: "ic_default_back")
+    internal static let icLightLogo = ImageAsset(name: "ic_light_logo")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

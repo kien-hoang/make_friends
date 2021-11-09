@@ -13,12 +13,13 @@ struct DatingAppApp: App {
     
     init() {
         // This init function is didFinishLaunchWithOptions in UIKit
+        RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 1.5) as Date)
         Helper.configureToastView()
     }
     
     var body: some Scene {
         WindowGroup {
-            ChooseInterestedTagsView()
+            LoginView()
         }.onChange(of: scenePhase) { phase in
             switch phase {
             case .background:
