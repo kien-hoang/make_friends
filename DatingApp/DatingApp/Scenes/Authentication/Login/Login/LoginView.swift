@@ -36,6 +36,7 @@ struct LoginView: View {
                     }
             }
         }
+        .navigationView()
     }
     
     // MARK: - LoginButton
@@ -60,8 +61,7 @@ struct LoginView: View {
     // MARK: - CreateAccountButton
     struct CreateAccountButton: View {
         var body: some View {
-            Button {
-                print("Tao tai khoan")
+            PushingButtonView(destinationView: SignupPhoneView()) {
             } label: {
                 Text("Tạo tài khoản")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)

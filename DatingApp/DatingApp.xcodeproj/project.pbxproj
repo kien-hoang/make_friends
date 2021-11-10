@@ -38,6 +38,10 @@
 		13DE8ED3273ACD1C00E798BF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8ED2273ACD1C00E798BF /* Network.swift */; };
 		13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EDA273AD46500E798BF /* LoginView.swift */; };
 		13DE8EE0273AD54600E798BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13DE8EDF273AD54600E798BF /* LaunchScreen.storyboard */; };
+		13DE8EF1273C0ECE00E798BF /* SignupPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF0273C0ECE00E798BF /* SignupPhoneView.swift */; };
+		13DE8EF3273C280500E798BF /* UINavigation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */; };
+		13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */; };
+		13DE8EFA273C337A00E798BF /* PushingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF9273C337A00E798BF /* PushingButtonView.swift */; };
 		53CE6AE7B12D19A42F17D01C /* Pods_DatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */; };
 		E6338E6D19E4CAAA92FA171E /* Pods_DatingApp_DatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771A7638AD1C794773F262D8 /* Pods_DatingApp_DatingAppUITests.framework */; };
 		EA24D3CE0ADEE962EAADAC4E /* Pods_DatingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */; };
@@ -97,6 +101,10 @@
 		13DE8ED2273ACD1C00E798BF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		13DE8EDA273AD46500E798BF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		13DE8EDF273AD54600E798BF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		13DE8EF0273C0ECE00E798BF /* SignupPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneView.swift; sourceTree = "<group>"; };
+		13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extensions.swift"; sourceTree = "<group>"; };
+		13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationView.swift; sourceTree = "<group>"; };
+		13DE8EF9273C337A00E798BF /* PushingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushingButtonView.swift; sourceTree = "<group>"; };
 		26C4C1C57B0B1B8AD1465351 /* Pods-DatingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatingApp.debug.xcconfig"; path = "Target Support Files/Pods-DatingApp/Pods-DatingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,12 +194,13 @@
 			isa = PBXGroup;
 			children = (
 				139D68FA2734258600F3B77F /* Info.plist */,
-				139D68F12732FF9800F3B77F /* Extensions */,
 				139D68DC2732FF2300F3B77F /* Resources */,
-				139D68D32731AA7E00F3B77F /* Constants */,
 				13DE8ECF273ACC0F00E798BF /* Helper */,
-				1338BD442737F38C009CA3C0 /* Managers */,
+				139D68D32731AA7E00F3B77F /* Constants */,
 				1338BD432737F353009CA3C0 /* Models */,
+				1338BD442737F38C009CA3C0 /* Managers */,
+				139D68F12732FF9800F3B77F /* Extensions */,
+				13DE8EF4273C29D000E798BF /* CustomViews */,
 				139D68D72732FE2A00F3B77F /* Scenes */,
 				139D67F0272EEFE300F3B77F /* DatingAppApp.swift */,
 				139D67F4272EEFE700F3B77F /* Assets.xcassets */,
@@ -303,6 +312,7 @@
 				139D68F42733006A00F3B77F /* Date+Extensions.swift */,
 				139D690427343CF500F3B77F /* String+Extensions.swift */,
 				1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */,
+				13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +347,8 @@
 		13DE8ED5273AD3AE00E798BF /* Signup */ = {
 			isa = PBXGroup;
 			children = (
+				13DE8EEF273C0EB600E798BF /* SignupCompleted */,
+				13DE8EEE273C0EB100E798BF /* SignupPhone */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -369,6 +381,46 @@
 				13DE8EDF273AD54600E798BF /* LaunchScreen.storyboard */,
 			);
 			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		13DE8EEE273C0EB100E798BF /* SignupPhone */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8EF0273C0ECE00E798BF /* SignupPhoneView.swift */,
+			);
+			path = SignupPhone;
+			sourceTree = "<group>";
+		};
+		13DE8EEF273C0EB600E798BF /* SignupCompleted */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignupCompleted;
+			sourceTree = "<group>";
+		};
+		13DE8EF4273C29D000E798BF /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8EF8273C336A00E798BF /* PushingButtonView */,
+				13DE8EF5273C29D900E798BF /* DefaultNavigationView */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		13DE8EF5273C29D900E798BF /* DefaultNavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */,
+			);
+			path = DefaultNavigationView;
+			sourceTree = "<group>";
+		};
+		13DE8EF8273C336A00E798BF /* PushingButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				13DE8EF9273C337A00E798BF /* PushingButtonView.swift */,
+			);
+			path = PushingButtonView;
 			sourceTree = "<group>";
 		};
 		56112E6C1643C7C9AFDE93D8 /* Frameworks */ = {
@@ -665,8 +717,10 @@
 			files = (
 				139D68D62731AB4700F3B77F /* XCAssets+Generated.swift in Sources */,
 				1338BD472737F3D4009CA3C0 /* InterestedTag.swift in Sources */,
+				13DE8EFA273C337A00E798BF /* PushingButtonView.swift in Sources */,
 				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
 				13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */,
+				13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
 				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
 				139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */,
@@ -674,8 +728,10 @@
 				139D69032734322900F3B77F /* Strings+Generated.swift in Sources */,
 				13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */,
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
+				13DE8EF1273C0ECE00E798BF /* SignupPhoneView.swift in Sources */,
 				13DE8ED1273ACC0F00E798BF /* Helper.swift in Sources */,
 				139D68F7273300CC00F3B77F /* Constants.swift in Sources */,
+				13DE8EF3273C280500E798BF /* UINavigation+Extensions.swift in Sources */,
 				13DE8ED3273ACD1C00E798BF /* Network.swift in Sources */,
 				1338BD42273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift in Sources */,
 			);

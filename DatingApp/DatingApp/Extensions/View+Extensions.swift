@@ -7,6 +7,28 @@
 
 import SwiftUI
 
+// MARK: - Navigation
+extension View {
+    func navigatePush(whenTrue toggle: Binding<Bool>) -> some View {
+        NavigationLink(
+            destination: self.hiddenNavigationBar(),
+            isActive: toggle
+        ) { EmptyView() }
+        .hidden()
+    }
+    
+    func hiddenNavigationBar() -> some View {
+        self.navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+    }
+    
+    func navigationView() -> some View {
+        NavigationView {
+            self
+        }
+    }
+}
+
 // MARK: - Frame
 extension View {
     func fullParentFrame(alignment: Alignment = .topLeading) -> some View {
