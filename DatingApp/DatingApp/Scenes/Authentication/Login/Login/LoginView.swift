@@ -12,7 +12,7 @@ struct LoginView: View {
         VStack {
             Spacer()
             HStack(spacing: 22) {
-                Image("ic_light_logo")
+                Image(Asset.Global.icLightLogo.name)
                     .resizable()
                     .frame(width: 89, height: 89)
                 VStack(alignment: .leading, spacing: 0) {
@@ -48,7 +48,7 @@ struct LoginView: View {
                 Text("Đăng nhập")
                     .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
                     .padding(8)
-                    .frame(width: UIScreen.screenWidth - K.Constants.ScreenPadding * 2, height: 50)
+                    .frame(width: UIScreen.screenWidth - K.Constants.ScreenPadding * 2, height: 45)
                     .background(
                         RoundedRectangle(cornerRadius: 22)
                             .fill(Color(Asset.Colors.Global.white100.color))
@@ -62,11 +62,12 @@ struct LoginView: View {
     struct CreateAccountButton: View {
         var body: some View {
             PushingButtonView(destinationView: SignupPhoneView()) {
+                // Do something
             } label: {
                 Text("Tạo tài khoản")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)
                     .padding(8)
-                    .frame(width: UIScreen.screenWidth - K.Constants.ScreenPadding * 2, height: 50)
+                    .frame(width: UIScreen.screenWidth - K.Constants.ScreenPadding * 2, height: 45)
                     .background(
                         RoundedRectangle(cornerRadius: 22)
                             .fill(Color(Asset.Colors.Global.redD41717.color))

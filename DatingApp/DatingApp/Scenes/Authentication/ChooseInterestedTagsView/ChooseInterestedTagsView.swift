@@ -133,21 +133,16 @@ struct ChooseInterestedTagsView: View {
     // MARK: - NavigationBar
     struct NavigationBar: View {
         var body: some View {
-            HStack {
-                Image("ic_default_back")
-                    .frame(width: 30, height: 30)
-                    .onTapGesture {
-                        print("BACK")
-                    }
-                Spacer()
+            ZStack(alignment: .trailing) {
+                DefaultNavigationView()
+                
                 Text("Bỏ qua")
                     .style(font: .lexendBold, size: 12, color: Asset.Colors.Global.redD41717.color)
+                    .padding(.trailing, K.Constants.ScreenPadding)
                     .onTapGesture {
                         print("SKIP")
                     }
             }
-            .padding(EdgeInsets(top: 0, leading: 9, bottom: 0, trailing: K.Constants.ScreenPadding))
-            .frame(height: K.Constants.NavigationHeight)
         }
     }
 }
