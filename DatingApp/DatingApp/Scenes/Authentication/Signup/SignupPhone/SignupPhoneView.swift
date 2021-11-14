@@ -56,7 +56,7 @@ struct SignupPhoneView: View {
                     .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.gray9A9A9A.color)
                     .padding(.bottom, 44)
                 
-                ContinueButton()
+                ContinueButton(phoneText: $phoneText)
             }
             .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 0, trailing: K.Constants.ScreenPadding))
             
@@ -66,8 +66,11 @@ struct SignupPhoneView: View {
     
     // MARK: - ContinueButton
     struct ContinueButton: View {
+        @Binding var phoneText: String
+        
         var body: some View {
-            PushingButtonView(destinationView: EmptyView()) {
+            let signupCompletedView = SignupCompletedView(phone: phoneText)
+            PushingButtonView(destinationView: signupCompletedView) {
                 // Do something
             } label: {
                 Text("Tiếp tục")

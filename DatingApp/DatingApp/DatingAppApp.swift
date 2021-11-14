@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import IQKeyboardManagerSwift
 
 @main
 struct DatingAppApp: App {
@@ -15,11 +16,12 @@ struct DatingAppApp: App {
         // This init function is didFinishLaunchWithOptions in UIKit
         RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 1.5) as Date)
         Helper.configureToastView()
+        IQKeyboardManager.shared.enable = true
     }
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            SignupCompletedView()
         }.onChange(of: scenePhase) { phase in
             switch phase {
             case .background:
