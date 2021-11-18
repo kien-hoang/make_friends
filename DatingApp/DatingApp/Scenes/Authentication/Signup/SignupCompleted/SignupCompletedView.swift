@@ -6,38 +6,54 @@
 //
 
 import SwiftUI
-import ExytePopupView
 
 struct SignupCompletedView: View {
     @ObservedObject var viewModel = SignupViewModel()
-    @State private var date = Date()
+    
     init(phone: String = "") {
         viewModel.phone = phone
     }
     
+    // MARK: - Body
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            DefaultNavigationView()
+        ZStack {
+            // TODO: Hide calendar when tapping around
+            if viewModel.isShowCalendar {
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        viewModel.isShowCalendar = false
+                    }
+            }
             
             VStack(alignment: .leading, spacing: 0) {
-                Text("Hoàn tất đăng ký")
-                    .style(font: .lexendBold, size: 22, color: Asset.Colors.Global.black100.color)
-                    .padding(.bottom, 40)
+                DefaultNavigationView()
                 
-                MainBody(viewModel: viewModel)
-                    .padding(.bottom, 44)
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Hoàn tất đăng ký")
+                        .style(font: .lexendBold, size: 22, color: Asset.Colors.Global.black100.color)
+                        .padding(.bottom, 40)
+                    
+                    MainBody(viewModel: viewModel)
+                        .padding(.bottom, 44)
+                    
+                    ContinueButton(viewModel: viewModel)
+                }
+                .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 0, trailing: K.Constants.ScreenPadding))
                 
-                ContinueButton(viewModel: viewModel)
+                Spacer()
             }
-            .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 0, trailing: K.Constants.ScreenPadding))
             
-            Spacer()
-        }
-        .popup(isPresented: $viewModel.isShowCalendar, type: .`default`, closeOnTap: false) {
-            SignupCalendar(selectedDate: viewModel.dateOfBirth)
-                .callback { dateOfBirth in
-                    viewModel.dateOfBirth = dateOfBirth
-                    viewModel.isShowCalendar = false
+            if viewModel.isShowCalendar {
+                SignupCalendar(viewModel.dateOfBirth)
+                    .callback { dateOfBirth in
+                        viewModel.dateOfBirth = dateOfBirth
+                        viewModel.dateOfBirthString = dateOfBirth.ddMMyyyy
+                        viewModel.isShowCalendar = false
+                    }
+                    .animation(.easeInOut)
             }
         }
     }
@@ -171,7 +187,9 @@ struct SignupCompletedView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        viewModel.isShowCalendar = true
+                        withAnimation {
+                            viewModel.isShowCalendar = true
+                        }
                     }
                     .padding(.bottom, 20)
                     

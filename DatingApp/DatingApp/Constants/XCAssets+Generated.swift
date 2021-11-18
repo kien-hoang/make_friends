@@ -39,6 +39,7 @@ internal enum Asset {
   }
   internal enum Global {
     internal static let icDefaultBack = ImageAsset(name: "ic_default_back")
+    internal static let icDefaultClose = ImageAsset(name: "ic_default_close")
     internal static let icDownArrow = ImageAsset(name: "ic_down_arrow")
     internal static let icLightLogo = ImageAsset(name: "ic_light_logo")
   }
