@@ -1,5 +1,5 @@
 //
-//  PushingButtonView.swift
+//  PushingButton.swift
 //  DatingApp
 //
 //  Created by Radley Hoang on 11/11/2021.
@@ -20,7 +20,7 @@ import SwiftUI
 ///     } label: {
 ///         Text("SignIn")
 ///     }
-struct PushingButtonView<DestinationView, Label> : View where DestinationView : View, Label : View {
+struct PushingButton<DestinationView, Label> : View where DestinationView : View, Label : View {
     
     @State var isPushView = false
     
@@ -47,6 +47,35 @@ struct PushingButtonView<DestinationView, Label> : View where DestinationView : 
             Button {
                 action()
                 isPushView = true
+            } label: {
+                label
+            }
+        }
+    }
+}
+
+
+struct PushingButtonWhenTrue<DestinationView, Label> : View where DestinationView : View, Label : View {
+    
+    @Binding var isPushView: Bool
+    
+    let destinationView: DestinationView
+    let action: () -> Void
+    let label: Label
+    
+    init(_ isPushView: Binding<Bool>, destinationView: DestinationView, action: @escaping () -> Void, @ViewBuilder label: () -> Label) {
+        _isPushView = isPushView
+        self.destinationView = destinationView
+        self.action = action
+        self.label = label()
+    }
+    
+    var body: some View {
+        Group {
+            destinationView
+                .navigatePush(whenTrue: $isPushView)
+            Button {
+                action()
             } label: {
                 label
             }

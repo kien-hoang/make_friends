@@ -37,19 +37,24 @@ struct K {
             static let BaseUrl = LiveUrl
             #endif
             static let StagingUrl = "http://localhost:3000/api/"
-            static let LiveUrl = "http://localhost:3000/api/"
+            static let LiveUrl = "http://192.168.1.2:3000/api/"
             
             static let InterestedTag = "interested-tags"
+            static let Register = "auth/register"
         }
         
-        struct ParameterKey {
+        struct ParameterKeys {
             static let _Id = "_id"
             static let Id = "id"
             static let Name = "name"
             static let Email = "email"
             static let Password = "password"
-            static let User = "user"
-            static let AccessToken = "accessToken"
+//            static let User = "user"
+//            static let AccessToken = "accessToken"
+            static let Phone = "phone"
+            static let DateOfBirth = "date_of_birth"
+            static let CreatedAt = "createdAt"
+            static let UpdatedAt = "updatedAt"
         }
     }
     

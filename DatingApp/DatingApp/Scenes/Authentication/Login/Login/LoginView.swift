@@ -61,7 +61,7 @@ struct LoginView: View {
     // MARK: - CreateAccountButton
     struct CreateAccountButton: View {
         var body: some View {
-            PushingButtonView(destinationView: SignupPhoneView()) {
+            PushingButton(destinationView: SignupPhoneView()) {
                 // Do something
             } label: {
                 Text("Tạo tài khoản")

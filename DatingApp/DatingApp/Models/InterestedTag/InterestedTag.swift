@@ -12,7 +12,7 @@ struct InterestedTag: Hashable {
     var name: String
     
     init(dict: [String: Any]) {
-        self.id = dict[K.API.ParameterKey._Id] as? String ?? ""
-        self.name = dict[K.API.ParameterKey.Name] as? String ?? ""
+        self.id = dict[K.API.ParameterKeys._Id] as? String ?? ""
+        self.name = dict[K.API.ParameterKeys.Name] as? String ?? ""
     }
 }

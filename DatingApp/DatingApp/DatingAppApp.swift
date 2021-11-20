@@ -16,12 +16,13 @@ struct DatingAppApp: App {
         // This init function is didFinishLaunchWithOptions in UIKit
         RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 1.5) as Date)
         Helper.configureToastView()
+        Helper.configureProgressHUD()
         IQKeyboardManager.shared.enable = true
     }
     
     var body: some Scene {
         WindowGroup {
-            SignupCompletedView()
+            LoginView()
         }.onChange(of: scenePhase) { phase in
             switch phase {
             case .background:

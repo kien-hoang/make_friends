@@ -50,7 +50,6 @@ struct SignupCompletedView: View {
                 SignupCalendar(viewModel.dateOfBirth)
                     .callback { dateOfBirth in
                         viewModel.dateOfBirth = dateOfBirth
-                        viewModel.dateOfBirthString = dateOfBirth.ddMMyyyy
                         viewModel.isShowCalendar = false
                     }
                     .animation(.easeInOut)
@@ -224,8 +223,8 @@ struct SignupCompletedView: View {
         @ObservedObject var viewModel: SignupViewModel
         
         var body: some View {
-            PushingButtonView(destinationView: EmptyView()) {
-                viewModel.completedSignup()
+            PushingButtonWhenTrue($viewModel.isValidUser, destinationView: EmptyView()) {
+                viewModel.createNewAccount()
             } label: {
                 Text("Đăng ký")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)

@@ -66,12 +66,13 @@ struct SignupPhoneView: View {
     
     // MARK: - ContinueButton
     struct ContinueButton: View {
+        @State var isValidPhone: Bool = false
         @Binding var phoneText: String
         
         var body: some View {
             let signupCompletedView = SignupCompletedView(phone: phoneText)
-            PushingButtonView(destinationView: signupCompletedView) {
-                // Do something
+            PushingButtonWhenTrue($isValidPhone, destinationView: signupCompletedView) {
+                isValidPhone = validatePhone()
             } label: {
                 Text("Tiếp tục")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)
@@ -83,6 +84,19 @@ struct SignupPhoneView: View {
                             .shadow(color: Color(Asset.Colors.Global.redD41717.color).opacity(0.25), radius: 2, x: 0, y: 0)
                     )
             }
+        }
+        
+        private func validatePhone() -> Bool {
+            if phoneText.isEmpty {
+                Helper.showToast("Vui lòng nhập số điện thoại")
+                return false
+            }
+            if !phoneText.isValidPhone() {
+                Helper.showToast("Vui lòng nhập số điện thoại hợp lệ")
+                return false
+            }
+            
+            return true
         }
     }
 }

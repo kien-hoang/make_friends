@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import Localize_Swift
 import Toaster
+import ProgressHUD
 
 class Helper {
     static func getCurrentLanguagueCode() -> String {
@@ -41,7 +42,10 @@ class Helper {
         let value = standard.value(forKey: key)
         return value
     }
-    
+}
+
+// MARK: - Toaster
+extension Helper {
     static func configureToastView() {
         ToastView.appearance().textInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         ToastView.appearance().bottomOffsetPortrait = 40
@@ -67,6 +71,32 @@ class Helper {
     
     static func showInfo(_ message: String?) {
         Helper.showToast(message)
+    }
+}
 
+// MARK: - ProgressHUB
+extension Helper {
+    static func configureProgressHUD() {
+        ProgressHUD.colorAnimation = Asset.Colors.Global.redD41717.color
+        ProgressHUD.colorStatus = Asset.Colors.Global.black100.color
+        ProgressHUD.fontStatus = UIFont(name: K.Fonts.lexendMedium.rawValue, size: 20) ?? .systemFont(ofSize: 20)
+        ProgressHUD.colorBackground = Asset.Colors.Global.gray9A9A9A.color.withAlphaComponent(0.5)
+        ProgressHUD.animationType = .circleRotateChase
+    }
+    
+    static func showProgress(_ message: String? = nil) {
+        ProgressHUD.show(message, interaction: false)
+    }
+    
+    static func dismissProgress() {
+        ProgressHUD.dismiss()
+    }
+    
+    static func showProgressError(_ error: String? = nil) {
+        ProgressHUD.showFailed(error)
+    }
+    
+    static func showProgressSuccess(_ success: String? = nil) {
+        ProgressHUD.showSucceed(success)
     }
 }
