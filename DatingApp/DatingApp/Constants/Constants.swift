@@ -41,6 +41,7 @@ struct K {
             
             static let InterestedTag = "interested-tags"
             static let Register = "auth/register"
+            static let Login = "auth/login"
         }
         
         struct ParameterKeys {

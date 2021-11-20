@@ -78,7 +78,7 @@ struct SignupCompletedView: View {
                                         TextField("Nhập mật khẩu", text: $viewModel.password)
                                         
                                     } else {
-                                        SecureField("Nhập lại mật khẩu", text: $viewModel.password)
+                                        SecureField("Nhập mật khẩu", text: $viewModel.password)
                                     }
                                 }
                                 .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)

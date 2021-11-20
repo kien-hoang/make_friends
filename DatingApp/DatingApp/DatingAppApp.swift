@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 @main
 struct DatingAppApp: App {
     @Environment(\.scenePhase) private var scenePhase
+    @ObservedObject private var viewRouter = ViewRouter()
     
     init() {
         // This init function is didFinishLaunchWithOptions in UIKit
@@ -18,11 +19,19 @@ struct DatingAppApp: App {
         Helper.configureToastView()
         Helper.configureProgressHUD()
         IQKeyboardManager.shared.enable = true
+        
+        Helper.deleteLocalValue(withKey: K.UserDefaults.Token)
+        if Helper.getLocalValue(withKey: K.UserDefaults.Token) != nil {
+            viewRouter.currentView = .MainAppView
+        } else {
+            viewRouter.currentView = .LoginView
+        }
     }
     
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            RootView()
+                .environmentObject(viewRouter)
         }.onChange(of: scenePhase) { phase in
             switch phase {
             case .background:
@@ -36,4 +45,30 @@ struct DatingAppApp: App {
             }
         }
     }
+}
+
+struct RootView: View {
+    @EnvironmentObject private var viewRouter: ViewRouter
+    
+    var body: some View {
+        VStack {
+            switch viewRouter.currentView {
+            case .LoginView:
+                LoginView()
+            case .MainAppView:
+                MatchHomeView()
+            }
+        }
+    }
+}
+
+//Your app views
+enum AppView {
+    case LoginView
+    case MainAppView
+}
+
+class ViewRouter: ObservableObject {
+    // here you can decide which view to show at launch
+    @Published var currentView: AppView = .LoginView
 }

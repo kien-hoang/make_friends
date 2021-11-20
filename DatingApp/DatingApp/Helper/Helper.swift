@@ -42,6 +42,12 @@ class Helper {
         let value = standard.value(forKey: key)
         return value
     }
+    
+    static func deleteLocalValue(withKey key: String) {
+        let standard = UserDefaults.standard
+        standard.setValue(nil, forKey: key)
+        standard.synchronize()
+    }
 }
 
 // MARK: - Toaster
@@ -89,7 +95,7 @@ extension Helper {
     }
     
     static func dismissProgress() {
-        ProgressHUD.dismiss()
+        ProgressHUD.dismissImmediately()
     }
     
     static func showProgressError(_ error: String? = nil) {

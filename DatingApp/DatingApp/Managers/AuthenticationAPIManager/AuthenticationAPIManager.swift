@@ -44,4 +44,44 @@ class AuthenticationAPIManager {
             }
         }
     }
+    
+    func loginWith(phone: String, password: String, completion: @escaping (_ success: Bool,_ error: Error?) -> ()) {
+        let params: [String: Any] = [K.API.ParameterKeys.Phone: phone,
+                                    K.API.ParameterKeys.Password: password]
+        
+        let path = K.API.URL.Login
+        let urlString = K.API.URL.BaseUrl + path
+        let url = URL(string: urlString)!
+        
+        Network.shared.request(url, method: .post, params: params, headers: Helper.defaultHeaders) { responseJson in
+            switch responseJson.result {
+            
+            case .success(let result as [String:Any]):
+                
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    if let dict = result["data"] as? [String: Any],
+                       let token = dict["token"] as? String {
+                        Helper.saveLocal(value: token, key: K.UserDefaults.Token)
+                        DispatchQueue.main.async {
+                            completion(true, nil)
+                        }
+                    }
+                    
+                } else {
+                    let message = result["message"] as? String ?? "Something went wrong"
+                    DispatchQueue.main.async {
+                        completion(false, message.toError)
+                    }
+                }
+                
+            default:
+                let message = "Something went wrong"
+                DispatchQueue.main.async {
+                    completion(false, message.toError)
+                }
+            }
+        }
+    }
 }
