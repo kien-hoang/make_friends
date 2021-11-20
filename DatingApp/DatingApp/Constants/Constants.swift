@@ -61,4 +61,8 @@ struct K {
     struct UserDefaults {
         static let Token = "token"
     }
+    
+    struct KeyPaths {
+        static let DidSignupSuccess = "DidSignupSuccess"
+    }
 }

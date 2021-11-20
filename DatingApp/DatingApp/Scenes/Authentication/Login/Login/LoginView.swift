@@ -41,9 +41,13 @@ struct LoginView: View {
     
     // MARK: - LoginButton
     struct LoginButton: View {
+        let signupSuccessPublisher = NotificationCenter.default
+            .publisher(for: NSNotification.Name(K.KeyPaths.DidSignupSuccess))
+        @State var isShow: Bool = false
+        
         var body: some View {
-            Button {
-                print("Dang nhap")
+            PushingButtonWhenTrue($isShow, destinationView: LoginPhoneView()) {
+                isShow = true
             } label: {
                 Text("Đăng nhập")
                     .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
@@ -54,6 +58,9 @@ struct LoginView: View {
                             .fill(Color(Asset.Colors.Global.white100.color))
                             .shadow(color: Color(Asset.Colors.Global.black100.color).opacity(0.25), radius: 2, x: 0, y: 0)
                     )
+            }
+            .onReceive(signupSuccessPublisher) { _ in
+                isShow = true
             }
         }
     }

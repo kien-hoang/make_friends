@@ -34,19 +34,19 @@ class SignupViewModel: ObservableObject {
     
     private func validateUser() -> String? {
         // Validated phone before
-        if password.isEmpty {
+        if password.trim().isEmpty {
             return "Vui lòng nhập mật khẩu"
         }
-        if confirmPassword.isEmpty {
+        if confirmPassword.trim().isEmpty {
             return "Vui lòng nhập mật khẩu xác nhận"
         }
         if confirmPassword != password {
             return "Mật khẩu không trùng nhau"
         }
-        if name.isEmpty {
+        if name.trim().isEmpty {
             return "Vui lòng nhập tên"
         }
-        if email.isEmpty {
+        if email.trim().isEmpty {
             return "Vui lòng nhập email"
         }
         if !email.isValidEmail() {
@@ -80,11 +80,13 @@ extension SignupViewModel {
         Helper.showProgress()
         AuthenticationAPIManager.shared.signup(params: params) { [weak self] user, error in
             Helper.dismissProgress()
-            guard let self = self else { return }
+            guard let _ = self else { return }
             if let error = error {
                 Helper.showProgressError(error.localizedDescription)
             } else if let _ = user {
-//                self.isValidUser = true
+                Helper.showSuccess("Đăng ký tài khoản mới thành công. Vui lòng đăng nhập!")
+                NavigationUtil.popToRootView()
+                NotificationCenter.default.post(name: NSNotification.Name(K.KeyPaths.DidSignupSuccess), object: nil)
             }
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignupPhoneView: View {
-    @State private var phoneText = ""
+    @State private var phoneText = "987914956"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -87,7 +87,7 @@ struct SignupPhoneView: View {
         }
         
         private func validatePhone() -> Bool {
-            if phoneText.isEmpty {
+            if phoneText.trim().isEmpty {
                 Helper.showToast("Vui lòng nhập số điện thoại")
                 return false
             }
