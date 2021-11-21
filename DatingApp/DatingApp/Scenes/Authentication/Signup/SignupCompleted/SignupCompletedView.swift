@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct SignupCompletedView: View {
-    @ObservedObject var viewModel = SignupViewModel()
+    @StateObject var viewModel = SignupViewModel()
+    private var phone: String = ""
     
     init(phone: String = "") {
-        viewModel.phone = phone
+        self.phone = phone
     }
     
     // MARK: - Body
@@ -54,6 +55,9 @@ struct SignupCompletedView: View {
                     }
                     .animation(.easeInOut)
             }
+        }
+        .onAppear {
+            viewModel.phone = phone
         }
     }
     

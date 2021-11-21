@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginPhoneView: View {
-    @ObservedObject var viewModel = LoginPhoneViewModel()
+    @StateObject var viewModel = LoginPhoneViewModel()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

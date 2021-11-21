@@ -16,6 +16,8 @@ class User {
     var createdAt: Date?
     var updatedAt: Date?
     
+    init() {}
+    
     init(dict: [String: Any]) {
         id = dict[K.API.ParameterKeys._Id] as? String ?? ""
         name = dict[K.API.ParameterKeys.Name] as? String ?? ""
