@@ -43,6 +43,17 @@ internal enum Asset {
     internal static let icDownArrow = ImageAsset(name: "ic_down_arrow")
     internal static let icLightLogo = ImageAsset(name: "ic_light_logo")
   }
+  internal enum Images {
+    internal static let imgAj = ImageAsset(name: "img_aj")
+    internal static let imgBl = ImageAsset(name: "img_bl")
+    internal static let imgDj = ImageAsset(name: "img_dj")
+    internal static let imgEw = ImageAsset(name: "img_ew")
+    internal static let imgGg = ImageAsset(name: "img_gg")
+    internal static let imgNp = ImageAsset(name: "img_np")
+    internal static let imgSg = ImageAsset(name: "img_sg")
+    internal static let imgSj = ImageAsset(name: "img_sj")
+    internal static let imgTs = ImageAsset(name: "img_ts")
+  }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

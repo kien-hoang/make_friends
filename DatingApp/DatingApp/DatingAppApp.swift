@@ -20,7 +20,6 @@ struct DatingAppApp: App {
         Helper.configureProgressHUD()
         IQKeyboardManager.shared.enable = true
         
-        Helper.deleteLocalValue(withKey: K.UserDefaults.Token)
         if Helper.getLocalValue(withKey: K.UserDefaults.Token) != nil {
             viewRouter.currentView = .MainAppView
         } else {
@@ -45,30 +44,4 @@ struct DatingAppApp: App {
             }
         }
     }
-}
-
-struct RootView: View {
-    @EnvironmentObject private var viewRouter: ViewRouter
-    
-    var body: some View {
-        VStack {
-            switch viewRouter.currentView {
-            case .LoginView:
-                LoginView()
-            case .MainAppView:
-                MatchHomeView()
-            }
-        }
-    }
-}
-
-//Your app views
-enum AppView {
-    case LoginView
-    case MainAppView
-}
-
-class ViewRouter: ObservableObject {
-    // here you can decide which view to show at launch
-    @Published var currentView: AppView = .LoginView
 }
