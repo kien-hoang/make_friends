@@ -55,7 +55,7 @@ struct MainView: View {
                             .tag(tabView.rawValue)
                         
                     case .ProfileView:
-                        ProfileView()
+                        ProfileMainView()
                             .tabItem {
                                 Image(systemName: "person.crop.circle.fill")
                                 Text("Người dùng")
