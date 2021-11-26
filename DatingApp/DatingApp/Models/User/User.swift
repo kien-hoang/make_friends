@@ -37,3 +37,9 @@ class User {
         }
     }
 }
+
+enum UserGender: String {
+    case male = "MALE"
+    case female = "FEMALE"
+    case others = "OTHERS"
+}

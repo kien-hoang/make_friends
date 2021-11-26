@@ -22,7 +22,7 @@ struct ChooseInterestedTagsView: View {
                     .padding(.bottom, 12)
                 
                 Text("Hãy chọn 5 sở thích của bạn và cho mọi người biết đam mê của bạn là gì:")
-                    .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.gray9A9A9A.color)
+                    .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.gray9A9A9A.color)
                     .padding(.bottom, 20)
                     .fixedSize(horizontal: false, vertical: true)
             }

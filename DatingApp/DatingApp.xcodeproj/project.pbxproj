@@ -58,6 +58,9 @@
 		13DE8EF3273C280500E798BF /* UINavigation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */; };
 		13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */; };
 		13DE8EFA273C337A00E798BF /* PushingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF9273C337A00E798BF /* PushingButtonView.swift */; };
+		13FFFC73275113FA008D59D8 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */; };
+		13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */; };
+		13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */; };
 		53CE6AE7B12D19A42F17D01C /* Pods_DatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */; };
 		E6338E6D19E4CAAA92FA171E /* Pods_DatingApp_DatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771A7638AD1C794773F262D8 /* Pods_DatingApp_DatingAppUITests.framework */; };
 		EA24D3CE0ADEE962EAADAC4E /* Pods_DatingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */; };
@@ -137,6 +140,9 @@
 		13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extensions.swift"; sourceTree = "<group>"; };
 		13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationView.swift; sourceTree = "<group>"; };
 		13DE8EF9273C337A00E798BF /* PushingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushingButtonView.swift; sourceTree = "<group>"; };
+		13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
+		13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageView.swift; sourceTree = "<group>"; };
+		13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageViewModel.swift; sourceTree = "<group>"; };
 		26C4C1C57B0B1B8AD1465351 /* Pods-DatingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatingApp.debug.xcconfig"; path = "Target Support Files/Pods-DatingApp/Pods-DatingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +210,7 @@
 		132A8FEF274A542D004D0FE9 /* ChooseGender */ = {
 			isa = PBXGroup;
 			children = (
+				13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */,
 				132A8FF0274A5440004D0FE9 /* ChooseGenderView.swift */,
 			);
 			path = ChooseGender;
@@ -379,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				132A8FEF274A542D004D0FE9 /* ChooseGender */,
+				13FFFC7427512556008D59D8 /* UpdateFirstImage */,
 				139D68D92732FEB200F3B77F /* ChooseInterestedTags */,
 				13DE8ED5273AD3AE00E798BF /* Signup */,
 				13DE8ED4273AD27800E798BF /* Login */,
@@ -573,6 +581,15 @@
 				13DE8EF9273C337A00E798BF /* PushingButtonView.swift */,
 			);
 			path = PushingButtonView;
+			sourceTree = "<group>";
+		};
+		13FFFC7427512556008D59D8 /* UpdateFirstImage */ = {
+			isa = PBXGroup;
+			children = (
+				13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */,
+				13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */,
+			);
+			path = UpdateFirstImage;
 			sourceTree = "<group>";
 		};
 		56112E6C1643C7C9AFDE93D8 /* Frameworks */ = {
@@ -875,6 +892,7 @@
 				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
 				13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */,
 				13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */,
+				13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */,
 				132613EB2741656E0016CD92 /* SignupCalendar.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
 				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
@@ -892,6 +910,7 @@
 				13DE8EF1273C0ECE00E798BF /* SignupPhoneView.swift in Sources */,
 				132A9007274BD8CA004D0FE9 /* MessageMainView.swift in Sources */,
 				13DE8ED1273ACC0F00E798BF /* Helper.swift in Sources */,
+				13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */,
 				139D68F7273300CC00F3B77F /* Constants.swift in Sources */,
 				132A8FEA2749319E004D0FE9 /* LoginPhoneViewModel.swift in Sources */,
 				13DE8EF3273C280500E798BF /* UINavigation+Extensions.swift in Sources */,
@@ -899,6 +918,7 @@
 				13D50D07274813A10059C244 /* User.swift in Sources */,
 				132A8FFE274BCC98004D0FE9 /* MainView.swift in Sources */,
 				13D50D0427480CF80059C244 /* AuthenticationAPIManager.swift in Sources */,
+				13FFFC73275113FA008D59D8 /* ChooseGenderViewModel.swift in Sources */,
 				132613E62740C0060016CD92 /* SignupCompletedView.swift in Sources */,
 				132A9009274BDE1A004D0FE9 /* CardView.swift in Sources */,
 				1338BD42273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift in Sources */,

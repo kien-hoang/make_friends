@@ -29,8 +29,11 @@ struct DatingAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environmentObject(viewRouter)
+//            RootView()
+//                .environmentObject(viewRouter)
+                
+            UpdateFirstImageView()
+                .preferredColorScheme(.light)
         }.onChange(of: scenePhase) { phase in
             switch phase {
             case .background:
