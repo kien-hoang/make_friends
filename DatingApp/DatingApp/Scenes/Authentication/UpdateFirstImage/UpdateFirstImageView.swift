@@ -23,17 +23,38 @@ struct UpdateFirstImageView: View {
             
             Spacer()
             ContinueButton(viewModel: viewModel)
+                .padding(.top, 20)
         }
         .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 10, trailing: K.Constants.ScreenPadding))
-        
+        .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$viewModel.selectedImage)
+        }
     }
     
     // MARK: - UpdateImageView
     struct UpdateImageView: View {
         @ObservedObject var viewModel: UpdateFirstImageViewModel
-        
+        let screenWidth = UIScreen.main.bounds.width - 2 * K.Constants.ScreenPadding
         var body: some View {
-            AddingImageView(viewModel: viewModel)
+            Group {
+                if let image = viewModel.selectedImage {
+//                if false {
+//                    Image(uiImage: UIImage(named: "img_cover_image")!)
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        
+                } else {
+                    AddingImageView(viewModel: viewModel)
+                }
+            }
+            .frame(width: screenWidth, height: screenWidth * 387 / 299)
+            .cornerRadius(20)
+            .clipped()
+            .shadow(color: Color(Asset.Colors.Global.black100.name).opacity(0.2), radius: 4, x: 0, y: 0)
+            .onTapGesture {
+                viewModel.addingImage()
+            }
         }
     }
     
@@ -45,15 +66,10 @@ struct UpdateFirstImageView: View {
                 Rectangle()
                     .fill(Color(Asset.Colors.Global.white100.color))
                     .overlay(
-                            RoundedRectangle(cornerRadius: 10)
+                            RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color(Asset.Colors.Global.gray9A9A9A.color), lineWidth: 1)
                         )
                 Image(Asset.Authentication.InitUser.initUserAdd.name)
-            }
-            .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 10, trailing: K.Constants.ScreenPadding))
-            .aspectRatio(299/387, contentMode: .fit)
-            .onTapGesture {
-                viewModel.addingImage()
             }
         }
     }
@@ -82,6 +98,5 @@ struct UpdateFirstImageView: View {
 struct UpdateFirstImageView_Previews: PreviewProvider {
     static var previews: some View {
         UpdateFirstImageView()
-//            .previewDevice("iPhone 6s")
     }
 }
