@@ -42,6 +42,8 @@ struct K {
             static let InterestedTag = "interested-tags"
             static let Register = "auth/register"
             static let Login = "auth/login"
+            static let User = "user"
+            static let Upload = "upload"
         }
         
         struct ParameterKeys {
@@ -61,9 +63,16 @@ struct K {
     
     struct UserDefaults {
         static let Token = "token"
+        static let User = "user"
     }
     
     struct KeyPaths {
         static let DidSignupSuccess = "DidSignupSuccess"
     }
+}
+
+// MARK: - Notification Name
+extension Notification.Name {
+    static let UserIsInvalid = Notification.Name("UserIsInvalid")
+    static let UpdateMandatoryInformationSuccess = Notification.Name("UpdateMandatoryInformationSuccess")
 }

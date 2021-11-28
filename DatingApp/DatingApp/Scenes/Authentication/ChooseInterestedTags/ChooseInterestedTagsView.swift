@@ -13,9 +13,6 @@ struct ChooseInterestedTagsView: View {
     // MARK: - Main body
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            NavigationBar()
-                .padding(.bottom, 28)
-            
             VStack(alignment: .leading, spacing: 0) {
                 Text("Sở thích của bạn là:")
                     .style(font: .lexendBold, size: 22, color: Asset.Colors.Global.black100.color)
@@ -26,10 +23,10 @@ struct ChooseInterestedTagsView: View {
                     .padding(.bottom, 20)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .padding([.leading, .trailing], K.Constants.ScreenPadding)
+            .padding([.top, .leading, .trailing], K.Constants.ScreenPadding)
             
             InterestedTagsList(viewModel: viewModel)
-                        
+            
             ContinueButton(viewModel: viewModel)
         }
     }
@@ -41,7 +38,7 @@ struct ChooseInterestedTagsView: View {
         var body: some View {
             VStack() {
                 Button {
-                    viewModel.nextAction()
+                    viewModel.updateInterestedTags()
                 } label: {
                     Text("Tiếp tục")
                         .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)
@@ -131,20 +128,20 @@ struct ChooseInterestedTagsView: View {
     }
     
     // MARK: - NavigationBar
-    struct NavigationBar: View {
-        var body: some View {
-            ZStack(alignment: .trailing) {
-                DefaultNavigationView()
-                
-                Text("Bỏ qua")
-                    .style(font: .lexendBold, size: 12, color: Asset.Colors.Global.redD41717.color)
-                    .padding(.trailing, K.Constants.ScreenPadding)
-                    .onTapGesture {
-                        print("SKIP")
-                    }
-            }
-        }
-    }
+//    struct NavigationBar: View {
+//        var body: some View {
+//            ZStack(alignment: .trailing) {
+//                DefaultNavigationView()
+//
+//                Text("Bỏ qua")
+//                    .style(font: .lexendBold, size: 12, color: Asset.Colors.Global.redD41717.color)
+//                    .padding(.trailing, K.Constants.ScreenPadding)
+//                    .onTapGesture {
+//                        print("SKIP")
+//                    }
+//            }
+//        }
+//    }
 }
 
 struct ChooseInterestedTagsView_Previews: PreviewProvider {

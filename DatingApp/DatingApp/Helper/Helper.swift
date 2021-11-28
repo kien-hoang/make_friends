@@ -23,7 +23,7 @@ class Helper {
     
     static var defaultHeaders: HTTPHeaders! {
         if let token = Helper.getLocalValue(withKey: K.UserDefaults.Token) {
-            return ["Authorization": "Bidu \(token)",
+            return ["Authorization": "Bearer \(token)",
                     "Accept": "application/json",
                     K.API.HeaderKey.AcceptLanguage: Helper.getCurrentLanguagueCode()]
         }

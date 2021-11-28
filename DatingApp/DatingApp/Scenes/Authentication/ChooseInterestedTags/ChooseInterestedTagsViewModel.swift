@@ -16,10 +16,6 @@ class ChooseInterestedTagsViewModel: ObservableObject {
     }
     
     // MARK: - Helper
-    func nextAction() {
-        
-    }
-    
     func onSelectTag(_ tag: InterestedTag) {
         if let firstIndex = selectedInterestedTags.firstIndex(where: { $0.id == tag.id }) {
             selectedInterestedTags.remove(at: firstIndex)
@@ -35,6 +31,28 @@ class ChooseInterestedTagsViewModel: ObservableObject {
 
 // MARK: - API
 extension ChooseInterestedTagsViewModel {
+    func updateInterestedTags() {
+        if selectedInterestedTags.count < 5 {
+            Helper.showProgressError("Vui lòng chọn ít nhất 5 sở thích của bạn")
+            return
+        }
+        var params: [String: Any] = [:]
+        params["interested_tags"] = selectedInterestedTags.map { $0.id }
+        
+        Helper.showProgress()
+        UserAPIManager.shared.updateInterestedTags(withParams: params) { [weak self] isSuccess, error in
+            Helper.dismissProgress()
+            guard let _ = self else { return }
+            if let error = error {
+                Helper.showProgressError(error.localizedDescription)
+                return
+            } else if isSuccess {
+                Helper.showSuccess("Chọn sở thích thành công")
+                NotificationCenter.default.post(name: .UpdateMandatoryInformationSuccess, object: nil)
+            }
+        }
+    }
+    
     private func getAllInterestedTags() {
         InterestedTagAPIManager.shared.getAllInterestedTags { interestedTags, error in
             if let interestedTags = interestedTags {

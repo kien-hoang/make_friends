@@ -62,6 +62,9 @@
 		13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */; };
 		13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */; };
 		13FFFC7B2752328D008D59D8 /* ImagePickerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7A2752328C008D59D8 /* ImagePickerRepresentable.swift */; };
+		13FFFC7D27529141008D59D8 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7C27529140008D59D8 /* MainViewModel.swift */; };
+		13FFFC8027529636008D59D8 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7F27529636008D59D8 /* UserAPIManager.swift */; };
+		13FFFC82275332C2008D59D8 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC81275332C0008D59D8 /* AppData.swift */; };
 		53CE6AE7B12D19A42F17D01C /* Pods_DatingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */; };
 		E6338E6D19E4CAAA92FA171E /* Pods_DatingApp_DatingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771A7638AD1C794773F262D8 /* Pods_DatingApp_DatingAppUITests.framework */; };
 		EA24D3CE0ADEE962EAADAC4E /* Pods_DatingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */; };
@@ -145,6 +148,9 @@
 		13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageView.swift; sourceTree = "<group>"; };
 		13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageViewModel.swift; sourceTree = "<group>"; };
 		13FFFC7A2752328C008D59D8 /* ImagePickerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerRepresentable.swift; sourceTree = "<group>"; };
+		13FFFC7C27529140008D59D8 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		13FFFC7F27529636008D59D8 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
+		13FFFC81275332C0008D59D8 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		26C4C1C57B0B1B8AD1465351 /* Pods-DatingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatingApp.debug.xcconfig"; path = "Target Support Files/Pods-DatingApp/Pods-DatingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		28D86029B0A426C109808EC6 /* Pods_DatingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EE60BCE80393DEBB497F02 /* Pods_DatingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DatingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				132A8FFF274BCD35004D0FE9 /* RootView.swift */,
+				13FFFC7C27529140008D59D8 /* MainViewModel.swift */,
 				132A8FFD274BCC98004D0FE9 /* MainView.swift */,
 			);
 			path = MainView;
@@ -280,6 +287,7 @@
 		1338BD442737F38C009CA3C0 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				13FFFC7E2752962A008D59D8 /* UserAPIManager */,
 				13D50D0227480CE40059C244 /* AuthenticationAPIManager */,
 				13D50D0127480CD20059C244 /* InterestedTagAPIManager */,
 			);
@@ -487,6 +495,7 @@
 			children = (
 				13DE8ED0273ACC0F00E798BF /* Helper.swift */,
 				13DE8ED2273ACD1C00E798BF /* Network.swift */,
+				13FFFC81275332C0008D59D8 /* AppData.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -601,6 +610,14 @@
 				13FFFC7A2752328C008D59D8 /* ImagePickerRepresentable.swift */,
 			);
 			path = ImagePickerRepresentable;
+			sourceTree = "<group>";
+		};
+		13FFFC7E2752962A008D59D8 /* UserAPIManager */ = {
+			isa = PBXGroup;
+			children = (
+				13FFFC7F27529636008D59D8 /* UserAPIManager.swift */,
+			);
+			path = UserAPIManager;
 			sourceTree = "<group>";
 		};
 		56112E6C1643C7C9AFDE93D8 /* Frameworks */ = {
@@ -904,12 +921,14 @@
 				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
 				13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */,
 				13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */,
+				13FFFC8027529636008D59D8 /* UserAPIManager.swift in Sources */,
 				13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */,
 				132613EB2741656E0016CD92 /* SignupCalendar.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
 				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
 				132A9016274D1532004D0FE9 /* ProfileMainViewModel.swift in Sources */,
 				139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */,
+				13FFFC7D27529141008D59D8 /* MainViewModel.swift in Sources */,
 				139D690527343CF500F3B77F /* String+Extensions.swift in Sources */,
 				139D69032734322900F3B77F /* Strings+Generated.swift in Sources */,
 				132A9000274BCD35004D0FE9 /* RootView.swift in Sources */,
@@ -934,6 +953,7 @@
 				132613E62740C0060016CD92 /* SignupCompletedView.swift in Sources */,
 				132A9009274BDE1A004D0FE9 /* CardView.swift in Sources */,
 				1338BD42273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift in Sources */,
+				13FFFC82275332C2008D59D8 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,6 +1133,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DatingApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "MakeFriends needs access to your camera to take photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1146,6 +1167,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DatingApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "MakeFriends needs access to your camera to take photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

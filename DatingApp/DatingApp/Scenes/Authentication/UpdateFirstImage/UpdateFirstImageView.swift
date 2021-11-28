@@ -27,8 +27,30 @@ struct UpdateFirstImageView: View {
         }
         .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 10, trailing: K.Constants.ScreenPadding))
         .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
-            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$viewModel.selectedImage)
+            ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.selectedImage)
         }
+        .sheet(isPresented: $viewModel.isShowCamera) {
+            ImagePicker(sourceType: .camera, selectedImage: $viewModel.selectedImage)
+        }
+        .actionSheet(isPresented: $viewModel.isShowUploadOptionActionSheet) {
+            uploadOptionActionSheet
+        }
+    }
+    
+    // MARK: - UploadOption
+    var uploadOptionActionSheet: ActionSheet {
+        ActionSheet(
+            title: Text("Tải ảnh lên"),
+            buttons: [
+                .default(Text("Máy ảnh")) {
+                    viewModel.isShowCamera = true
+                },
+                .default(Text("Bộ sưu tập")) {
+                    viewModel.isShowPhotoLibrary = true
+                },
+                .cancel(Text("Huỷ bỏ"))
+            ]
+        )
     }
     
     // MARK: - UpdateImageView
@@ -38,8 +60,6 @@ struct UpdateFirstImageView: View {
         var body: some View {
             Group {
                 if let image = viewModel.selectedImage {
-//                if false {
-//                    Image(uiImage: UIImage(named: "img_cover_image")!)
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
@@ -53,7 +73,7 @@ struct UpdateFirstImageView: View {
             .clipped()
             .shadow(color: Color(Asset.Colors.Global.black100.name).opacity(0.2), radius: 4, x: 0, y: 0)
             .onTapGesture {
-                viewModel.addingImage()
+                viewModel.isShowUploadOptionActionSheet = true
             }
         }
     }
@@ -79,7 +99,8 @@ struct UpdateFirstImageView: View {
         @ObservedObject var viewModel: UpdateFirstImageViewModel
         
         var body: some View {
-            PushingButtonWhenTrue($viewModel.isUpdateFirstImageSuccess, destinationView: EmptyView()) {
+            PushingButtonWhenTrue($viewModel.isUpdateFirstImageSuccess, destinationView: ChooseInterestedTagsView()) {
+                viewModel.updateFirstImage()
             } label: {
                 Text("Tiếp tục")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)

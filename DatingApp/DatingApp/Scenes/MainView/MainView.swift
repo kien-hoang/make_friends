@@ -16,6 +16,7 @@ enum AppTabView: Int, CaseIterable {
 
 struct MainView: View {
     @EnvironmentObject private var viewRouter: ViewRouter
+    @StateObject var viewModel = MainViewModel()
     @State private var selection = 0
     
     init() {
@@ -73,6 +74,17 @@ struct MainView: View {
                 // update state on env changed
                 selection = selectedTab
             }
+        }
+        // TODO: When the user is invalid. User must provide mandatory information
+        .fullScreenCover(isPresented: $viewModel.isPresentForInvalidUser) {
+            ChooseGenderView()
+                .hiddenNavigationBar()
+                .navigationView()
+        }
+        // TODO: Dismiss screen when update information success
+        .onReceive(.UpdateMandatoryInformationSuccess) { _ in
+            viewModel.isPresentForInvalidUser = false
+            viewModel.getProfileUser()
         }
     }
 }

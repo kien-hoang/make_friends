@@ -16,7 +16,24 @@ class ChooseGenderViewModel: ObservableObject {
 
 // MARK: - API
 extension ChooseGenderViewModel {
-    
+    func updateGender() {
+        guard let selectedGender = selectedGender else {
+            Helper.showProgressError("Vui lòng chọn giới tính")
+            return
+        }
+        
+        Helper.showProgress()
+        UserAPIManager.shared.updateGender(selectedGender) { [weak self] isSuccess, error in
+            Helper.dismissProgress()
+            guard let self = self else { return }
+            if let error = error {
+                Helper.showProgressError(error.localizedDescription)
+            } else if isSuccess {
+                Helper.showSuccess("Chọn giới tính thành công")
+                self.isUpdateGenderSuccess = true
+            }
+        }
+    }
 }
 
 // MARK: - Helper

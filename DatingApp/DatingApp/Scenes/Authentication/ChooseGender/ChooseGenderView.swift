@@ -96,7 +96,8 @@ struct ChooseGenderView: View {
         @ObservedObject var viewModel: ChooseGenderViewModel
         
         var body: some View {
-            PushingButtonWhenTrue($viewModel.isUpdateGenderSuccess, destinationView: EmptyView()) {
+            PushingButtonWhenTrue($viewModel.isUpdateGenderSuccess, destinationView: UpdateFirstImageView()) {
+                viewModel.updateGender()
             } label: {
                 Text("Tiếp tục")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)
