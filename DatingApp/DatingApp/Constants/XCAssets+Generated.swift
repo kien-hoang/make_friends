@@ -21,7 +21,6 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
-  internal static let accentColor = ColorAsset(name: "AccentColor")
   internal enum Authentication {
     internal enum InitUser {
       internal static let initUserAdd = ImageAsset(name: "init_user_add")
@@ -46,7 +45,12 @@ internal enum Asset {
     internal static let icDefaultClose = ImageAsset(name: "ic_default_close")
     internal static let icDownArrow = ImageAsset(name: "ic_down_arrow")
     internal static let icLightLogo = ImageAsset(name: "ic_light_logo")
+    internal static let icLocation = ImageAsset(name: "ic_location")
     internal static let icPlaceholderLogo = ImageAsset(name: "ic_placeholder_logo")
+    internal static let swipeBack = ImageAsset(name: "swipe_back")
+    internal static let swipeDislike = ImageAsset(name: "swipe_dislike")
+    internal static let swipeLike = ImageAsset(name: "swipe_like")
+    internal static let swipeNext = ImageAsset(name: "swipe_next")
   }
   internal enum Profile {
     internal static let icEditProfile = ImageAsset(name: "ic_edit_profile")

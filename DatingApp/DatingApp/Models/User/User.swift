@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class User {
+class User: Identifiable {
     var id: String = ""
     var name: String = ""
     var phone: String = ""
@@ -25,6 +26,7 @@ class User {
     var inActive: Bool = false
     var createdAt: Date?
     var updatedAt: Date?
+    var location: CLLocation?
     
     init() {}
     
@@ -64,6 +66,10 @@ class User {
         if let updatedAt = dict[K.API.ParameterKeys.UpdatedAt] as? String {
             let date = Date.dateFullFormat(from: updatedAt)
             self.updatedAt = date
+        }
+        if let locationDict = dict["location"] as? [String: Any],
+           let coordinates = locationDict["coordinates"] as? [Double] {
+            location = CLLocation(latitude: coordinates[1], longitude: coordinates[0])
         }
     }
 }

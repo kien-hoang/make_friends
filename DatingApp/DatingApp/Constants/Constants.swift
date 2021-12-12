@@ -7,6 +7,9 @@
 
 import UIKit
 
+let __SCREEN_WIDTH__ = UIScreen.main.bounds.width
+let __SCREEN_HEIGHT__ = UIScreen.main.bounds.height
+
 struct K {
     enum Fonts: String {
         case lexendBlack = "Lexend-Black"
@@ -23,6 +26,7 @@ struct K {
     struct Constants {
         static let NavigationHeight: CGFloat = 44
         static let ScreenPadding: CGFloat = 20
+        static let PagingLimit: Int = 10
     }
     
     struct API {
@@ -37,13 +41,14 @@ struct K {
             static let BaseUrl = LiveUrl
             #endif
             static let StagingUrl = "http://localhost:3000/api/"
-            static let LiveUrl = "http://192.168.1.2:3000/api/"
+            static let LiveUrl = "http://192.168.1.3:3000/api/"
             
             static let InterestedTag = "interested-tags"
             static let Register = "auth/register"
             static let Login = "auth/login"
             static let User = "user"
             static let Upload = "upload"
+            static let Recs = "recs"
         }
         
         struct ParameterKeys {
