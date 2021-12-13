@@ -11,4 +11,5 @@ class AppData {
     static let shared = AppData()
     
     var user: User!
+    var isUpdatedLocation = false
 }

@@ -86,6 +86,12 @@ struct MainView: View {
             viewModel.isPresentForInvalidUser = false
             viewModel.getProfileUser()
         }
+        // TODO: Change root view to Login Screen when cannot get profile user
+        .onReceive(.GetProfileUserFailed) { _ in
+            Helper.deleteLocalValue(withKey: K.UserDefaults.Token)
+            viewRouter.currentView = .LoginView
+            viewRouter.selectedTab = 0
+        }
     }
 }
 

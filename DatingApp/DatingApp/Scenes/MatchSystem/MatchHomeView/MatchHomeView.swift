@@ -12,21 +12,55 @@ struct MatchHomeView: View {
     
     var body: some View {
         VStack {
-            CardStack(
-                direction: LeftRight.direction,
-                data: viewModel.users,
-                onSwipe: { card, direction in
-                    viewModel.users.append(card)
-                },
-                content: { user, direction, _ in
-                    ZStack {
-                        CardViewWithThumbs(user: user, direction: direction)
+            if !viewModel.isEnableLocation {
+                VStack(alignment: .center, spacing: 12) {
+                    Text("Oops")
+                        .style(font: .lexendBold, size: 18, color: Asset.Colors.Global.black100.color)
+                    Text("Để sử dụng Make Friends bạn cần bật chức năng vị trí của bạn.")
+                        .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.gray9A9A9A.color)
+                    Text("Hãy đến Cài đặt > Make Friends > Vị trí >  Bật vị trí khi sử dụng ứng dụng")
+                        .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.gray9A9A9A.color)
+                        .padding(.bottom, 12)
+                    
+                    Button {
+                        viewModel.gotoSettings()
+                    } label: {
+                        Text("ĐẾN CÀI ĐẶT")
+                            .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.redD41717.color)
+                            .frame(width: 250, height: 45)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color(Asset.Colors.Global.redD41717.color), lineWidth: 2)
+                            )
                     }
+
                 }
-            )
-                .frame(minWidth: 0, maxWidth: __SCREEN_WIDTH__ - K.Constants.ScreenPadding * 2, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                .padding([.top, .bottom], 24)
+                .padding([.leading, .trailing], 50)
+                .multilineTextAlignment(.center)
+                
+            } else {
+                CardStack(
+                    direction: LeftRight.direction,
+                    data: viewModel.users,
+                    onSwipe: { card, direction in
+                        viewModel.swipedCard(card)
+                    },
+                    content: { user, direction, _ in
+                        ZStack {
+                            CardViewWithThumbs(user: user, direction: direction)
+                        }
+                    }
+                )
+                    .frame(minWidth: 0, maxWidth: __SCREEN_WIDTH__ - K.Constants.ScreenPadding * 2, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                    .padding([.top, .bottom], 24)
+            }
+            
         }
+        // TODO: Start application if get profile user success
+        .onReceive(.GetProfileUserSuccess) { _ in
+            viewModel.checkLocationPermission()
+        }
+        
     }
     
     // MARK: - CardViewWithThumbs

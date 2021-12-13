@@ -56,7 +56,6 @@ class User: Identifiable {
 //        var dateMode: String?
 //        var snoozeMode: String?
 //        var isIncognitoMode: String?
-//        isValid = dict["is_valid_user"] as? Bool ?? false
         isVerified = dict["is_verified"] as? Bool ?? false
         inActive = dict["is_active"] as? Bool ?? false
         if let createdAt = dict[K.API.ParameterKeys.CreatedAt] as? String {
@@ -71,6 +70,7 @@ class User: Identifiable {
            let coordinates = locationDict["coordinates"] as? [Double] {
             location = CLLocation(latitude: coordinates[1], longitude: coordinates[0])
         }
+        isValid = dict["is_valid"] as? Bool ?? false
     }
 }
 

@@ -15,7 +15,8 @@ struct MatchHomeCellView: View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 ZStack(alignment: .top) {
-                    KFImage(URL(string: cellViewModel.user.images[cellViewModel.currentImageIndex]))
+                    let url = !cellViewModel.user.images.isEmpty ? cellViewModel.user.images[cellViewModel.currentImageIndex] : ""
+                    KFImage(URL(string: url))
                         .resizable()
                         .placeholder {
                             Rectangle()

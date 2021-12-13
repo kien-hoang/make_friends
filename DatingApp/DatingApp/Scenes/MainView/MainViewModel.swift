@@ -21,35 +21,25 @@ class MainViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
-    
 }
 
 // MARK: - API
 extension MainViewModel {
-    private func checkValidUser() {
-        Helper.showProgress()
-        UserAPIManager.shared.checkValidUser { [weak self] isValid, error in
-            Helper.dismissProgress()
-            guard let _ = self else { return }
-            if let error = error {
-                Helper.showProgressError(error.localizedDescription)
-            } else if let isValid = isValid, !isValid {
-                NotificationCenter.default.post(name: .UserIsInvalid, object: nil)
-            }
-        }
-    }
-    
     func getProfileUser() {
         Helper.showProgress()
         UserAPIManager.shared.getProfileUser { [weak self] user, error in
             Helper.dismissProgress()
-            guard let self = self else { return }
+            guard let _ = self else { return }
             if let error = error {
                 Helper.showProgressError(error.localizedDescription)
+                NotificationCenter.default.post(name: .GetProfileUserFailed, object: nil)
             } else if let user = user {
                 AppData.shared.user = user // Save to singleton
-                if !user.isValid {
-                    self.checkValidUser()
+                if user.isValid {
+                    // check location permission
+                    NotificationCenter.default.post(name: .GetProfileUserSuccess, object: nil)
+                } else {
+                    NotificationCenter.default.post(name: .UserIsInvalid, object: nil)
                 }
             }
         }

@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
 class UserAPIManager {
     static let shared = UserAPIManager()
@@ -155,41 +156,41 @@ class UserAPIManager {
         }
     }
     
-    func checkValidUser(completion: @escaping (_ isValid: Bool?, _ error: Error?) -> Void) {
-        let path = K.API.URL.User
-        let urlString = K.API.URL.BaseUrl + path + "/is-valid"
-        let url = URL(string: urlString)!
-        
-        Network.shared.request(url, method: .get, params: nil, headers: Helper.defaultHeaders) { responseJson in
-            switch responseJson.result {
-            
-            case .success(let result as [String:Any]):
-                
-                let success = result["success"] as? Bool ?? false
-                
-                if success {
-                    if let dict = result["data"] as? [String: Any],
-                       let isValid = dict["is_valid"] as? Bool {
-                        DispatchQueue.main.async {
-                            completion(isValid, nil)
-                        }
-                    }
-                    
-                } else {
-                    let message = result["message"] as? String ?? "Something went wrong"
-                    DispatchQueue.main.async {
-                        completion(nil, message.toError)
-                    }
-                }
-                
-            default:
-                let message = "Something went wrong"
-                DispatchQueue.main.async {
-                    completion(nil, message.toError)
-                }
-            }
-        }
-    }
+//    func checkValidUser(completion: @escaping (_ isValid: Bool?, _ error: Error?) -> Void) {
+//        let path = K.API.URL.User
+//        let urlString = K.API.URL.BaseUrl + path + "/is-valid"
+//        let url = URL(string: urlString)!
+//        
+//        Network.shared.request(url, method: .get, params: nil, headers: Helper.defaultHeaders) { responseJson in
+//            switch responseJson.result {
+//            
+//            case .success(let result as [String:Any]):
+//                
+//                let success = result["success"] as? Bool ?? false
+//                
+//                if success {
+//                    if let dict = result["data"] as? [String: Any],
+//                       let isValid = dict["is_valid"] as? Bool {
+//                        DispatchQueue.main.async {
+//                            completion(isValid, nil)
+//                        }
+//                    }
+//                    
+//                } else {
+//                    let message = result["message"] as? String ?? "Something went wrong"
+//                    DispatchQueue.main.async {
+//                        completion(nil, message.toError)
+//                    }
+//                }
+//                
+//            default:
+//                let message = "Something went wrong"
+//                DispatchQueue.main.async {
+//                    completion(nil, message.toError)
+//                }
+//            }
+//        }
+//    }
     
     func getProfileUser(completion: @escaping (_ user: User?, _ error: Error?) -> Void) {
         let path = K.API.URL.User
@@ -221,6 +222,43 @@ class UserAPIManager {
                 let message = "Something went wrong"
                 DispatchQueue.main.async {
                     completion(nil, message.toError)
+                }
+            }
+        }
+    }
+    
+    func updateLocation(_ location: CLLocation, completion: @escaping (_ isSuccess: Bool, _ error: Error?) -> Void) {
+        var params: [String: Any] = [:]
+        params["latitude"] = location.coordinate.latitude
+        params["longitude"] = location.coordinate.longitude
+        
+        let path = K.API.URL.User
+        let urlString = K.API.URL.BaseUrl + path + "/update-location"
+        let url = URL(string: urlString)!
+        
+        Network.shared.request(url, method: .post, params: params, headers: Helper.defaultHeaders) { responseJson in
+            switch responseJson.result {
+            
+            case .success(let result as [String:Any]):
+                
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    DispatchQueue.main.async {
+                        completion(true, nil)
+                    }
+                    
+                } else {
+                    let message = result["message"] as? String ?? "Something went wrong"
+                    DispatchQueue.main.async {
+                        completion(false, message.toError)
+                    }
+                }
+                
+            default:
+                let message = "Something went wrong"
+                DispatchQueue.main.async {
+                    completion(false, message.toError)
                 }
             }
         }

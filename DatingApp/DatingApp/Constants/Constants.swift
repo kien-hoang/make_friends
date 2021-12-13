@@ -80,4 +80,8 @@ struct K {
 extension Notification.Name {
     static let UserIsInvalid = Notification.Name("UserIsInvalid")
     static let UpdateMandatoryInformationSuccess = Notification.Name("UpdateMandatoryInformationSuccess")
+    static let GetProfileUserFailed = Notification.Name("GetProfileUserFailed")
+    static let GetProfileUserSuccess = Notification.Name("GetProfileUserSuccess")
+    static let ChangedLocationPermission = Notification.Name("ChangedLocationPermission")
+    static let GetRecommendUserAndUpdateLocation = Notification.Name("GetRecommendUserAndUpdateLocation")
 }
