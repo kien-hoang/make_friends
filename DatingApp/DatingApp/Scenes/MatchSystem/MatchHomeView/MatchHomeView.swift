@@ -43,7 +43,8 @@ struct MatchHomeView: View {
                     direction: LeftRight.direction,
                     data: viewModel.users,
                     onSwipe: { card, direction in
-                        viewModel.swipedCard(card)
+                        viewModel.swipingUser(card, direction: direction)
+                        viewModel.loadMoreIfNeeded(card)
                     },
                     content: { user, direction, _ in
                         ZStack {

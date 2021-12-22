@@ -111,12 +111,26 @@ extension MatchHomeViewModel {
 
 // MARK: - Helper
 extension MatchHomeViewModel {
-    func swipedCard(_ user: User) {
+    func loadMoreIfNeeded(_ user: User) {
         let halfLimit = Int((Float(limit) / 2).rounded(.up))
         guard users.count >= halfLimit, !isOutOfUser else { return }
         if user.id == users[users.count - halfLimit].id {
             DispatchQueue.global().async {
                 self.getNextPageRecommendUsers()
+            }
+        }
+    }
+    
+    func swipingUser(_ user: User, direction: LeftRight) {
+        var params: [String: Any] = [:]
+        params["user_id_of_liked_user"] = user.id
+        params["status"] = direction == .left ? "PASS" : "LIKE"
+        RecsAPIManager.shared.swipingUser(params: params) { [weak self] isSuccess, error in
+            guard let _ = self else { return }
+            if let error = error {
+                Helper.showProgressError(error.localizedDescription)
+            } else if isSuccess {
+                // Success swiping user
             }
         }
     }
