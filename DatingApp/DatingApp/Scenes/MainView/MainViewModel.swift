@@ -10,6 +10,9 @@ import Combine
 
 class MainViewModel: ObservableObject {
     @Published var isPresentForInvalidUser = false
+    @Published var isPresentForGotMatch = false
+    var firstImageUrlString = ""
+    var secondImageUrlString = ""
     
     var cancellables = Set<AnyCancellable>()
     

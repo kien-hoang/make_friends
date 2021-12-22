@@ -67,6 +67,7 @@ internal enum Asset {
     internal static let imgDj = ImageAsset(name: "img_dj")
     internal static let imgEw = ImageAsset(name: "img_ew")
     internal static let imgGg = ImageAsset(name: "img_gg")
+    internal static let imgMatchSuccess = ImageAsset(name: "img_match_success")
     internal static let imgNp = ImageAsset(name: "img_np")
     internal static let imgSg = ImageAsset(name: "img_sg")
     internal static let imgSj = ImageAsset(name: "img_sj")

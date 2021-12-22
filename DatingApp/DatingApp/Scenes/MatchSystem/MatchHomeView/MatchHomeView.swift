@@ -58,9 +58,9 @@ struct MatchHomeView: View {
         }
         // TODO: Start application if get profile user success
         .onReceive(.GetProfileUserSuccess) { _ in
+            viewModel.updateDeviceToken()
             viewModel.checkLocationPermission()
         }
-        
     }
     
     // MARK: - CardViewWithThumbs

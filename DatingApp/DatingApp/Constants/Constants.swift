@@ -41,7 +41,7 @@ struct K {
             static let BaseUrl = LiveUrl
             #endif
             static let StagingUrl = "http://localhost:3000/api/"
-            static let LiveUrl = "http://192.168.1.3:3000/api/"
+            static let LiveUrl = "http://192.168.1.2:3000/api/"
             
             static let InterestedTag = "interested-tags"
             static let Register = "auth/register"
@@ -84,4 +84,6 @@ extension Notification.Name {
     static let GetProfileUserSuccess = Notification.Name("GetProfileUserSuccess")
     static let ChangedLocationPermission = Notification.Name("ChangedLocationPermission")
     static let GetRecommendUserAndUpdateLocation = Notification.Name("GetRecommendUserAndUpdateLocation")
+    static let DidGotMatch = Notification.Name("DidGotMatch")
+    static let DismissGotMatchScreen = Notification.Name("DismissGotMatchScreen")
 }

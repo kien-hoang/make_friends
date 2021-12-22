@@ -263,4 +263,41 @@ class UserAPIManager {
             }
         }
     }
+    
+    func updateDeviceToken(completion: @escaping (_ isSuccess: Bool, _ error: Error?) -> Void) {
+        guard !AppData.shared.deviceToken.isEmpty else { return }
+        var params: [String: Any] = [:]
+        params["device_token"] = AppData.shared.deviceToken
+        
+        let path = K.API.URL.User
+        let urlString = K.API.URL.BaseUrl + path + "/update-device-token"
+        let url = URL(string: urlString)!
+        
+        Network.shared.request(url, method: .post, params: params, headers: Helper.defaultHeaders) { responseJson in
+            switch responseJson.result {
+            
+            case .success(let result as [String:Any]):
+                
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    DispatchQueue.main.async {
+                        completion(true, nil)
+                    }
+                    
+                } else {
+                    let message = result["message"] as? String ?? "Something went wrong"
+                    DispatchQueue.main.async {
+                        completion(false, message.toError)
+                    }
+                }
+                
+            default:
+                let message = "Something went wrong"
+                DispatchQueue.main.async {
+                    completion(false, message.toError)
+                }
+            }
+        }
+    }
 }

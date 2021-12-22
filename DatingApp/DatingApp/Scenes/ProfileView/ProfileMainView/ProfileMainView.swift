@@ -48,10 +48,11 @@ struct ProfileMainView: View {
             var body: some View {
                 Button {
                     Helper.deleteLocalValue(withKey: K.UserDefaults.Token)
-                    viewRouter.selectedTab = 0
+                    viewRouter.selectedTab = AppTabView.MatchHomeView.rawValue
                     viewRouter.currentView = .LoginView
                     LocationManager.shared.stopUpdatingLocation()
                     AppData.shared.isUpdatedLocation = false
+                    AppData.shared.deviceToken = ""
                     
                 } label: {
                     Text("Logout")

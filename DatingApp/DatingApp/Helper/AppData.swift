@@ -12,4 +12,5 @@ class AppData {
     
     var user: User!
     var isUpdatedLocation = false
+    var deviceToken: String = ""
 }

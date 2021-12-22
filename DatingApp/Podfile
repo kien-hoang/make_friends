@@ -14,6 +14,11 @@ target 'DatingApp' do
   pod 'IQKeyboardManagerSwift'
 #  pod 'ExytePopupView'
   pod 'ProgressHUD', :git => 'https://github.com/radleydev/ProgressHUD.git'
+  
+  pod 'Firebase'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
 
   target 'DatingAppTests' do
     inherit! :search_paths

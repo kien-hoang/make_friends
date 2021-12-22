@@ -90,7 +90,28 @@ struct MainView: View {
         .onReceive(.GetProfileUserFailed) { _ in
             Helper.deleteLocalValue(withKey: K.UserDefaults.Token)
             viewRouter.currentView = .LoginView
-            viewRouter.selectedTab = 0
+            viewRouter.selectedTab = AppTabView.MatchHomeView.rawValue
+        }
+        // TODO: When the user got match.
+        .fullScreenCover(isPresented: $viewModel.isPresentForGotMatch) {
+            MatchSuccessView(firstImageUrlString: viewModel.firstImageUrlString,
+                             secondImageUrlString: viewModel.secondImageUrlString)
+                .hiddenNavigationBar()
+                .navigationView()
+        }
+        // TODO: When the user got match.
+        .onReceive(.DidGotMatch) { notification in
+            viewModel.isPresentForGotMatch = true
+            if let params = notification.object as? [String: Any],
+               let firstImage = params["imageUrl"] as? String,
+               let secondImage = params["likedUserImageUrl"] as? String {
+                viewModel.firstImageUrlString = firstImage
+                viewModel.secondImageUrlString = secondImage
+            }
+        }
+        // TODO: When the user dismiss got match screen.
+        .onReceive(.DismissGotMatchScreen) { _ in
+            viewModel.isPresentForGotMatch = false
         }
     }
 }

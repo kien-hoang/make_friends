@@ -96,6 +96,17 @@ extension MatchHomeViewModel {
             isEnableLocation = false
         }
     }
+    
+    func updateDeviceToken() {
+        UserAPIManager.shared.updateDeviceToken { [weak self] isSuccess, error in
+            guard let _ = self else { return }
+            if let error = error {
+                Helper.showProgressError(error.localizedDescription)
+            } else if isSuccess {
+                Helper.showSuccess("Cập nhật token thiết bị thành công")
+            }
+        }
+    }
 }
 
 // MARK: - Helper

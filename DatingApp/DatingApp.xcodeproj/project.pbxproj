@@ -23,6 +23,7 @@
 		1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */; };
 		1338BD42273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338BD41273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift */; };
 		1338BD472737F3D4009CA3C0 /* InterestedTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338BD462737F3D4009CA3C0 /* InterestedTag.swift */; };
+		133F739F2773566700EF79B4 /* MatchSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F739E2773566700EF79B4 /* MatchSuccessViewModel.swift */; };
 		139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F0272EEFE300F3B77F /* DatingAppApp.swift */; };
 		139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F4272EEFE700F3B77F /* Assets.xcassets */; };
 		139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */; };
@@ -57,6 +58,8 @@
 		13BE454C2764F7690097CDD9 /* MatchHomeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BE454B2764F7690097CDD9 /* MatchHomeCellView.swift */; };
 		13D50D0427480CF80059C244 /* AuthenticationAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D50D0327480CF80059C244 /* AuthenticationAPIManager.swift */; };
 		13D50D07274813A10059C244 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D50D06274813A10059C244 /* User.swift */; };
+		13D74FDE276F46EA001B2880 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13D74FDD276F46EA001B2880 /* GoogleService-Info.plist */; };
+		13D74FE327723863001B2880 /* MatchSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D74FE227723862001B2880 /* MatchSuccessView.swift */; };
 		13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EC72739841C00E798BF /* InterestedTagAPIManager.swift */; };
 		13DE8ED1273ACC0F00E798BF /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8ED0273ACC0F00E798BF /* Helper.swift */; };
 		13DE8ED3273ACD1C00E798BF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8ED2273ACD1C00E798BF /* Network.swift */; };
@@ -112,6 +115,7 @@
 		1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
 		1338BD41273651B7009CA3C0 /* ChooseInterestedTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseInterestedTagsViewModel.swift; sourceTree = "<group>"; };
 		1338BD462737F3D4009CA3C0 /* InterestedTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedTag.swift; sourceTree = "<group>"; };
+		133F739E2773566700EF79B4 /* MatchSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSuccessViewModel.swift; sourceTree = "<group>"; };
 		139D67ED272EEFE300F3B77F /* DatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139D67F0272EEFE300F3B77F /* DatingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppApp.swift; sourceTree = "<group>"; };
 		139D67F4272EEFE700F3B77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +155,10 @@
 		13BE454B2764F7690097CDD9 /* MatchHomeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHomeCellView.swift; sourceTree = "<group>"; };
 		13D50D0327480CF80059C244 /* AuthenticationAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIManager.swift; sourceTree = "<group>"; };
 		13D50D06274813A10059C244 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		13D74FDD276F46EA001B2880 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13D74FDF276F5DCF001B2880 /* DatingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatingApp.entitlements; sourceTree = "<group>"; };
+		13D74FE0276F5DE5001B2880 /* DatingAppRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DatingAppRelease.entitlements; sourceTree = "<group>"; };
+		13D74FE227723862001B2880 /* MatchSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSuccessView.swift; sourceTree = "<group>"; };
 		13DE8EC72739841C00E798BF /* InterestedTagAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedTagAPIManager.swift; sourceTree = "<group>"; };
 		13DE8ED0273ACC0F00E798BF /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		13DE8ED2273ACD1C00E798BF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -234,6 +242,7 @@
 		132A8FEB2749535D004D0FE9 /* MatchSystem */ = {
 			isa = PBXGroup;
 			children = (
+				13D74FE127723849001B2880 /* MatchSuccess */,
 				132A8FEC27495395004D0FE9 /* MatchHomeView */,
 			);
 			path = MatchSystem;
@@ -345,6 +354,8 @@
 		139D67EF272EEFE300F3B77F /* DatingApp */ = {
 			isa = PBXGroup;
 			children = (
+				13D74FE0276F5DE5001B2880 /* DatingAppRelease.entitlements */,
+				13D74FDF276F5DCF001B2880 /* DatingApp.entitlements */,
 				139D68FA2734258600F3B77F /* Info.plist */,
 				139D68DC2732FF2300F3B77F /* Resources */,
 				13BE454D276504000097CDD9 /* ThirdParty */,
@@ -436,6 +447,7 @@
 		139D68DC2732FF2300F3B77F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				13D74FDD276F46EA001B2880 /* GoogleService-Info.plist */,
 				139D68FB27342EE700F3B77F /* Localizations */,
 				139D68DD2732FF5C00F3B77F /* Fonts */,
 			);
@@ -560,6 +572,15 @@
 				13D50D06274813A10059C244 /* User.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		13D74FE127723849001B2880 /* MatchSuccess */ = {
+			isa = PBXGroup;
+			children = (
+				133F739E2773566700EF79B4 /* MatchSuccessViewModel.swift */,
+				13D74FE227723862001B2880 /* MatchSuccessView.swift */,
+			);
+			path = MatchSuccess;
 			sourceTree = "<group>";
 		};
 		13DE8ECF273ACC0F00E798BF /* Helper */ = {
@@ -839,6 +860,7 @@
 				139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */,
 				139D68EC2732FF7D00F3B77F /* Lexend-Medium.ttf in Resources */,
 				139D68F02732FF7D00F3B77F /* Lexend-ExtraLight.ttf in Resources */,
+				13D74FDE276F46EA001B2880 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -999,6 +1021,7 @@
 				13BE45472764CC7B0097CDD9 /* CardSwipeDirection.swift in Sources */,
 				13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */,
 				13BE454A2764CC7B0097CDD9 /* CardStackConfiguration.swift in Sources */,
+				13D74FE327723863001B2880 /* MatchSuccessView.swift in Sources */,
 				13A4D5382753BCB200D3775C /* ProfileMainViewModel.swift in Sources */,
 				132613EB2741656E0016CD92 /* SignupCalendar.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
@@ -1011,6 +1034,7 @@
 				139D69032734322900F3B77F /* Strings+Generated.swift in Sources */,
 				132A9000274BCD35004D0FE9 /* RootView.swift in Sources */,
 				132A900C274BE1E5004D0FE9 /* LikesView.swift in Sources */,
+				133F739F2773566700EF79B4 /* MatchSuccessViewModel.swift in Sources */,
 				132A8FEE274953AB004D0FE9 /* MatchHomeView.swift in Sources */,
 				13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */,
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
@@ -1206,10 +1230,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 36BF9P9PDN;
+				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DatingApp/Info.plist;
@@ -1221,14 +1247,16 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stdio.DatingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "kien.stdio.make-friends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1241,10 +1269,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingAppRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 36BF9P9PDN;
+				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DatingApp/Info.plist;
@@ -1256,14 +1286,16 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stdio.DatingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = "kien.stdio.make-friends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
