@@ -7,46 +7,66 @@
 
 import SwiftUI
 
-struct MessageMainView: View {    
+struct MessageMainView: View {
+    @State var isEmpty = false
+    
     var body: some View {
-        VStack(spacing: 80) {
-            Spacer()
-            ZStack {
-                Rectangle()
-                    .overlay(
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(Color.gray.opacity(0.3), lineWidth: 3)
-                    ).foregroundColor(Color.gray.opacity(0.05))
-                    .frame(width: 130, height: 200)
-                    .offset(y: 20)
-                Rectangle()
-                    .overlay(
-                            RoundedRectangle(cornerRadius: 15)
-                                .stroke(Color.green, lineWidth: 3)
-                    ).foregroundColor(Color.green.opacity(0.05))
-                    .frame(width: 130, height: 200)
-                    .rotationEffect(.degrees(15))
-                    .offset(x: 30)
-                Text("THÍCH")
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.green)
-                    .padding(.horizontal, 8)
-                    .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.green, lineWidth: 3)
-                        )
-                    .offset(x: 30)
+        if isEmpty {
+            EmptyView()
+        } else {
+            ListChatView()
+        }
+    }
+    
+    struct ListChatView: View {
+        var body: some View {
+            VStack(spacing: 0) {
+                Text("Messssss")
             }
-            VStack(spacing: 20) {
-                Text("Hãy tiếp tục tìm bạn")
-                    .style(font: .lexendBold, size: 18, color: Asset.Colors.Global.black100.color)
-                Text("Bạn có thể gửi tin nhắn khi bạn kết nối thành công đến người khác")
-                    .frame(width: 200)
-                    .multilineTextAlignment(.center)
-                    .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.gray9A9A9A.color)
+        }
+    }
+    
+    struct EmptyView: View {
+        var body: some View {
+            VStack(spacing: 80) {
+                Spacer()
+                ZStack {
+                    Rectangle()
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.gray.opacity(0.3), lineWidth: 3)
+                        ).foregroundColor(Color.gray.opacity(0.05))
+                        .frame(width: 130, height: 200)
+                        .offset(y: 20)
+                    Rectangle()
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.green, lineWidth: 3)
+                        ).foregroundColor(Color.green.opacity(0.05))
+                        .frame(width: 130, height: 200)
+                        .rotationEffect(.degrees(15))
+                        .offset(x: 30)
+                    Text("THÍCH")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.green)
+                        .padding(.horizontal, 8)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.green, lineWidth: 3)
+                            )
+                        .offset(x: 30)
+                }
+                VStack(spacing: 20) {
+                    Text("Hãy tiếp tục tìm bạn")
+                        .style(font: .lexendBold, size: 18, color: Asset.Colors.Global.black100.color)
+                    Text("Bạn có thể gửi tin nhắn khi bạn kết nối thành công đến người khác")
+                        .frame(width: 200)
+                        .multilineTextAlignment(.center)
+                        .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.gray9A9A9A.color)
+                }
+                Spacer()
             }
-            Spacer()
         }
     }
 }
