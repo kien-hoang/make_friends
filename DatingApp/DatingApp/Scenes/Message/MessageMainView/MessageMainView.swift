@@ -8,25 +8,80 @@
 import SwiftUI
 
 struct MessageMainView: View {
-    @State var isEmpty = false
+    @StateObject var viewModel = MessageMainViewModel()
     
     var body: some View {
-        if isEmpty {
-            EmptyView()
-        } else {
-            ListChatView()
+        Group {
+            if viewModel.matches.isEmpty {
+                EmptyMessageView()
+            } else {
+                ListChatView(viewModel: viewModel)
+            }
+        }
+        .onAppear {
+            viewModel.getListChat()
         }
     }
     
+    // MARK: - ListChatView
     struct ListChatView: View {
+        @ObservedObject var viewModel: MessageMainViewModel
+        
         var body: some View {
             VStack(spacing: 0) {
-                Text("Messssss")
+                SearchView(viewModel: viewModel)
+                    .padding([.leading, .trailing, .bottom], K.Constants.ScreenPadding)
+                
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        ForEach(0..<viewModel.matches.count, id: \.self) { index in
+                            MessageMainCellView(cellViewModel: MessageMainCellViewModel(match: viewModel.matches[index]))
+                                .padding(.horizontal, K.Constants.ScreenPadding)
+                        }
+                    }
+                }
+                
+                Spacer()
             }
         }
     }
     
-    struct EmptyView: View {
+    // MARK: - SearchView
+    struct SearchView: View {
+        @ObservedObject var viewModel: MessageMainViewModel
+        
+        var body: some View {
+            HStack {
+                HStack {
+                    Image(uiImage: Asset.Global.icSearch.image)
+                    
+                    TextField("Search", text: $viewModel.searchText, onEditingChanged: { isEditing in
+                        viewModel.showCancelButton = true
+                    }, onCommit: {
+                        viewModel.searchText = ""
+                        viewModel.searchChat()
+                    })
+                        .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.black100.color)
+                }
+                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+                .foregroundColor(.secondary)
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(10.0)
+                
+                if viewModel.showCancelButton {
+                    Button("Cancel") {
+                        UIApplication.shared.endEditing(true) // this must be placed before the other commands here
+                        viewModel.searchText = ""
+                        viewModel.showCancelButton = false
+                    }
+                    .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.black100.color)
+                }
+            }
+        }
+    }
+    
+    // MARK: - EmptyMessageView
+    struct EmptyMessageView: View {
         var body: some View {
             VStack(spacing: 80) {
                 Spacer()

@@ -49,6 +49,7 @@ struct K {
             static let User = "user"
             static let Upload = "upload"
             static let Recs = "recs"
+            static let Chat = "chat"
         }
         
         struct ParameterKeys {

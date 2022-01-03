@@ -34,6 +34,7 @@ internal enum Asset {
   internal enum Colors {
     internal enum Global {
       internal static let black100 = ColorAsset(name: "black100")
+      internal static let gray777777 = ColorAsset(name: "gray777777")
       internal static let gray9A9A9A = ColorAsset(name: "gray9A9A9A")
       internal static let grayF1F1F1 = ColorAsset(name: "grayF1F1F1")
       internal static let redD41717 = ColorAsset(name: "redD41717")
@@ -47,6 +48,7 @@ internal enum Asset {
     internal static let icLightLogo = ImageAsset(name: "ic_light_logo")
     internal static let icLocation = ImageAsset(name: "ic_location")
     internal static let icPlaceholderLogo = ImageAsset(name: "ic_placeholder_logo")
+    internal static let icSearch = ImageAsset(name: "ic_search")
     internal static let swipeBack = ImageAsset(name: "swipe_back")
     internal static let swipeDislike = ImageAsset(name: "swipe_dislike")
     internal static let swipeLike = ImageAsset(name: "swipe_like")

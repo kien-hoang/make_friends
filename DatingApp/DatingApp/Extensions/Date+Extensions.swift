@@ -23,6 +23,11 @@ extension Date {
         $0.dateFormat = "MM-dd-yyyy"
         return $0
     }(DateFormatter())
+    
+    private static let HHmmddMMyyyyFormatter: DateFormatter = {
+        $0.dateFormat = "HH:mm dd-MM-yyyy"
+        return $0
+    }(DateFormatter())
 }
 
 extension Date {
@@ -50,5 +55,9 @@ extension Date {
     
     var MMddyyyy: String {
         return Date.MMddyyyyFormatter.string(from: self)
+    }
+    
+    var HHmmddMMyyyy: String {
+        return Date.HHmmddMMyyyyFormatter.string(from: self)
     }
 }
