@@ -49,4 +49,43 @@ class ChatAPIManager {
             }
         }
     }
+    
+    func getHistoryChat(withMatchId matchId: String, completion: @escaping ((_ messages: [Message]?, _ error: Error?) -> Void)) {
+        let path = K.API.URL.Chat
+        let urlString = K.API.URL.BaseUrl + path + "/history?match_id=\(matchId)"
+        let url = URL(string: urlString)!
+        
+        Network.shared.request(url, method: .get, params: nil, headers: Helper.defaultHeaders) { responseJson in
+            switch responseJson.result {
+            
+            case .success(let result as [String:Any]):
+                
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    if let dict = result["data"] as? [[String: Any]] {
+                        var messages: [Message] = []
+                        for messageDict in dict {
+                            messages.append(Message(dict: messageDict))
+                        }
+                        DispatchQueue.main.async {
+                            completion(messages, nil)
+                        }
+                    }
+                    
+                } else {
+                    let message = result["message"] as? String ?? "Something went wrong"
+                    DispatchQueue.main.async {
+                        completion(nil, message.toError)
+                    }
+                }
+                
+            default:
+                let message = "Something went wrong"
+                DispatchQueue.main.async {
+                    completion(nil, message.toError)
+                }
+            }
+        }
+    }
 }

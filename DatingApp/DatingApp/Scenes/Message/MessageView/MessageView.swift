@@ -15,7 +15,7 @@ struct MessageView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HeaderView()
+            HeaderView(viewModel: viewModel)
                 .padding(.bottom, 12)
             
             ScrollView(.vertical, showsIndicators: false) {
@@ -104,6 +104,7 @@ struct MessageView: View {
     // MARK: - HeaderView
     struct HeaderView: View {
         @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+        @ObservedObject var viewModel: MessageViewModel
         
         var body: some View {
             HStack(spacing: 0) {
@@ -116,7 +117,7 @@ struct MessageView: View {
                         .padding(.trailing, 12)
                 }
                 
-                KFImage(URL(string: ""))
+                KFImage(viewModel.getImageUrl())
                     .placeholder {
                         Image(Asset.Global.icPlaceholderLogo.name)
                             .resizable()
@@ -135,7 +136,7 @@ struct MessageView: View {
                     .padding(.trailing, 8)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("Maria")
+                    Text(viewModel.getLikedName())
                         .style(font: .lexendMedium, size: 24, color: Asset.Colors.Global.black100.color)
                     HStack(spacing: 4) {
                         Circle()
