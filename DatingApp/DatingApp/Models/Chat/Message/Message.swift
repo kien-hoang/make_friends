@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Message {
+struct Message: Hashable {
     var id: String = ""
     var matchId: String = ""
     var userId: String = ""

@@ -35,14 +35,19 @@ struct MessageMainView: View {
                 ScrollView {
                     LazyVStack(spacing: 0) {
                         ForEach(0..<viewModel.matches.count, id: \.self) { index in
-                            MessageMainCellView(cellViewModel: MessageMainCellViewModel(match: viewModel.matches[index]))
-                                .padding(.horizontal, K.Constants.ScreenPadding)
+                            let messageView = MessageView(viewModel: MessageViewModel(match: viewModel.matches[index]))
+                            NavigationLink(destination: messageView) {
+                                MessageMainCellView(cellViewModel: MessageMainCellViewModel(match: viewModel.matches[index]))
+                                    .padding(.horizontal, K.Constants.ScreenPadding)
+                            }
                         }
                     }
                 }
                 
                 Spacer()
             }
+            .hiddenNavigationBar()
+            .navigationView()
         }
     }
     
