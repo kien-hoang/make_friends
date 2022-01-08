@@ -53,6 +53,7 @@ struct ProfileMainView: View {
                     LocationManager.shared.stopUpdatingLocation()
                     AppData.shared.isUpdatedLocation = false
                     AppData.shared.deviceToken = ""
+                    SocketClientManager.shared.userLogout()
                     
                 } label: {
                     Text("Logout")

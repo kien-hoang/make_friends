@@ -61,6 +61,7 @@ struct MatchHomeView: View {
         .onReceive(.GetProfileUserSuccess) { _ in
             viewModel.updateDeviceToken()
             viewModel.checkLocationPermission()
+            SocketClientManager.shared.connected()
         }
     }
     

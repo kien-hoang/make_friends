@@ -47,7 +47,7 @@ struct MessageMainCellView: View {
                 }
                 
                 HStack {
-                    Text(cellViewModel.getLastMessage())
+                    Text(cellViewModel.lastMessageString)
                         .style(font: .lexendRegular, size: 10, color: cellViewModel.isRead ? readColor : noReadColor)
                     Spacer()
                     
@@ -67,6 +67,10 @@ struct MessageMainCellView: View {
                     .fill(Color(Asset.Colors.Global.grayF1F1F1.color))
                     .frame(height: 1)
             }
+        }
+        .onReceive(.UpdateLastMessage) { notification in
+            guard let message = notification.object as? Message else { return }
+            cellViewModel.updateLastMessage(message)
         }
     }
 }

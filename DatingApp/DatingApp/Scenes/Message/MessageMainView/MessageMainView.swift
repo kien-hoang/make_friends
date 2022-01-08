@@ -18,9 +18,6 @@ struct MessageMainView: View {
                 ListChatView(viewModel: viewModel)
             }
         }
-        .onAppear {
-            viewModel.getListChat()
-        }
     }
     
     // MARK: - ListChatView

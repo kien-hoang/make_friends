@@ -14,6 +14,7 @@ target 'DatingApp' do
   pod 'IQKeyboardManagerSwift'
 #  pod 'ExytePopupView'
   pod 'ProgressHUD', :git => 'https://github.com/radleydev/ProgressHUD.git'
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
   
   pod 'Firebase'
   pod 'Firebase/Analytics'

@@ -87,4 +87,6 @@ extension Notification.Name {
     static let GetRecommendUserAndUpdateLocation = Notification.Name("GetRecommendUserAndUpdateLocation")
     static let DidGotMatch = Notification.Name("DidGotMatch")
     static let DismissGotMatchScreen = Notification.Name("DismissGotMatchScreen")
+    static let DidReceivedMessage = Notification.Name("DidReceivedMessage")
+    static let UpdateLastMessage = Notification.Name("UpdateLastMessage")
 }

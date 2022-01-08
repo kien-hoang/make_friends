@@ -36,7 +36,7 @@ struct MessageView: View {
             }
             
             InputView(viewModel: viewModel)
-                .padding(.top, 4)
+                .padding(.vertical, 4)
         }
         .hiddenNavigationBar()
         .onAppear {
@@ -52,6 +52,10 @@ struct MessageView: View {
         }
         .onChange(of: viewModel.messages) { _ in
             scrollToBottom()
+        }
+        .onReceive(.DidReceivedMessage) { notification in
+            guard let message = notification.object as? Message else { return }
+            viewModel.receiveMessage(message)
         }
     }
     
@@ -96,7 +100,7 @@ struct MessageView: View {
         }
         
         func sendMessage() {
-            viewModel.sendMessage(viewModel.mockMessage(typingMessage))
+            viewModel.sendMessage(typingMessage)
             typingMessage = ""
         }
     }

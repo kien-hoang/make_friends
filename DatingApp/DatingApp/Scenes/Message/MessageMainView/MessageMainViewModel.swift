@@ -11,6 +11,10 @@ class MessageMainViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var showCancelButton: Bool = false
     @Published var matches: [Match] = []
+    
+    init() {
+        getListChat()
+    }
 }
 
 // MARK: - Helper
@@ -24,6 +28,7 @@ extension MessageMainViewModel {
                 Helper.showProgressError(error.localizedDescription)
             } else if let matches = listChat {
                 self.matches = matches
+                SocketClientManager.shared.joinRoom(withMatchIds: matches.map({ $0.id }))
             }
         }
     }

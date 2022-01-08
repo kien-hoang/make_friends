@@ -31,6 +31,7 @@
 		133F7472278197C800EF79B4 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F7471278197C800EF79B4 /* Match.swift */; };
 		133F74752782F52400EF79B4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F74742782F52300EF79B4 /* Message.swift */; };
 		133F74772782FAC100EF79B4 /* MessageMainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */; };
+		138D7279278732AE00DF9BA4 /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7278278732AE00DF9BA4 /* SocketClientManager.swift */; };
 		1396480E2783281F009AE8DD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396480D2783281F009AE8DD /* MessageView.swift */; };
 		139648112783283E009AE8DD /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139648102783283E009AE8DD /* MessageCellView.swift */; };
 		1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481227832849009AE8DD /* MessageCellViewModel.swift */; };
@@ -134,6 +135,7 @@
 		133F7471278197C800EF79B4 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		133F74742782F52300EF79B4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMainCellViewModel.swift; sourceTree = "<group>"; };
+		138D7278278732AE00DF9BA4 /* SocketClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketClientManager.swift; sourceTree = "<group>"; };
 		1396480D2783281F009AE8DD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		139648102783283E009AE8DD /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
 		1396481227832849009AE8DD /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
@@ -398,6 +400,14 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		138D72772787323B00DF9BA4 /* SocketClientManager */ = {
+			isa = PBXGroup;
+			children = (
+				138D7278278732AE00DF9BA4 /* SocketClientManager.swift */,
+			);
+			path = SocketClientManager;
+			sourceTree = "<group>";
+		};
 		1396480C278327F6009AE8DD /* MessageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +625,7 @@
 		13B1909A2766297C004A23B1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				138D72772787323B00DF9BA4 /* SocketClientManager */,
 				13B1909727662962004A23B1 /* LocationManager */,
 			);
 			path = Core;
@@ -1154,6 +1165,7 @@
 				132A8FEA2749319E004D0FE9 /* LoginPhoneViewModel.swift in Sources */,
 				13DE8EF3273C280500E798BF /* UINavigation+Extensions.swift in Sources */,
 				13DE8ED3273ACD1C00E798BF /* Network.swift in Sources */,
+				138D7279278732AE00DF9BA4 /* SocketClientManager.swift in Sources */,
 				13D50D07274813A10059C244 /* User.swift in Sources */,
 				132A8FFE274BCC98004D0FE9 /* MainView.swift in Sources */,
 				13D50D0427480CF80059C244 /* AuthenticationAPIManager.swift in Sources */,

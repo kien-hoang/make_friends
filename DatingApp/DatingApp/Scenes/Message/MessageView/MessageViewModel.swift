@@ -22,10 +22,27 @@ class MessageViewModel: ObservableObject {
 //        messages = mockMessages()
     }
     
-    func sendMessage(_ message: Message) {
+    func sendMessage(_ content: String) {
         // Networking
-        messages.append(message)
+        var message = Message()
+        message.userId = AppData.shared.user.id
+        if let receiver = match.members.first(where: { $0.id != AppData.shared.user.id }) {
+            message.receiverId = receiver.id
+        }
+        message.matchId = match.id
+        message.messageContent = content
+        
+        SocketClientManager.shared.sendMessage(message) { [weak self] in
+            guard let self = self else { return }
+            self.messages.append(message)
+            NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
+        }
         // if networking failure, then show an error with some retry options
+    }
+    
+    func receiveMessage(_ message: Message) {
+        guard message.matchId == match.id else { return }
+        messages.append(message)
     }
     
     private let keyboardWillShow = NotificationCenter.default
@@ -82,8 +99,9 @@ extension MessageViewModel {
 // MARK: - Helper
 extension MessageViewModel {
     func getImageUrl() -> URL? {
-        guard !match.likedUser.images.isEmpty else { return nil }
-        for image in match.likedUser.images {
+        guard let likedUser = (match.members.first { $0.id != AppData.shared.user.id }),
+              !likedUser.images.isEmpty else { return nil }
+        for image in likedUser.images {
             if let imageUrl = URL(string: image) {
                 return imageUrl
             }
@@ -93,6 +111,7 @@ extension MessageViewModel {
     }
     
     func getLikedName() -> String {
-        return match.likedUser.name
+        guard let likedUser = (match.members.first { $0.id != AppData.shared.user.id }) else { return "" }
+        return likedUser.name
     }
 }
