@@ -90,8 +90,8 @@ extension Helper {
         ProgressHUD.animationType = .circleRotateChase
     }
     
-    static func showProgress(_ message: String? = nil) {
-        ProgressHUD.show(message, interaction: false)
+    static func showProgress(_ message: String? = nil, interaction: Bool = false) {
+        ProgressHUD.show(message, interaction: interaction)
     }
     
     static func dismissProgress() {

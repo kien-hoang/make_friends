@@ -8,12 +8,22 @@
 import SwiftUI
 import CoreLocation
 
+enum MatchHomeViewType {
+    case DisableLocation
+    case Swipeable
+    case LoadingData
+}
+
 class MatchHomeViewModel: ObservableObject {
-    @Published var users: [User] = []
-    @Published var isEnableLocation = false
+    @Published var viewType: MatchHomeViewType = .DisableLocation
+    @Published var users: [User] = [] // Using to render view
+    private var innerUsers: [User] = [] // FIXME: MatchHomeViewModel.1
     private var currentPage: Int = 0
     private var limit = 4
+    private var isEnableLocation = false
     private var isOutOfUser = false
+    private var isLoading = false
+    private var location: CLLocation?
     
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(checkLocationPermission), name: .ChangedLocationPermission, object: nil)
@@ -27,12 +37,9 @@ class MatchHomeViewModel: ObservableObject {
 
 // MARK: - API
 extension MatchHomeViewModel {
-    func gotoSettings() {
-        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-    }
-    
     @objc func getRecommendUsersAndUpdateLocation(notification: NSNotification) {
         guard let location = notification.object as? CLLocation else { return }
+        self.location = location
         DispatchQueue.main.async {
             self.getRecommendUsers(location: location)
         }
@@ -44,24 +51,31 @@ extension MatchHomeViewModel {
     func getRecommendUsers(location: CLLocation) {
         currentPage = 0
         isOutOfUser = false
+        viewType = .LoadingData
+        isLoading = true
         
         Helper.showProgress()
         RecsAPIManager.shared.getRecommendUser(location: location, currentPage: currentPage, limit: limit) { [weak self] users, error in
             Helper.dismissProgress()
             guard let self = self else { return }
+            self.isLoading = false
             if let error = error {
                 Helper.showProgressError(error.localizedDescription)
             } else if let users = users {
                 self.users = users
+                self.innerUsers = users
                 self.currentPage += 1
+                self.viewType = .Swipeable
             }
         }
     }
     
     func getNextPageRecommendUsers() {
         guard let location = AppData.shared.user.location else { return }
+        isLoading = true
         RecsAPIManager.shared.getRecommendUser(location: location, currentPage: currentPage, limit: limit) { [weak self] users, error in
             guard let self = self else { return }
+            self.isLoading = false
             if let error = error {
                 Helper.showProgressError(error.localizedDescription)
             } else if let users = users {
@@ -69,6 +83,7 @@ extension MatchHomeViewModel {
                     self.isOutOfUser = true
                 } else {
                     self.users.append(contentsOf: users)
+                    self.innerUsers.append(contentsOf: users)
                     self.currentPage += 1
                 }
             }
@@ -90,10 +105,12 @@ extension MatchHomeViewModel {
     @objc func checkLocationPermission() {
         if LocationManager.shared.hasLocationPermission() {
             isEnableLocation = true
+            viewType = .LoadingData
             LocationManager.shared.startUpdatingLocation()
         } else {
             AppData.shared.isUpdatedLocation = false
             isEnableLocation = false
+            viewType = .DisableLocation
         }
     }
     
@@ -111,17 +128,29 @@ extension MatchHomeViewModel {
 
 // MARK: - Helper
 extension MatchHomeViewModel {
+    func reloadHome() {
+        guard let location = location else { return }
+        users.removeAll()
+        innerUsers.removeAll()
+        viewType = .LoadingData
+        getRecommendUsers(location: location)
+    }
+    
+    func gotoSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+    }
+    
     func loadMoreIfNeeded(_ user: User) {
         let halfLimit = Int((Float(limit) / 2).rounded(.up))
-        guard users.count >= halfLimit, !isOutOfUser else { return }
-        if user.id == users[users.count - halfLimit].id {
-            DispatchQueue.global().async {
-                self.getNextPageRecommendUsers()
-            }
+        guard innerUsers.count <= halfLimit, !isOutOfUser, !isLoading else { return }
+        DispatchQueue.global().async {
+            self.getNextPageRecommendUsers()
         }
     }
     
     func swipingUser(_ user: User, direction: LeftRight) {
+        innerUsers.removeFirst()
+        
         var params: [String: Any] = [:]
         params["user_id_of_liked_user"] = user.id
         params["status"] = direction == .left ? "PASS" : "LIKE"
@@ -135,3 +164,10 @@ extension MatchHomeViewModel {
         }
     }
 }
+
+// FIXME: MatchHomeViewModel.1
+/*
+ Cannot removeFirst() of @Published var users: [User] when swiping a User.
+ If we use removeFirst of @Published users. We lost many last element in array @Published users
+ => Temporary resolves: Using another array - innerUsers
+ */

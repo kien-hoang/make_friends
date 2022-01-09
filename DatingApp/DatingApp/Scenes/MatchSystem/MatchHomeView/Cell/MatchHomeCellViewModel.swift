@@ -11,7 +11,6 @@ import Kingfisher
 
 class MatchHomeCellViewModel: ObservableObject {
     @Published var user: User
-    @Published var location: CLLocation = CLLocation(latitude: 16.527688, longitude: 107.481690)
     @Published var currentImageIndex: Int = 0
     
     init(user: User) {
@@ -43,13 +42,15 @@ extension MatchHomeCellViewModel {
     }
     
     func getLocationDistance() -> String {
-        if let location = user.location {
-            let distanceInMeters = location.distance(from: location)
-            
-            return "\(distanceInMeters.description) km"
-        }
+        guard let currentLocation = AppData.shared.user.location,
+              let destinationLocation = user.location else { return "" }
         
-        return ""
+        let distanceInMeters = currentLocation.distance(from: destinationLocation)
+        if distanceInMeters < 1000 {
+            return String(format: "%.2f m", distanceInMeters)
+        } else {
+            return String(format: "%.2f km", distanceInMeters / 1000)
+        }
     }
     
     func showNextImage() {

@@ -79,6 +79,7 @@ struct MatchHomeCellView: View {
                                 .offset(x: 1, y: 0)
                         )
                         .padding(.trailing, 30)
+                        .opacity(cellViewModel.user.images.count == 1 ? 0 : 1)
                         .onTapGesture {
                             cellViewModel.showPreviousImage()
                         }
@@ -92,6 +93,7 @@ struct MatchHomeCellView: View {
                                 .frame(width: 50, height: 50)
                                 .offset(x: -2, y: 0)
                         )
+                        .opacity(cellViewModel.user.images.count == 1 ? 0 : 1)
                         .onTapGesture {
                             cellViewModel.showNextImage()
                         }
