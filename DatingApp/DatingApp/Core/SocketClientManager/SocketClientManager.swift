@@ -11,7 +11,7 @@ import SocketIO
 class SocketClientManager {
     static let shared = SocketClientManager()
     
-    let manager = SocketManager(socketURL: NSURL(string: "http://192.168.1.2:3000")! as URL, config: [
+    let manager = SocketManager(socketURL: NSURL(string: K.API.URL.SocketUrl)! as URL, config: [
 //        .log(true),
         .compress,
         .path("/socket.io"),

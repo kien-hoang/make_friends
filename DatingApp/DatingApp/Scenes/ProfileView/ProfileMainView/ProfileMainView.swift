@@ -134,22 +134,21 @@ struct ProfileMainView: View {
                     
                     Spacer()
                     
-                    VStack(spacing: 15) {
-                        Circle()
-                            .fill(Color(Asset.Colors.Global.white100.color))
-                            .frame(width: 50, height: 50)
-                            .shadow(color: Color(Asset.Colors.Global.black100.color).opacity(0.25), radius: 4, x: 0, y: 0)
-                            .overlay(
-                                Image(Asset.Profile.icEditProfile.name)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                            )
-                        
-                        Text("Sửa hồ sơ")
-                            .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.black100.color)
-                    }
-                    .onTapGesture {
-                        viewModel.didTapEditProfile()
+                    NavigationLink(destination: EditProfileView()) {
+                        VStack(spacing: 15) {
+                            Circle()
+                                .fill(Color(Asset.Colors.Global.white100.color))
+                                .frame(width: 50, height: 50)
+                                .shadow(color: Color(Asset.Colors.Global.black100.color).opacity(0.25), radius: 4, x: 0, y: 0)
+                                .overlay(
+                                    Image(Asset.Profile.icEditProfile.name)
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                )
+                            
+                            Text("Sửa hồ sơ")
+                                .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.black100.color)
+                        }
                     }
                     
                     Spacer()
@@ -167,7 +166,7 @@ struct ProfileMainView: View {
                                 .shadow(color: Color(Asset.Colors.Global.redD41717.color), radius: 4, x: 0, y: 0)
                         )
                     
-                    Text("Thêm ảnh/video")
+                    Text("Thêm ảnh")
                         .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.black100.color)
                 }
                 .onTapGesture {

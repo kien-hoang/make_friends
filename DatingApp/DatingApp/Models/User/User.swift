@@ -17,8 +17,11 @@ class User: Identifiable {
     var gender: UserGender?
     var images: [String] = []
     var interestedTags: [InterestedTag] = []
-    var aboutMe: String?
-    var dateMode: String?
+    var aboutMe: String = ""
+    var dateMode: InterestedInGender?
+    var company: String = ""
+    var school: String = ""
+    var jobTitle: String = ""
     var snoozeMode: String?
     var isIncognitoMode: String?
     var isValid: Bool = false
@@ -53,9 +56,14 @@ class User: Identifiable {
             self.interestedTags = interestedTags
         }
         aboutMe = dict["about_me"] as? String ?? ""
-//        var dateMode: String?
-//        var snoozeMode: String?
-//        var isIncognitoMode: String?
+        if let dateMode = dict["date_mode"] as? String {
+            self.dateMode = InterestedInGender(rawValue: dateMode) ?? .both
+        }
+        company = dict["company"] as? String ?? ""
+        school = dict["school"] as? String ?? ""
+        jobTitle = dict["job_title"] as? String ?? ""
+        //        var snoozeMode: String?
+        //        var isIncognitoMode: String?
         isVerified = dict["is_verified"] as? Bool ?? false
         inActive = dict["is_active"] as? Bool ?? false
         if let createdAt = dict[K.API.ParameterKeys.CreatedAt] as? String {
@@ -78,4 +86,10 @@ enum UserGender: String {
     case male = "MALE"
     case female = "FEMALE"
     case others = "OTHERS"
+}
+
+enum InterestedInGender: String {
+    case male = "MALE"
+    case female = "FEMALE"
+    case both = "BOTH"
 }

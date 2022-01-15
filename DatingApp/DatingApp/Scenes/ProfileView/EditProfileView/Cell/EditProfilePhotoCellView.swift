@@ -1,0 +1,100 @@
+//
+//  EditProfilePhotoCellView.swift
+//  DatingApp
+//
+//  Created by Radley Hoang on 09/01/2022.
+//
+
+import SwiftUI
+import Kingfisher
+
+struct EditProfilePhotoCellView: View {
+    @StateObject var cellViewModel: EditProfilePhotoCellViewModel
+    
+    var body: some View {
+        Group {
+            switch cellViewModel.type {
+            case .EmptyCell:
+                EmptyPhotoView()
+                
+            case .AlreadyImage(let imageUrl):
+                PhotoView(imageUrl: imageUrl)
+            }
+        }
+        .onTapGesture {
+            cellViewModel.didTapCell()
+        }
+    }
+    
+    // MARK: - PhotoView
+    struct PhotoView: View {
+        var imageUrl: URL
+        
+        var body: some View {
+            ZStack(alignment: .bottomTrailing) {
+                KFImage(imageUrl)
+                    .placeholder {
+                        Image(Asset.Global.icPlaceholderLogo.name)
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .background(
+                                Rectangle()
+                                    .fill(Color(Asset.Colors.Global.grayF1F1F1.color))
+                                    .cornerRadius(12)
+                            )
+                    }
+                    .resizable()
+                    .scaledToFill()
+//                    .aspectRatio(contentMode: .fill)
+//                    .frame(width: 48, height: 48)
+                    .cornerRadius(12)
+                    .clipped()
+                
+                Image(Asset.Profile.icEditProfile.name)
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .background(
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 28, height: 28)
+                            .shadow(color: Color(Asset.Colors.Global.black100.color).opacity(0.2), radius: 4, x: 0, y: 0)
+                    )
+                    .offset(x: 5, y: 5)
+            }
+        }
+    }
+    
+    // MARK: - EmptyPhotoView
+    struct EmptyPhotoView: View {
+        var body: some View {
+            ZStack(alignment: .bottomTrailing) {
+                Rectangle()
+                    .fill(Color(Asset.Colors.Global.grayF1F1F1.color))
+                    .cornerRadius(12)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(style: StrokeStyle(lineWidth: 3, dash: [10]))
+                            .fill(Color(Asset.Colors.Global.gray9A9A9A.color).opacity(0.5))
+                    )
+                
+                Image(Asset.Profile.profileAdd.name)
+                    .resizable()
+                    .frame(width: 27, height: 27)
+                    .background(
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 28, height: 28)
+                            .shadow(color: Color(Asset.Colors.Global.redD41717.color), radius: 4, x: 0, y: 0)
+                    )
+                    .offset(x: 5, y: 5)
+            }
+        }
+    }
+}
+
+struct EditProfilePhotoCellView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditProfilePhotoCellView(cellViewModel: EditProfilePhotoCellViewModel(nil))
+            .frame(width: __SCREEN_WIDTH__ / 3, height: __SCREEN_WIDTH__ / 3 * 1.5)
+    }
+}

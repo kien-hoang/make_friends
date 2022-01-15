@@ -32,6 +32,12 @@
 		133F74752782F52400EF79B4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F74742782F52300EF79B4 /* Message.swift */; };
 		133F74772782FAC100EF79B4 /* MessageMainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */; };
 		138D7279278732AE00DF9BA4 /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7278278732AE00DF9BA4 /* SocketClientManager.swift */; };
+		138D727D278B10AE00DF9BA4 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D727C278B10AB00DF9BA4 /* EditProfileView.swift */; };
+		138D7281278B135200DF9BA4 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7280278B135200DF9BA4 /* EditProfileViewModel.swift */; };
+		138D7284278B2CD500DF9BA4 /* EditProfilePhotoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7283278B2CD400DF9BA4 /* EditProfilePhotoCellView.swift */; };
+		138D72872792B1BC00DF9BA4 /* EditInterestedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D72862792B1BB00DF9BA4 /* EditInterestedTagsView.swift */; };
+		138D72892792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D72882792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift */; };
+		138D728B2792CDE400DF9BA4 /* EditProfilePhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D728A2792CDE300DF9BA4 /* EditProfilePhotoCellViewModel.swift */; };
 		1396480E2783281F009AE8DD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396480D2783281F009AE8DD /* MessageView.swift */; };
 		139648112783283E009AE8DD /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139648102783283E009AE8DD /* MessageCellView.swift */; };
 		1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481227832849009AE8DD /* MessageCellViewModel.swift */; };
@@ -136,6 +142,12 @@
 		133F74742782F52300EF79B4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMainCellViewModel.swift; sourceTree = "<group>"; };
 		138D7278278732AE00DF9BA4 /* SocketClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketClientManager.swift; sourceTree = "<group>"; };
+		138D727C278B10AB00DF9BA4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		138D7280278B135200DF9BA4 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		138D7283278B2CD400DF9BA4 /* EditProfilePhotoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePhotoCellView.swift; sourceTree = "<group>"; };
+		138D72862792B1BB00DF9BA4 /* EditInterestedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInterestedTagsView.swift; sourceTree = "<group>"; };
+		138D72882792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInterestedTagsViewModel.swift; sourceTree = "<group>"; };
+		138D728A2792CDE300DF9BA4 /* EditProfilePhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePhotoCellViewModel.swift; sourceTree = "<group>"; };
 		1396480D2783281F009AE8DD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		139648102783283E009AE8DD /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
 		1396481227832849009AE8DD /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
@@ -408,6 +420,34 @@
 			path = SocketClientManager;
 			sourceTree = "<group>";
 		};
+		138D727B278B109900DF9BA4 /* EditProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				138D7282278B2CA400DF9BA4 /* Cell */,
+				138D7280278B135200DF9BA4 /* EditProfileViewModel.swift */,
+				138D727C278B10AB00DF9BA4 /* EditProfileView.swift */,
+			);
+			path = EditProfileView;
+			sourceTree = "<group>";
+		};
+		138D7282278B2CA400DF9BA4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				138D728A2792CDE300DF9BA4 /* EditProfilePhotoCellViewModel.swift */,
+				138D7283278B2CD400DF9BA4 /* EditProfilePhotoCellView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		138D72852792B18A00DF9BA4 /* EditInterestedTagsView */ = {
+			isa = PBXGroup;
+			children = (
+				138D72882792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift */,
+				138D72862792B1BB00DF9BA4 /* EditInterestedTagsView.swift */,
+			);
+			path = EditInterestedTagsView;
+			sourceTree = "<group>";
+		};
 		1396480C278327F6009AE8DD /* MessageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +640,8 @@
 		13A4D5312753BC8300D3775C /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
+				138D72852792B18A00DF9BA4 /* EditInterestedTagsView */,
+				138D727B278B109900DF9BA4 /* EditProfileView */,
 				13A4D5342753BCA900D3775C /* ProfileMainView */,
 			);
 			path = ProfileView;
@@ -1110,11 +1152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				138D7281278B135200DF9BA4 /* EditProfileViewModel.swift in Sources */,
 				139D68D62731AB4700F3B77F /* XCAssets+Generated.swift in Sources */,
 				133F746B2780A06B00EF79B4 /* MessageMainCellView.swift in Sources */,
 				133F74772782FAC100EF79B4 /* MessageMainCellViewModel.swift in Sources */,
 				1338BD472737F3D4009CA3C0 /* InterestedTag.swift in Sources */,
 				13B190992766296E004A23B1 /* LocationManager.swift in Sources */,
+				138D72872792B1BC00DF9BA4 /* EditInterestedTagsView.swift in Sources */,
 				132A8FF1274A5440004D0FE9 /* ChooseGenderView.swift in Sources */,
 				1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */,
 				13FFFC7B2752328D008D59D8 /* ImagePickerRepresentable.swift in Sources */,
@@ -1153,19 +1197,23 @@
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
 				132A8FE827492198004D0FE9 /* LoginPhoneView.swift in Sources */,
 				13DE8EF1273C0ECE00E798BF /* SignupPhoneView.swift in Sources */,
+				138D7284278B2CD500DF9BA4 /* EditProfilePhotoCellView.swift in Sources */,
 				132A9007274BD8CA004D0FE9 /* MessageMainView.swift in Sources */,
+				138D72892792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift in Sources */,
 				13A4D5372753BCB200D3775C /* ProfileMainView.swift in Sources */,
 				13DE8ED1273ACC0F00E798BF /* Helper.swift in Sources */,
 				1396481527832854009AE8DD /* MessageViewModel.swift in Sources */,
 				13B1909627661593004A23B1 /* MatchHomeCellViewModel.swift in Sources */,
 				13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */,
 				13BE454C2764F7690097CDD9 /* MatchHomeCellView.swift in Sources */,
+				138D727D278B10AE00DF9BA4 /* EditProfileView.swift in Sources */,
 				139D68F7273300CC00F3B77F /* Constants.swift in Sources */,
 				139648112783283E009AE8DD /* MessageCellView.swift in Sources */,
 				132A8FEA2749319E004D0FE9 /* LoginPhoneViewModel.swift in Sources */,
 				13DE8EF3273C280500E798BF /* UINavigation+Extensions.swift in Sources */,
 				13DE8ED3273ACD1C00E798BF /* Network.swift in Sources */,
 				138D7279278732AE00DF9BA4 /* SocketClientManager.swift in Sources */,
+				138D728B2792CDE400DF9BA4 /* EditProfilePhotoCellViewModel.swift in Sources */,
 				13D50D07274813A10059C244 /* User.swift in Sources */,
 				132A8FFE274BCC98004D0FE9 /* MainView.swift in Sources */,
 				13D50D0427480CF80059C244 /* AuthenticationAPIManager.swift in Sources */,
