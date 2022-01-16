@@ -170,11 +170,38 @@ struct ProfileMainView: View {
                         .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.black100.color)
                 }
                 .onTapGesture {
-                    viewModel.didTapAddMedia()
+                    viewModel.isShowUploadOptionActionSheet = true
                 }
             }
+            .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.newImage)
+            }
+            .sheet(isPresented: $viewModel.isShowCamera) {
+                ImagePicker(sourceType: .camera, selectedImage: $viewModel.newImage)
+            }
+            .actionSheet(isPresented: $viewModel.isShowUploadOptionActionSheet) {
+                uploadOptionActionSheet
+            }
+        }
+        
+        // MARK: - UploadOption
+        var uploadOptionActionSheet: ActionSheet {
+            ActionSheet(
+                title: Text("Tải ảnh lên"),
+                buttons: [
+                    .default(Text("Máy ảnh")) {
+                        viewModel.isShowCamera = true
+                    },
+                    .default(Text("Bộ sưu tập")) {
+                        viewModel.isShowPhotoLibrary = true
+                    },
+                    .cancel(Text("Huỷ bỏ"))
+                ]
+            )
         }
     }
+    
+    
 }
 
 struct ProfileMainView_Previews: PreviewProvider {

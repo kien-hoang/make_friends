@@ -303,12 +303,11 @@ struct EditProfileView: View {
     // MARK: - PhotosView
     struct PhotosView: View {
         @ObservedObject var viewModel: EditProfileViewModel
-        @State var itemWidth = (__SCREEN_WIDTH__ - K.Constants.ScreenPadding * 2) / 3
         
         let columns = [
-            GridItem(.flexible(minimum: 100), spacing: 12),
-            GridItem(.flexible(minimum: 100), spacing: 12),
-            GridItem(.flexible(minimum: 100), spacing: 12),
+            GridItem(.flexible(minimum: 100), spacing: K.Constants.EditProfile.ItemOffset),
+            GridItem(.flexible(minimum: 100), spacing: K.Constants.EditProfile.ItemOffset),
+            GridItem(.flexible(minimum: 100), spacing: K.Constants.EditProfile.ItemOffset),
         ]
         
         var body: some View {

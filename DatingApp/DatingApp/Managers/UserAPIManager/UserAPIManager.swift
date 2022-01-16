@@ -12,6 +12,43 @@ import CoreLocation
 class UserAPIManager {
     static let shared = UserAPIManager()
     
+    func updateAllImage(_ imageUrls: [String], completion: @escaping (_ imageUrls: [String]?, _ error: Error?) -> Void) {
+        let params: [String: Any] = ["images": imageUrls]
+        
+        let path = K.API.URL.User
+        let urlString = K.API.URL.BaseUrl + path + "/update-all-images"
+        let url = URL(string: urlString)!
+        
+        Network.shared.request(url, method: .post, params: params, headers: Helper.defaultHeaders) { responseJson in
+            switch responseJson.result {
+            
+            case .success(let result as [String:Any]):
+                
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    if let dict = result["data"] as? [String] {
+                        DispatchQueue.main.async {
+                            completion(dict, nil)
+                        }
+                    }
+                    
+                } else {
+                    let message = result["message"] as? String ?? "Something went wrong"
+                    DispatchQueue.main.async {
+                        completion(nil, message.toError)
+                    }
+                }
+                
+            default:
+                let message = "Something went wrong"
+                DispatchQueue.main.async {
+                    completion(nil, message.toError)
+                }
+            }
+        }
+    }
+    
     func updateProfile(withParams params: [String: Any], completion: @escaping (_ user: User?, _ error: Error?) -> Void) {
         let path = K.API.URL.User
         let urlString = K.API.URL.BaseUrl + path + "/update-profile"

@@ -15,6 +15,11 @@ class ProfileMainViewModel: ObservableObject {
     @Published var isVerified: Bool = false
     @Published var user: User = AppData.shared.user
     
+    @Published var isShowPhotoLibrary = false
+    @Published var isShowCamera = false
+    @Published var newImage: UIImage?
+    @Published var isShowUploadOptionActionSheet = false
+    
     var cancellable = Set<AnyCancellable>()
     
     init() {
@@ -30,6 +35,14 @@ class ProfileMainViewModel: ObservableObject {
                 self.age = ageComponents.year!
                 
                 self.isVerified = user.isVerified
+            }
+            .store(in: &cancellable)
+        
+        $newImage
+            .sink { [weak self] image in
+                guard let self = self,
+                      let image = image else { return }
+                self.updateNewImage(image)
             }
             .store(in: &cancellable)
     }
@@ -49,11 +62,34 @@ extension ProfileMainViewModel {
         print("didTapSetting")
     }
     
-    func didTapAddMedia() {
-        print("didTapAddMedia")
-    }
-    
     func didTapEditProfile() {
         print("didTapEditProfile")
+    }
+}
+
+// MARK: - API
+extension ProfileMainViewModel {
+    func updateNewImage(_ image: UIImage) {
+        Helper.showProgress(interaction: true)
+        UserAPIManager.shared.uploadImageFile(withImage: image) { [weak self] imageUrl in
+            guard let self = self else { return }
+            if let imageUrl = imageUrl {
+                
+                var imageUrls = self.user.images
+                imageUrls.append(imageUrl)
+                
+                UserAPIManager.shared.updateAllImage(imageUrls) { [weak self] newImageUrls, error in
+                    Helper.dismissProgress()
+                    guard let self = self else { return }
+                    if let error = error {
+                        Helper.showProgressError(error.localizedDescription)
+                    } else if let newImageUrls = newImageUrls {
+                        Helper.showSuccess("Thêm/Thay đổi ảnh thành công")
+                        self.newImage = nil
+                        self.user.images = newImageUrls
+                    }
+                }
+            }
+        }
     }
 }

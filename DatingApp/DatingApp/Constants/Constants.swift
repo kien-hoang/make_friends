@@ -27,6 +27,12 @@ struct K {
         static let NavigationHeight: CGFloat = 44
         static let ScreenPadding: CGFloat = 20
         static let PagingLimit: Int = 10
+        
+        struct EditProfile {
+            static let ImageColumns: CGFloat = 3
+            static let ItemOffset: CGFloat = 12
+            static let TotalOffset: CGFloat = K.Constants.ScreenPadding * 2 + K.Constants.EditProfile.ItemOffset * (K.Constants.EditProfile.ImageColumns - 1)
+        }
     }
     
     struct API {

@@ -28,6 +28,7 @@ struct EditProfilePhotoCellView: View {
     
     // MARK: - PhotoView
     struct PhotoView: View {
+        var itemWidth = (__SCREEN_WIDTH__ - K.Constants.EditProfile.TotalOffset) / K.Constants.EditProfile.ImageColumns
         var imageUrl: URL
         
         var body: some View {
@@ -40,13 +41,13 @@ struct EditProfilePhotoCellView: View {
                             .background(
                                 Rectangle()
                                     .fill(Color(Asset.Colors.Global.grayF1F1F1.color))
+                                    .frame(width: itemWidth, height: itemWidth * 1.5)
                                     .cornerRadius(12)
                             )
                     }
                     .resizable()
                     .scaledToFill()
-//                    .aspectRatio(contentMode: .fill)
-//                    .frame(width: 48, height: 48)
+                    .frame(width: itemWidth, height: itemWidth * 1.5)
                     .cornerRadius(12)
                     .clipped()
                 
@@ -94,7 +95,7 @@ struct EditProfilePhotoCellView: View {
 
 struct EditProfilePhotoCellView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfilePhotoCellView(cellViewModel: EditProfilePhotoCellViewModel(nil))
+        EditProfilePhotoCellView(cellViewModel: EditProfilePhotoCellViewModel(URL(string: "http://res.cloudinary.com/radley/image/upload/v1642310165/619a1775ea9e24f4df825b7b/619a1775ea9e24f4df825b7b-164231016105.jpg")))
             .frame(width: __SCREEN_WIDTH__ / 3, height: __SCREEN_WIDTH__ / 3 * 1.5)
     }
 }
