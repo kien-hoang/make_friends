@@ -16,14 +16,55 @@ struct EditProfilePhotoCellView: View {
             switch cellViewModel.type {
             case .EmptyCell:
                 EmptyPhotoView()
+                    .actionSheet(isPresented: $cellViewModel.isShowUploadOptionActionSheet) {
+                        uploadOptionActionSheet
+                    }
                 
             case .AlreadyImage(let imageUrl):
                 PhotoView(imageUrl: imageUrl)
+                    .actionSheet(isPresented: $cellViewModel.isShowEditOptionActionSheet) {
+                        editOptionActionSheet
+                    }
             }
         }
         .onTapGesture {
             cellViewModel.didTapCell()
         }
+        .sheet(isPresented: $cellViewModel.isShowPhotoLibrary) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: $cellViewModel.newImage)
+        }
+        .sheet(isPresented: $cellViewModel.isShowCamera) {
+            ImagePicker(sourceType: .camera, selectedImage: $cellViewModel.newImage)
+        }
+    }
+    
+    // MARK: - UploadOption
+    var uploadOptionActionSheet: ActionSheet {
+        ActionSheet(
+            title: Text("Tải ảnh lên"),
+            buttons: [
+                .default(Text("Máy ảnh")) {
+                    cellViewModel.isShowCamera = true
+                },
+                .default(Text("Bộ sưu tập")) {
+                    cellViewModel.isShowPhotoLibrary = true
+                },
+                .cancel(Text("Huỷ bỏ"))
+            ]
+        )
+    }
+    
+    // MARK: - EditOption
+    var editOptionActionSheet: ActionSheet {
+        ActionSheet(
+            title: Text("Xoá"),
+            buttons: [
+                .default(Text("Xoá ảnh")) {
+                    cellViewModel.deleteImage()
+                },
+                .cancel(Text("Huỷ bỏ"))
+            ]
+        )
     }
     
     // MARK: - PhotoView

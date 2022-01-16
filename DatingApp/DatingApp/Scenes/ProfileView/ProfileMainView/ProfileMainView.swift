@@ -170,7 +170,7 @@ struct ProfileMainView: View {
                         .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.black100.color)
                 }
                 .onTapGesture {
-                    viewModel.isShowUploadOptionActionSheet = true
+                    viewModel.didTapAddMedia()
                 }
             }
             .sheet(isPresented: $viewModel.isShowPhotoLibrary) {

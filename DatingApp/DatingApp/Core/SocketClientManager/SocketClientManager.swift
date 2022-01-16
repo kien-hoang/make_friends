@@ -21,13 +21,20 @@ class SocketClientManager {
     ])
     var socket: SocketIOClient!
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    init() {
+        socket = manager.defaultSocket
+    }
+    
     func connected() {
         print("DEBUG: socket try to connecting.....")
         
-        socket = manager.defaultSocket
-        
         socket.on(clientEvent: .connect) { data, ack in
             print("DEBUG: socket connected")
+            NotificationCenter.default.post(name: .DidSocketConnectSuccess, object: nil)
         }
         
         socket.on(clientEvent: .error) { data, ack in

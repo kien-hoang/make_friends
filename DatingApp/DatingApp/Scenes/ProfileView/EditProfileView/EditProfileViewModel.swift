@@ -10,9 +10,11 @@ import Combine
 
 class EditProfileViewModel: ObservableObject {
     @Published var user: User = AppData.shared.user
+    @Published var imageUrls: [String] = []
+    @Published var interestedTagsString: String = ""
+
     @Published var isShowInterestedInGenderActionSheet = false
     @Published var isShowGenderActionSheet = false
-    @Published var interestedTagsString: String = ""
     
     var cancellables = Set<AnyCancellable>()
     
@@ -20,7 +22,24 @@ class EditProfileViewModel: ObservableObject {
         $user
             .sink { newValue in
                 self.getInterestedTagsString()
+                self.imageUrls = self.user.images
             }
+            .store(in: &cancellables)
+        
+        NotificationCenter.default.publisher(for: .DidChooseImageForUpdatingSuccess)
+            .sink(receiveValue: { [weak self] notification in
+                guard let self = self,
+                      let newImage = notification.object as? UIImage else { return }
+                self.updateNewImage(newImage)
+            })
+            .store(in: &cancellables)
+        
+        NotificationCenter.default.publisher(for: .DidChooseImageForDeletingSuccess)
+            .sink(receiveValue: { [weak self] notification in
+                guard let self = self,
+                      let imageUrl = notification.object as? String else { return }
+                self.deleteImage(imageUrl)
+            })
             .store(in: &cancellables)
     }
 }
@@ -39,6 +58,49 @@ extension EditProfileViewModel {
             } else if let user = user {
                 AppData.shared.user = user // Save to singleton
                 NotificationCenter.default.post(name: .DidUpdateProfileSuccess, object: nil)
+            }
+        }
+    }
+    
+    func updateNewImage(_ image: UIImage) {
+        Helper.showSuccess("Đang tải")
+        UserAPIManager.shared.uploadImageFile(withImage: image) { [weak self] imageUrl in
+            guard let self = self else { return }
+            if let imageUrl = imageUrl {
+                
+                var imageUrls = self.user.images
+                imageUrls.append(imageUrl)
+                
+                UserAPIManager.shared.updateAllImage(imageUrls) { [weak self] newImageUrls, error in
+                    Helper.dismissProgress()
+                    guard let self = self else { return }
+                    if let error = error {
+                        Helper.showProgressError(error.localizedDescription)
+                    } else if let newImageUrls = newImageUrls {
+                        Helper.showSuccess("Thêm/Thay đổi ảnh thành công")
+                        self.user.images = newImageUrls
+                        self.imageUrls = self.user.images
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteImage(_ imageUrl: String) {
+        Helper.showSuccess("Đang xoá")
+        
+        var imageUrls = self.user.images
+        imageUrls.removeAll(where: { $0 == imageUrl })
+        
+        UserAPIManager.shared.updateAllImage(imageUrls) { [weak self] newImageUrls, error in
+            Helper.dismissProgress()
+            guard let self = self else { return }
+            if let error = error {
+                Helper.showProgressError(error.localizedDescription)
+            } else if let newImageUrls = newImageUrls {
+                Helper.showSuccess("Xoá ảnh thành công")
+                self.user.images = newImageUrls
+                self.imageUrls = self.user.images
             }
         }
     }

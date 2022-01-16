@@ -312,15 +312,17 @@ struct EditProfileView: View {
         
         var body: some View {
             LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(viewModel.user.images, id: \.self) { imageUrl in
+                ForEach(viewModel.imageUrls, id: \.self) { imageUrl in
                     let cellViewModel = EditProfilePhotoCellViewModel(URL(string: imageUrl))
                     EditProfilePhotoCellView(cellViewModel: cellViewModel)
                         .aspectRatio(2 / 3, contentMode: .fill)
                 }
                 
                 // More image item
-                EditProfilePhotoCellView(cellViewModel: EditProfilePhotoCellViewModel(nil))
-                    .aspectRatio(2 / 3, contentMode: .fill)
+                if viewModel.imageUrls.count < 9 {
+                    EditProfilePhotoCellView(cellViewModel: EditProfilePhotoCellViewModel(nil))
+                        .aspectRatio(2 / 3, contentMode: .fill)
+                }
             }
             .padding(.horizontal, K.Constants.ScreenPadding)
         }
