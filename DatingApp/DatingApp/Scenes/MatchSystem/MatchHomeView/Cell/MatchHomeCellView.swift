@@ -54,6 +54,7 @@ struct MatchHomeCellView: View {
         }
     }
     
+    // MARK: - InfomationView
     struct Infomation: View {
         @ObservedObject var cellViewModel: MatchHomeCellViewModel
         

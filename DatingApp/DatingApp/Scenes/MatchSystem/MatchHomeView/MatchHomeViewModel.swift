@@ -17,6 +17,7 @@ enum MatchHomeViewType {
 class MatchHomeViewModel: ObservableObject {
     @Published var viewType: MatchHomeViewType = .DisableLocation
     @Published var users: [User] = [] // Using to render view
+    @Published var isPresentDetailProfileView = false
     private var innerUsers: [User] = [] // FIXME: MatchHomeViewModel.1
     private var currentPage: Int = 0
     private var limit = 4
@@ -128,6 +129,14 @@ extension MatchHomeViewModel {
 
 // MARK: - Helper
 extension MatchHomeViewModel {
+    func getTopUser() -> User {
+        return innerUsers.first ?? User()
+    }
+    
+    func didCardTapped() {
+        isPresentDetailProfileView = true
+    }
+    
     func reloadHome() {
         guard let location = location else { return }
         users.removeAll()

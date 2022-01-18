@@ -87,6 +87,16 @@ struct ProfileMainView: View {
                         view
                             .shadow(color: Color(Asset.Colors.Global.gray9A9A9A.name), radius: 4, x: 0, y: 0)
                     })
+                    // TODO: Show/dismiss Detail Profile View
+                    .fullScreenCover(isPresented: $viewModel.isPresentDetailProfileView) {
+                        let viewModel = DetailProfileViewModel(user: viewModel.getCurrentUser())
+                        DetailProfileView(viewModel: viewModel)
+                            .hiddenNavigationBar()
+                            .navigationView()
+                    }
+                    .onReceive(.DismissDetailProfileView) { _ in
+                        viewModel.isPresentDetailProfileView = false
+                    }
                     .onTapGesture {
                         viewModel.didTapAvatar()
                     }

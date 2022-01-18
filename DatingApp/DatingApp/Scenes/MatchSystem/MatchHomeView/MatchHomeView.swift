@@ -84,6 +84,19 @@ struct MatchHomeView: View {
                         }
                     }
                 )
+                    // TODO: Show/dismiss Detail Profile View
+                    .fullScreenCover(isPresented: $viewModel.isPresentDetailProfileView) {
+                        let viewModel = DetailProfileViewModel(user: viewModel.getTopUser())
+                        DetailProfileView(viewModel: viewModel)
+                            .hiddenNavigationBar()
+                            .navigationView()
+                    }
+                    .onReceive(.DismissDetailProfileView) { _ in
+                        viewModel.isPresentDetailProfileView = false
+                    }
+                    .onTapGesture {
+                        viewModel.didCardTapped()
+                    }
             }
             .frame(minWidth: 0, maxWidth: __SCREEN_WIDTH__ - K.Constants.ScreenPadding * 2, minHeight: 0, maxHeight: .infinity, alignment: .center)
             .padding([.top, .bottom], 24)

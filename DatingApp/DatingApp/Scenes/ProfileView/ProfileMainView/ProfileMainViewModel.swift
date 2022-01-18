@@ -19,6 +19,7 @@ class ProfileMainViewModel: ObservableObject {
     @Published var isShowCamera = false
     @Published var newImage: UIImage?
     @Published var isShowUploadOptionActionSheet = false
+    @Published var isPresentDetailProfileView = false
     
     var cancellable = Set<AnyCancellable>()
     
@@ -51,7 +52,8 @@ class ProfileMainViewModel: ObservableObject {
 // MARK: - Action
 extension ProfileMainViewModel {
     func didTapAvatar() {
-        print("didTapAvatar")
+        guard AppData.shared.user != nil else { return }
+        isPresentDetailProfileView = true
     }
     
     func didTapVerified() {
@@ -100,5 +102,12 @@ extension ProfileMainViewModel {
                 }
             }
         }
+    }
+}
+
+// MARK: - Helper
+extension ProfileMainViewModel {
+    func getCurrentUser() -> User {
+        return AppData.shared.user ?? User()
     }
 }

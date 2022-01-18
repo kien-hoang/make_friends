@@ -15,4 +15,9 @@ struct InterestedTag: Hashable {
         self.id = dict[K.API.ParameterKeys._Id] as? String ?? ""
         self.name = dict[K.API.ParameterKeys.Name] as? String ?? ""
     }
+    
+    init(id: String, name: String) {
+        self.id = id
+        self.name = name
+    }
 }

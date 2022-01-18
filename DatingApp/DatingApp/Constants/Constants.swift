@@ -42,13 +42,13 @@ struct K {
         
         struct URL {
             #if DEBUG
-            static let BaseUrl = LiveUrl
+            static let BaseUrl = StagingUrl
             #else
-            static let BaseUrl = LiveUrl
+            static let BaseUrl = StagingUrl
             #endif
             static let SocketUrl = BaseUrl.replacingOccurrences(of: "/api/", with: "")
             static let StagingUrl = "http://localhost:3000/api/"
-            static let LiveUrl = "http://192.168.1.6:3000/api/"
+            static let LiveUrl = "http://192.168.1.7:3000/api/"
             
             static let InterestedTag = "interested-tags"
             static let Register = "auth/register"
@@ -102,4 +102,5 @@ extension Notification.Name {
     static let DidChooseImageForDeletingSuccess = Notification.Name("DidChooseImageForDeletingSuccess")
     static let DidSocketConnectSuccess = Notification.Name("DidSocketConnectSuccess")
 //    static let DidGetListChatSuccess = Notification.Name("DidGetListChatSuccess")
+    static let DismissDetailProfileView = Notification.Name("DismissDetailProfileView")
 }

@@ -38,6 +38,9 @@
 		138D72872792B1BC00DF9BA4 /* EditInterestedTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D72862792B1BB00DF9BA4 /* EditInterestedTagsView.swift */; };
 		138D72892792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D72882792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift */; };
 		138D728B2792CDE400DF9BA4 /* EditProfilePhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D728A2792CDE300DF9BA4 /* EditProfilePhotoCellViewModel.swift */; };
+		138D7291279455DA00DF9BA4 /* DetailProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7290279455D900DF9BA4 /* DetailProfileView.swift */; };
+		138D7293279455E800DF9BA4 /* DetailProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7292279455E800DF9BA4 /* DetailProfileViewModel.swift */; };
+		138D72962795C5E000DF9BA4 /* TagLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D72952795C5DA00DF9BA4 /* TagLayoutView.swift */; };
 		1396480E2783281F009AE8DD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396480D2783281F009AE8DD /* MessageView.swift */; };
 		139648112783283E009AE8DD /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139648102783283E009AE8DD /* MessageCellView.swift */; };
 		1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481227832849009AE8DD /* MessageCellViewModel.swift */; };
@@ -148,6 +151,9 @@
 		138D72862792B1BB00DF9BA4 /* EditInterestedTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInterestedTagsView.swift; sourceTree = "<group>"; };
 		138D72882792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInterestedTagsViewModel.swift; sourceTree = "<group>"; };
 		138D728A2792CDE300DF9BA4 /* EditProfilePhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePhotoCellViewModel.swift; sourceTree = "<group>"; };
+		138D7290279455D900DF9BA4 /* DetailProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileView.swift; sourceTree = "<group>"; };
+		138D7292279455E800DF9BA4 /* DetailProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProfileViewModel.swift; sourceTree = "<group>"; };
+		138D72952795C5DA00DF9BA4 /* TagLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagLayoutView.swift; sourceTree = "<group>"; };
 		1396480D2783281F009AE8DD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		139648102783283E009AE8DD /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
 		1396481227832849009AE8DD /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 		132A8FEB2749535D004D0FE9 /* MatchSystem */ = {
 			isa = PBXGroup;
 			children = (
+				138D728F279455BC00DF9BA4 /* DetailProfileView */,
 				13D74FE127723849001B2880 /* MatchSuccess */,
 				132A8FEC27495395004D0FE9 /* MatchHomeView */,
 			);
@@ -446,6 +453,23 @@
 				138D72862792B1BB00DF9BA4 /* EditInterestedTagsView.swift */,
 			);
 			path = EditInterestedTagsView;
+			sourceTree = "<group>";
+		};
+		138D728F279455BC00DF9BA4 /* DetailProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				138D7292279455E800DF9BA4 /* DetailProfileViewModel.swift */,
+				138D7290279455D900DF9BA4 /* DetailProfileView.swift */,
+			);
+			path = DetailProfileView;
+			sourceTree = "<group>";
+		};
+		138D72942795C5DA00DF9BA4 /* TagLayoutView */ = {
+			isa = PBXGroup;
+			children = (
+				138D72952795C5DA00DF9BA4 /* TagLayoutView.swift */,
+			);
+			path = TagLayoutView;
 			sourceTree = "<group>";
 		};
 		1396480C278327F6009AE8DD /* MessageView */ = {
@@ -687,6 +711,7 @@
 		13BE454D276504000097CDD9 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				138D72942795C5DA00DF9BA4 /* TagLayoutView */,
 				13BE45422764CC7B0097CDD9 /* CardStack */,
 			);
 			path = ThirdParty;
@@ -1175,6 +1200,7 @@
 				13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */,
 				13BE454A2764CC7B0097CDD9 /* CardStackConfiguration.swift in Sources */,
 				13D74FE327723863001B2880 /* MatchSuccessView.swift in Sources */,
+				138D72962795C5E000DF9BA4 /* TagLayoutView.swift in Sources */,
 				13A4D5382753BCB200D3775C /* ProfileMainViewModel.swift in Sources */,
 				132613EB2741656E0016CD92 /* SignupCalendar.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
@@ -1202,10 +1228,12 @@
 				138D72892792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift in Sources */,
 				13A4D5372753BCB200D3775C /* ProfileMainView.swift in Sources */,
 				13DE8ED1273ACC0F00E798BF /* Helper.swift in Sources */,
+				138D7291279455DA00DF9BA4 /* DetailProfileView.swift in Sources */,
 				1396481527832854009AE8DD /* MessageViewModel.swift in Sources */,
 				13B1909627661593004A23B1 /* MatchHomeCellViewModel.swift in Sources */,
 				13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */,
 				13BE454C2764F7690097CDD9 /* MatchHomeCellView.swift in Sources */,
+				138D7293279455E800DF9BA4 /* DetailProfileViewModel.swift in Sources */,
 				138D727D278B10AE00DF9BA4 /* EditProfileView.swift in Sources */,
 				139D68F7273300CC00F3B77F /* Constants.swift in Sources */,
 				139648112783283E009AE8DD /* MessageCellView.swift in Sources */,
