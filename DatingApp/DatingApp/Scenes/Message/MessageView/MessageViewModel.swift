@@ -12,17 +12,47 @@ class MessageViewModel: ObservableObject {
     @Published var messages: [Message] = []
     @Published var keyboardIsShowing: Bool = false
     @Published var match: Match
+    @Published var groupedMessages: [(String, [Message])] = []
     
-    var cancellable: AnyCancellable? = nil
+    @Published var isShowPhotoLibrary = false
+    @Published var isShowCamera = false
+    @Published var newImage: UIImage?
+    @Published var isShowUploadOptionActionSheet = false
+    
+    private var isFirstLoadVC = true
+    private var isEmptyData = false // TODO: Avoid get more data if not record is got anymore
+    var isLoadingMoreData = false // TODO: Avoid scroll to bottom when loading data
+    var cancellables = Set<AnyCancellable>()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
         
     init(match: Match) {
         self.match = match
         getHistoryChat()
-        setupPublishers()
-//        messages = mockMessages()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+        $newImage
+            .sink { [weak self] image in
+                guard let self = self,
+                      let image = image else { return }
+                self.updateNewImage(image)
+            }
+            .store(in: &cancellables)
     }
     
-    func sendMessage(_ content: String) {
+    @objc func keyboardShow() {
+        keyboardIsShowing = true
+    }
+    
+    @objc func keyboardHide() {
+        keyboardIsShowing = false
+    }
+    
+    func sendMessage(_ type: MessageType) {
         // Networking
         var message = Message()
         message.userId = AppData.shared.user.id
@@ -30,11 +60,13 @@ class MessageViewModel: ObservableObject {
             message.receiverId = receiver.id
         }
         message.matchId = match.id
-        message.messageContent = content
+        message.type = type
+        message.id = UUID().uuidString
         
         SocketClientManager.shared.sendMessage(message) { [weak self] in
             guard let self = self else { return }
             self.messages.append(message)
+            self.groupMessagesBaseDate()
             NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
         }
         // if networking failure, then show an error with some retry options
@@ -43,54 +75,48 @@ class MessageViewModel: ObservableObject {
     func receiveMessage(_ message: Message) {
         guard message.matchId == match.id else { return }
         messages.append(message)
+        groupMessagesBaseDate()
     }
-    
-    private let keyboardWillShow = NotificationCenter.default
-        .publisher(for: UIResponder.keyboardWillShowNotification)
-        .map({ _ in true })
-    
-    private let keyboardWillHide = NotificationCenter.default
-        .publisher(for: UIResponder.keyboardWillHideNotification)
-        .map({ _ in true })
-    
-    private func setupPublishers() {
-        cancellable = Publishers.Merge(keyboardWillShow, keyboardWillHide)
-            .subscribe(on: DispatchQueue.main)
-            .assign(to: \.keyboardIsShowing, on: self)
-    }
-    
-    deinit {
-        cancellable?.cancel()
-    }
-    
-    func mockMessage(_ content: String) -> Message {
-        var message = Message()
-        message.messageContent = content
-        return message
-    }
-    
-//    func mockMessages() -> [Message] {
-//        var message1 = Message()
-//        message1.messageContent = "Siêu phẩm quần jean nam lưng thun theo phong cách Hàn Quốc đang làm mưa làm gió nay về rồi ạ."
-//
-//        var message2 = Message()
-//        message2.messageContent = "Lên form cực chuẩn luôn nè 🥰🥰🥰. Đủ size cho anh em luôn nha."
-//
-//        return [message1, message2, message1, message2, message1, message2]
-//    }
 }
 
 // MARK: - API
 extension MessageViewModel {
-    private func getHistoryChat() {
+    func updateNewImage(_ image: UIImage) {
+        Helper.showProgress(interaction: true)
+        UserAPIManager.shared.uploadImageFile(withImage: image) { [weak self] imageUrl in
+            Helper.dismissProgress()
+            guard let self = self else { return }
+            if let imageUrl = imageUrl {
+                self.sendMessage(.stillImage(URL(string: imageUrl)!))
+            }
+        }
+    }
+    
+    private func getHistoryChat(lastMessageId: String? = nil) {
         Helper.showProgress()
-        ChatAPIManager.shared.getHistoryChat(withMatchId: match.id) { [weak self] messages, error in
+        ChatAPIManager.shared.getHistoryChat(withMatchId: match.id, lastMessageId: lastMessageId) { [weak self] messages, error in
             Helper.dismissProgress()
             guard let self = self else { return }
             if let error = error {
                 Helper.showProgressError(error.localizedDescription)
             } else if let messages = messages {
-                self.messages = messages
+                if messages.isEmpty {
+                    self.isEmptyData = true
+                    return
+                }
+                if let _ = lastMessageId {
+                    let reversedMessages: [Message] = messages.reversed()
+                    self.isLoadingMoreData = true
+                    self.messages.insert(contentsOf: reversedMessages, at: 0)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.isLoadingMoreData = false
+                    }
+                    
+                } else {
+                    // TODO: First load message
+                    self.messages = messages.reversed()
+                }
+                self.groupMessagesBaseDate()
             }
         }
     }
@@ -98,6 +124,41 @@ extension MessageViewModel {
 
 // MARK: - Helper
 extension MessageViewModel {
+    func loadMoreIfNeeded() {
+        guard !isFirstLoadVC, !isEmptyData else {
+            isFirstLoadVC = false
+            return
+        }
+        
+        getHistoryChat(lastMessageId: messages.first?.id)
+    }
+    
+    func getIndexMessage(_ message: Message) -> Int {
+        return messages.firstIndex(where: { $0 == message }) ?? 999
+    }
+    
+    func getDateTime(_ dateTime: String) -> String {
+        if dateTime == Date().ddMMyyyy {
+            return "Hôm nay"
+        } else if dateTime == Date().dayBefore.ddMMyyyy {
+            return "Hôm qua"
+        }
+        return dateTime
+    }
+    
+    func groupMessagesBaseDate() {
+        let groupedMessage = Dictionary(grouping: messages) { message -> String in
+            return (message.createdAt ?? Date()).ddMMyyyy
+        }
+        
+        groupedMessages = []
+        let sortedKeys = groupedMessage.keys.sorted()
+        sortedKeys.forEach { date in
+            let messages = groupedMessage[date] ?? []
+            groupedMessages.append((date, messages))
+        }
+    }
+    
     func getImageUrl() -> URL? {
         guard let likedUser = (match.members.first { $0.id != AppData.shared.user.id }),
               !likedUser.images.isEmpty else { return nil }

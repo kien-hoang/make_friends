@@ -9,23 +9,47 @@ import SwiftUI
 
 class MessageMainCellViewModel: ObservableObject {
     @Published var match: Match
-    @Published var isRead = true // fake. Will improve later
+    @Published var isRead = true
     @Published var lastMessageString = "Hãy bắt đầu cuộc trò chuyện"
     
     init(match: Match) {
         self.match = match
-        if let lastMessage = match.lastMessage,
-           !lastMessage.messageContent.isEmpty {
-            lastMessageString = lastMessage.messageContent
+//        isRead = match.isRead
+        if let lastMessage = match.lastMessage {
+            updateLastMessageString(lastMessage)
+            
+//            if !match.isRead, lastMessage.receiverId == AppData.shared.user.id {
+//                SocketClientManager.shared.readMessage(withMatchId: match.id)
+//            }
+        }
+    }
+    
+    private func updateLastMessageString(_ message: Message) {
+        switch message.type {
+        case .text(let text):
+            lastMessageString = text
+            
+        case .stillImage(_):
+            if message.userId == AppData.shared.user.id {
+                lastMessageString = "Bạn vừa gửi ảnh cho đối phương"
+            } else {
+                lastMessageString = "Bạn vừa nhận được ảnh từ đối phương"
+            }
         }
     }
 }
 
 // MARK: - Helper
 extension MessageMainCellViewModel {
+//    func didReadMessageSuccess(_ match: Match) {
+//        guard match.lastMessage?.receiverId == AppData.shared.user.id else { return }
+//        self.match.isRead = true
+//        isRead = true
+//    }
+    
     func updateLastMessage(_ message: Message) {
         guard message.matchId == match.id else { return }
-        lastMessageString = message.messageContent
+        updateLastMessageString(message)
     }
     
     func getImageUrl() -> URL? {

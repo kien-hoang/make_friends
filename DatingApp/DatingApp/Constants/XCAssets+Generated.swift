@@ -43,6 +43,7 @@ internal enum Asset {
     }
   }
   internal enum Global {
+    internal static let icAddImage = ImageAsset(name: "ic_add_image")
     internal static let icDefaultBack = ImageAsset(name: "ic_default_back")
     internal static let icDefaultClose = ImageAsset(name: "ic_default_close")
     internal static let icDefaultNext = ImageAsset(name: "ic_default_next")
@@ -65,19 +66,6 @@ internal enum Asset {
     internal static let profileAdd = ImageAsset(name: "profile_add")
     internal static let profileDownArrow = ImageAsset(name: "profile_down_arrow")
     internal static let profileGender = ImageAsset(name: "profile_gender")
-  }
-  internal enum Images {
-    internal static let imgAj = ImageAsset(name: "img_aj")
-    internal static let imgBl = ImageAsset(name: "img_bl")
-    internal static let imgCoverImage = ImageAsset(name: "img_cover_image")
-    internal static let imgDj = ImageAsset(name: "img_dj")
-    internal static let imgEw = ImageAsset(name: "img_ew")
-    internal static let imgGg = ImageAsset(name: "img_gg")
-    internal static let imgMatchSuccess = ImageAsset(name: "img_match_success")
-    internal static let imgNp = ImageAsset(name: "img_np")
-    internal static let imgSg = ImageAsset(name: "img_sg")
-    internal static let imgSj = ImageAsset(name: "img_sj")
-    internal static let imgTs = ImageAsset(name: "img_ts")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

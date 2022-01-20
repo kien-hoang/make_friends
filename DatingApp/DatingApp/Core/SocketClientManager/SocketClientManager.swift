@@ -51,6 +51,15 @@ class SocketClientManager {
             NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
         }
         
+//        socket.on("read_message_success") { data, ack in
+//            guard let dataDict = data.first as? [String: Any],
+//                  let isSuccess = dataDict["success"] as? Bool,
+//                  isSuccess == true,
+//                  let matchData = dataDict["data"] as? [String: Any] else { return }
+//            let match = Match(dict: matchData)
+//            NotificationCenter.default.post(name: .DidReadMessageSuccess, object: match)
+//        }
+        
         socket.connect()
     }
     
@@ -85,17 +94,32 @@ class SocketClientManager {
      user_id: String
      user_id_of_liked_user: String
      match_id: String
-     message: String
+     type: ENUM ["TEXT", "IMAGE"]
      */
     func sendMessage(_ message: Message, completion: @escaping () -> Void) {
         var dict: [String: Any] = [:]
         dict["user_id"] = message.userId
         dict["user_id_of_liked_user"] = message.receiverId
         dict["match_id"] = message.matchId
-        dict["message"] = message.messageContent
+        switch message.type {
+        case .text(let text):
+            dict["type"] = message.type.getRawValue()
+            dict["message"] = text
+            
+        case .stillImage(let imageUrl):
+            dict["type"] = message.type.getRawValue()
+            dict["image_url"] = imageUrl.absoluteString
+        }
         
-        SocketClientManager.shared.socket.emit("send_message", with: [dict]) {
+        socket.emit("send_message", with: [dict]) {
             completion()
         }
     }
+    
+//    func readMessage(withMatchId matchId: String) {
+//        var dict: [String: Any] = [:]
+//        dict["match_id"] = matchId
+//        
+//        socket.emit("read_message", with: [dict])
+//    }
 }

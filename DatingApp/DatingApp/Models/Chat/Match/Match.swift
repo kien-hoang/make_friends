@@ -11,6 +11,7 @@ struct Match {
     var id: String = ""
     var members: [User] = []
     var lastMessage: Message?
+    var isRead: Bool = false
     
     init() {}
     
@@ -26,5 +27,6 @@ struct Match {
         if let lastMessageDict = dict["last_message"] as? [String: Any] {
             lastMessage = Message(dict: lastMessageDict)
         }
+        isRead = dict["is_read"] as? Bool ?? false
     }
 }

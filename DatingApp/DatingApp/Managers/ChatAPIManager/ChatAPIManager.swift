@@ -50,9 +50,12 @@ class ChatAPIManager {
         }
     }
     
-    func getHistoryChat(withMatchId matchId: String, completion: @escaping ((_ messages: [Message]?, _ error: Error?) -> Void)) {
+    func getHistoryChat(withMatchId matchId: String, lastMessageId: String? = nil, completion: @escaping ((_ messages: [Message]?, _ error: Error?) -> Void)) {
         let path = K.API.URL.Chat
-        let urlString = K.API.URL.BaseUrl + path + "/history?match_id=\(matchId)"
+        var urlString = K.API.URL.BaseUrl + path + "/history?match_id=\(matchId)"
+        if let lastMessageId = lastMessageId {
+            urlString += "&last_message_id=\(lastMessageId)"
+        }
         let url = URL(string: urlString)!
         
         Network.shared.request(url, method: .get, params: nil, headers: Helper.defaultHeaders) { responseJson in

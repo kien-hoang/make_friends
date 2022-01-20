@@ -72,6 +72,10 @@ struct MessageMainCellView: View {
             guard let message = notification.object as? Message else { return }
             cellViewModel.updateLastMessage(message)
         }
+//        .onReceive(.DidReadMessageSuccess) { notification in
+//            guard let match = notification.object as? Match else { return }
+//            cellViewModel.didReadMessageSuccess(match)
+//        }
     }
 }
 

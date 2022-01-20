@@ -21,12 +21,26 @@ struct MessageView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollViewReader { proxy in
                     LazyVStack(spacing: 0) {
-                        ForEach(viewModel.messages.indices, id: \.self) { index in
-                            let msg = viewModel.messages[index]
-                            MessageCellView(cellViewModel: MessageCellViewModel(msg))
-                                .id(index)
-                                .padding(.horizontal, K.Constants.ScreenPadding)
-                                .padding(.bottom, 12)
+                        Rectangle()
+                            .fill(Color.white.opacity(0.01))
+                            .frame(height: 1)
+                            .onAppear {
+                                viewModel.loadMoreIfNeeded()
+                            }
+                        
+                        ForEach(viewModel.groupedMessages.indices, id: \.self) { dateIndex in
+                            let dateTime = viewModel.getDateTime(viewModel.groupedMessages[dateIndex].0)
+                            Text(dateTime)
+                                .style(font: .lexendBold, size: 12, color: Asset.Colors.Global.black100.color)
+                                .padding()
+                            
+                            ForEach(viewModel.groupedMessages[dateIndex].1.indices, id: \.self) { messageIndex in
+                                let msg = viewModel.groupedMessages[dateIndex].1[messageIndex]
+                                MessageCellView(cellViewModel: MessageCellViewModel(msg))
+                                    .id(msg.id)
+                                    .padding(.horizontal, K.Constants.ScreenPadding)
+                                    .padding(.bottom, 12)
+                            }
                         }
                     }
                     .onAppear {
@@ -46,12 +60,15 @@ struct MessageView: View {
             IQKeyboardManager.shared.enable = true
         }
         .onChange(of: viewModel.keyboardIsShowing) { newValue in
-            if newValue {
-                scrollToBottom()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.scrollToBottom()
             }
+            
         }
         .onChange(of: viewModel.messages) { _ in
-            scrollToBottom()
+            if !viewModel.isLoadingMoreData {
+                scrollToBottom()
+            }
         }
         .onReceive(.DidReceivedMessage) { notification in
             guard let message = notification.object as? Message else { return }
@@ -61,7 +78,8 @@ struct MessageView: View {
     
     func scrollToBottom() {
         withAnimation {
-            scrollProxy?.scrollTo(viewModel.messages.count - 1, anchor: .bottom)
+            guard let lastMessage = viewModel.messages.last else { return }
+            scrollProxy?.scrollTo(lastMessage.id, anchor: .bottom)
         }
     }
     
@@ -69,39 +87,89 @@ struct MessageView: View {
     struct InputView: View {
         @ObservedObject var viewModel: MessageViewModel
         @State private var typingMessage: String = ""
+        @State private var isKeyboardShowing: Bool = false
         
         var body: some View {
-            ZStack(alignment: .trailing) {
-                Color(Asset.Colors.Global.gray777777.color).opacity(0.1)
+            HStack(spacing: 0) {
+                VStack {
+                    Image(Asset.Global.icAddImage.name)
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                }
+                .frame(width: isKeyboardShowing ? 0 : 50, height: 50)
+                .clipped()
+                .padding(.leading, K.Constants.ScreenPadding)
+                .onChange(of: viewModel.keyboardIsShowing) { isShow in
+                    isKeyboardShowing = isShow
+                }
+                .onTapGesture {
+                    if !viewModel.keyboardIsShowing {
+                        viewModel.isShowUploadOptionActionSheet = true
+                    }
+                }
+                .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
+                    ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.newImage)
+                }
+                .sheet(isPresented: $viewModel.isShowCamera) {
+                    ImagePicker(sourceType: .camera, selectedImage: $viewModel.newImage)
+                }
+                .actionSheet(isPresented: $viewModel.isShowUploadOptionActionSheet) {
+                    uploadOptionActionSheet
+                }
                 
-                HStack(spacing: 0) {
-                    TextField("Aa", text: $typingMessage)
-                        .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
-                        .textFieldStyle(PlainTextFieldStyle())
-                        .frame(width: __SCREEN_WIDTH__ - 100, height: 45)
-                        .padding(.horizontal)
+                ZStack(alignment: .trailing) {
+                    Color(Asset.Colors.Global.gray777777.color).opacity(0.1)
                     
-                    Spacer()
+                    HStack(spacing: 0) {
+                        TextField("Aa", text: $typingMessage)
+                            .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
+                            .textFieldStyle(PlainTextFieldStyle())
+                            .frame(width: __SCREEN_WIDTH__ - 100, height: 45)
+                            .padding(.horizontal)
+                        
+                        Spacer()
+                    }
+                    
+                    Button(action: {
+                        if !typingMessage.isEmpty {
+                            sendMessage()
+                        }
+                        
+                    }) {
+                        Text("Gửi")
+                            .style(font: .lexendRegular, size: 14, color: typingMessage.isEmpty ? Asset.Colors.Global.gray777777.color : Asset.Colors.Global.redD41717.color)
+                    }
+                    .padding(.horizontal)
                 }
-                
-                Button(action: { sendMessage() }) {
-                    Text("Gửi")
-                        .style(font: .lexendRegular, size: 14, color: typingMessage.isEmpty ? Asset.Colors.Global.gray777777.color : Asset.Colors.Global.redD41717.color)
-                }
-                .padding(.horizontal)
+                .frame(height: 40)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color(Asset.Colors.Global.gray777777.color).opacity(0.3), lineWidth: 1)
+                )
+                .padding(.trailing, K.Constants.ScreenPadding)
             }
-            .frame(height: 40)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color(Asset.Colors.Global.gray777777.color).opacity(0.3), lineWidth: 1)
-            )
-            .padding(.horizontal, K.Constants.ScreenPadding)
         }
         
         func sendMessage() {
-            viewModel.sendMessage(typingMessage)
+            viewModel.sendMessage(.text(typingMessage))
             typingMessage = ""
+        }
+        
+        // MARK: - UploadOption
+        var uploadOptionActionSheet: ActionSheet {
+            ActionSheet(
+                title: Text("Tải ảnh lên"),
+                buttons: [
+                    .default(Text("Máy ảnh")) {
+                        viewModel.isShowCamera = true
+                    },
+                    .default(Text("Bộ sưu tập")) {
+                        viewModel.isShowPhotoLibrary = true
+                    },
+                    .cancel(Text("Huỷ bỏ"))
+                ]
+            )
         }
     }
     
