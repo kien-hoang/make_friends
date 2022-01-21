@@ -72,7 +72,6 @@ class MessageViewModel: ObservableObject {
             guard let self = self else { return }
             self.messages.append(message)
             self.groupMessagesBaseDate()
-//            NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
         }
         // if networking failure, then show an error with some retry options
     }

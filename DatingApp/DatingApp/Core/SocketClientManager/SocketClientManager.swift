@@ -42,24 +42,30 @@ class SocketClientManager {
         }
         
         socket.on("received_message") { data, ack in
-            print("DEBUG: received_message \(data)")
             guard let dataDict = data.first as? [String: Any],
                   let isSuccess = dataDict["success"] as? Bool,
                   isSuccess == true,
                   let messageData = dataDict["data"] as? [String: Any] else { return }
             let message = Message(dict: messageData)
             NotificationCenter.default.post(name: .DidReceivedMessage, object: message)
-            NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
         }
         
         socket.on("read_message_success") { data, ack in
-            print("DEBUG: read_message_success \(data)")
             guard let dataDict = data.first as? [String: Any],
                   let isSuccess = dataDict["success"] as? Bool,
                   isSuccess == true,
                   let matchData = dataDict["data"] as? [String: Any] else { return }
             let match = Match(dict: matchData)
             NotificationCenter.default.post(name: .DidReadMessageSuccess, object: match)
+        }
+        
+        socket.on("update_last_message") { data, ack in
+            guard let dataDict = data.first as? [String: Any],
+                  let isSuccess = dataDict["success"] as? Bool,
+                  isSuccess == true,
+                  let matchData = dataDict["data"] as? [String: Any] else { return }
+            let match = Match(dict: matchData)
+            NotificationCenter.default.post(name: .UpdateLastMessage, object: match)
         }
         
         socket.connect()

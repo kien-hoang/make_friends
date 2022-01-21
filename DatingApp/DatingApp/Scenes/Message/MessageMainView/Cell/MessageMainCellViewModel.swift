@@ -50,11 +50,13 @@ class MessageMainCellViewModel: ObservableObject {
 
 // MARK: - Helper
 extension MessageMainCellViewModel {
-    func receiveMessage(_ message: Message) {
-        guard message.matchId == match.id else { return }
-        match.lastMessage = message
-        match.isRead = false
-        updateLastMessageString(message)
+    
+    func updateLastMessage(_ match: Match) {
+        guard self.match.id == match.id else { return }
+        self.match = match
+        if let lastMessage = match.lastMessage {
+            updateLastMessageString(lastMessage)
+        }
     }
     
     func didReadMessageSuccess(_ match: Match) {

@@ -45,6 +45,10 @@ struct MessageMainView: View {
             }
             .hiddenNavigationBar()
             .navigationView()
+            .onReceive(.UpdateLastMessage) { notification in
+                guard let match = notification.object as? Match else { return }
+                viewModel.updateLastMessage(match)
+            }
         }
     }
     

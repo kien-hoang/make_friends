@@ -37,6 +37,11 @@ class MessageMainViewModel: ObservableObject {
 
 // MARK: - Helper
 extension MessageMainViewModel {
+    func updateLastMessage(_ match: Match) {
+        guard let firstIndex = matches.firstIndex(where: { $0.id == match.id }) else { return }
+        matches[firstIndex] = match
+    }
+    
     func getListChat() {
         Helper.showProgress()
 //        joinRoomDG.enter()
