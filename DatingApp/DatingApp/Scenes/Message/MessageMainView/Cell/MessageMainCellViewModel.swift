@@ -6,22 +6,31 @@
 //
 
 import SwiftUI
+import Combine
 
 class MessageMainCellViewModel: ObservableObject {
     @Published var match: Match
     @Published var isRead = true
     @Published var lastMessageString = "Hãy bắt đầu cuộc trò chuyện"
     
+    var cancellables = Set<AnyCancellable>()
+    
     init(match: Match) {
         self.match = match
-//        isRead = match.isRead
         if let lastMessage = match.lastMessage {
             updateLastMessageString(lastMessage)
-            
-//            if !match.isRead, lastMessage.receiverId == AppData.shared.user.id {
-//                SocketClientManager.shared.readMessage(withMatchId: match.id)
-//            }
         }
+        
+        $match
+            .sink { [weak self] newMatch in
+                guard let self = self else { return }
+                if !newMatch.isRead && newMatch.lastMessage?.receiverId == AppData.shared.user.id {
+                    self.isRead = false
+                } else {
+                    self.isRead = true
+                }
+            }
+            .store(in: &cancellables)
     }
     
     private func updateLastMessageString(_ message: Message) {
@@ -41,15 +50,16 @@ class MessageMainCellViewModel: ObservableObject {
 
 // MARK: - Helper
 extension MessageMainCellViewModel {
-//    func didReadMessageSuccess(_ match: Match) {
-//        guard match.lastMessage?.receiverId == AppData.shared.user.id else { return }
-//        self.match.isRead = true
-//        isRead = true
-//    }
-    
-    func updateLastMessage(_ message: Message) {
+    func receiveMessage(_ message: Message) {
         guard message.matchId == match.id else { return }
+        match.lastMessage = message
+        match.isRead = false
         updateLastMessageString(message)
+    }
+    
+    func didReadMessageSuccess(_ match: Match) {
+        guard match.lastMessage?.receiverId == AppData.shared.user.id else { return }
+        self.match = match
     }
     
     func getImageUrl() -> URL? {

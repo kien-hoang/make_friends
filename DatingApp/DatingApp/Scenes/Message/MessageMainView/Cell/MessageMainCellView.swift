@@ -68,14 +68,14 @@ struct MessageMainCellView: View {
                     .frame(height: 1)
             }
         }
-        .onReceive(.UpdateLastMessage) { notification in
-            guard let message = notification.object as? Message else { return }
-            cellViewModel.updateLastMessage(message)
+        .onReceive(.DidReadMessageSuccess) { notification in
+            guard let match = notification.object as? Match else { return }
+            cellViewModel.didReadMessageSuccess(match)
         }
-//        .onReceive(.DidReadMessageSuccess) { notification in
-//            guard let match = notification.object as? Match else { return }
-//            cellViewModel.didReadMessageSuccess(match)
-//        }
+        .onReceive(.DidReceivedMessage) { notification in
+            guard let message = notification.object as? Message else { return }
+            cellViewModel.receiveMessage(message)
+        }
     }
 }
 

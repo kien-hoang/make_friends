@@ -42,6 +42,11 @@ class MessageViewModel: ObservableObject {
                 self.updateNewImage(image)
             }
             .store(in: &cancellables)
+        
+        if let lastMessage = match.lastMessage,
+            !match.isRead, lastMessage.receiverId == AppData.shared.user.id {
+            SocketClientManager.shared.readMessage(withMatchId: match.id)
+        }
     }
     
     @objc func keyboardShow() {
@@ -67,7 +72,7 @@ class MessageViewModel: ObservableObject {
             guard let self = self else { return }
             self.messages.append(message)
             self.groupMessagesBaseDate()
-            NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
+//            NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
         }
         // if networking failure, then show an error with some retry options
     }

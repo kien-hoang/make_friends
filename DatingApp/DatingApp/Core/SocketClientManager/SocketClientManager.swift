@@ -42,6 +42,7 @@ class SocketClientManager {
         }
         
         socket.on("received_message") { data, ack in
+            print("DEBUG: received_message \(data)")
             guard let dataDict = data.first as? [String: Any],
                   let isSuccess = dataDict["success"] as? Bool,
                   isSuccess == true,
@@ -51,14 +52,15 @@ class SocketClientManager {
             NotificationCenter.default.post(name: .UpdateLastMessage, object: message)
         }
         
-//        socket.on("read_message_success") { data, ack in
-//            guard let dataDict = data.first as? [String: Any],
-//                  let isSuccess = dataDict["success"] as? Bool,
-//                  isSuccess == true,
-//                  let matchData = dataDict["data"] as? [String: Any] else { return }
-//            let match = Match(dict: matchData)
-//            NotificationCenter.default.post(name: .DidReadMessageSuccess, object: match)
-//        }
+        socket.on("read_message_success") { data, ack in
+            print("DEBUG: read_message_success \(data)")
+            guard let dataDict = data.first as? [String: Any],
+                  let isSuccess = dataDict["success"] as? Bool,
+                  isSuccess == true,
+                  let matchData = dataDict["data"] as? [String: Any] else { return }
+            let match = Match(dict: matchData)
+            NotificationCenter.default.post(name: .DidReadMessageSuccess, object: match)
+        }
         
         socket.connect()
     }
@@ -116,10 +118,10 @@ class SocketClientManager {
         }
     }
     
-//    func readMessage(withMatchId matchId: String) {
-//        var dict: [String: Any] = [:]
-//        dict["match_id"] = matchId
-//        
-//        socket.emit("read_message", with: [dict])
-//    }
+    func readMessage(withMatchId matchId: String) {
+        var dict: [String: Any] = [:]
+        dict["match_id"] = matchId
+        
+        socket.emit("read_message", with: [dict])
+    }
 }
