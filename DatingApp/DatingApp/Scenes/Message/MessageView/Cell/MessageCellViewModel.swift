@@ -11,6 +11,7 @@ class MessageCellViewModel: ObservableObject {
     @Published var message: Message
     @Published var fromCurrentUser: Bool = false
     @Published var isShowCreatedTime = false
+    @Published var isShowPhotoFullView = false
     
     init(_ message: Message) {
         self.message = message

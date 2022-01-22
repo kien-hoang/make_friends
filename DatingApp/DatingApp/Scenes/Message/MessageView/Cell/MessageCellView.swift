@@ -11,6 +11,7 @@ import Kingfisher
 struct MessageCellView: View {
     @ObservedObject var cellViewModel: MessageCellViewModel
     
+    
     var body: some View {
         HStack {
             if cellViewModel.fromCurrentUser {
@@ -26,6 +27,9 @@ struct MessageCellView: View {
                         .background(cellViewModel.fromCurrentUser ? Color(Asset.Colors.Global.redD41717.color).opacity(0.3) : Color(Asset.Colors.Global.gray777777.color).opacity(0.3))
                         .cornerRadius(10)
                         .shadow(color: Color(Asset.Colors.Global.gray777777.color).opacity(0.2), radius: 10, x: 0, y: 0)
+                        .onTapGesture {
+                            cellViewModel.toggleShowCreatedTime()
+                        }
                     
                 case .stillImage(let imageUrl):
                     KFImage(imageUrl)
@@ -45,6 +49,12 @@ struct MessageCellView: View {
                         .shadow(color: Color(Asset.Colors.Global.gray777777.color).opacity(0.2), radius: 10, x: 0, y: 0)
                         .cornerRadius(20)
                         .clipped()
+                        .fullScreenCover(isPresented: $cellViewModel.isShowPhotoFullView) {
+                            PhotoFullView(isShowPhotoFullView: $cellViewModel.isShowPhotoFullView, imageUrl: imageUrl)
+                        }
+                        .onTapGesture {
+                            cellViewModel.isShowPhotoFullView = true
+                        }
                 }
                 
                 if let timeString = cellViewModel.message.createdAt?.HHmmddMMyyyy,
@@ -54,13 +64,9 @@ struct MessageCellView: View {
                 }
             }
             
-            
             if !cellViewModel.fromCurrentUser {
                 Spacer()
             }
-        }
-        .onTapGesture {
-            cellViewModel.toggleShowCreatedTime()
         }
     }
 }

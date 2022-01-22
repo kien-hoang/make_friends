@@ -45,6 +45,7 @@
 		139648112783283E009AE8DD /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139648102783283E009AE8DD /* MessageCellView.swift */; };
 		1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481227832849009AE8DD /* MessageCellViewModel.swift */; };
 		1396481527832854009AE8DD /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481427832854009AE8DD /* MessageViewModel.swift */; };
+		139B7D15279C55FE0043A8B4 /* PhotoFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */; };
 		139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F0272EEFE300F3B77F /* DatingAppApp.swift */; };
 		139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F4272EEFE700F3B77F /* Assets.xcassets */; };
 		139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */; };
@@ -158,6 +159,7 @@
 		139648102783283E009AE8DD /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
 		1396481227832849009AE8DD /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
 		1396481427832854009AE8DD /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullView.swift; sourceTree = "<group>"; };
 		139D67ED272EEFE300F3B77F /* DatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139D67F0272EEFE300F3B77F /* DatingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppApp.swift; sourceTree = "<group>"; };
 		139D67F4272EEFE700F3B77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -489,6 +491,14 @@
 				139648102783283E009AE8DD /* MessageCellView.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		139B7D13279C55CD0043A8B4 /* PhotoFullView */ = {
+			isa = PBXGroup;
+			children = (
+				139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */,
+			);
+			path = PhotoFullView;
 			sourceTree = "<group>";
 		};
 		139D67E4272EEFE300F3B77F = {
@@ -832,6 +842,7 @@
 		13DE8EF4273C29D000E798BF /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				139B7D13279C55CD0043A8B4 /* PhotoFullView */,
 				13FFFC7927523278008D59D8 /* ImagePickerRepresentable */,
 				13DE8EF8273C336A00E798BF /* PushingButtonView */,
 				13DE8EF5273C29D900E798BF /* DefaultNavigationView */,
@@ -1207,6 +1218,7 @@
 				133F746827809AAE00EF79B4 /* UIApplication+Extensions.swift in Sources */,
 				1396480E2783281F009AE8DD /* MessageView.swift in Sources */,
 				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
+				139B7D15279C55FE0043A8B4 /* PhotoFullView.swift in Sources */,
 				139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */,
 				13FFFC7D27529141008D59D8 /* MainViewModel.swift in Sources */,
 				132097022764A39A008F8DAF /* MatchHomeViewModel.swift in Sources */,
