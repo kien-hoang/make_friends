@@ -37,7 +37,7 @@ extension ChooseInterestedTagsViewModel {
             return
         }
         var params: [String: Any] = [:]
-        params["interested_tags"] = selectedInterestedTags.map { $0.id }
+        params["interested_tag_ids"] = selectedInterestedTags.map { $0.id }
         
         Helper.showProgress()
         UserAPIManager.shared.updateInterestedTags(withParams: params) { [weak self] isSuccess, error in
