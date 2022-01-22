@@ -207,6 +207,19 @@ struct MessageView: View {
                     .cornerRadius(48 / 2)
                     .clipped()
                     .padding(.trailing, 8)
+                    // TODO: Show/dismiss Detail Profile View
+                    .fullScreenCover(isPresented: $viewModel.isPresentDetailProfileView) {
+                        let viewModel = DetailProfileViewModel(user: viewModel.getFriendUser())
+                        DetailProfileView(viewModel: viewModel)
+                            .hiddenNavigationBar()
+                            .navigationView()
+                    }
+                    .onReceive(.DismissDetailProfileView) { _ in
+                        viewModel.isPresentDetailProfileView = false
+                    }
+                    .onTapGesture {
+                        viewModel.showDetailFriendProfile()
+                    }
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text(viewModel.getLikedName())

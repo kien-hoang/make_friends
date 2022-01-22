@@ -18,6 +18,9 @@ struct MessageMainView: View {
                 ListChatView(viewModel: viewModel)
             }
         }
+        .onReceive(.DidGotMatch) { _ in
+            viewModel.getListChat()
+        }
     }
     
     // MARK: - ListChatView

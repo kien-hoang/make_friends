@@ -20,6 +20,7 @@ class MessageViewModel: ObservableObject {
     @Published var isShowUploadOptionActionSheet = false
     
     @Published var isFriendTyping = false
+    @Published var isPresentDetailProfileView = false
     
     private var isFirstLoadVC = true
     private var isEmptyData = false // TODO: Avoid get more data if not record is got anymore
@@ -130,6 +131,14 @@ extension MessageViewModel {
 
 // MARK: - Helper
 extension MessageViewModel {
+    func showDetailFriendProfile() {
+        isPresentDetailProfileView = true
+    }
+    
+    func getFriendUser() -> User {
+        return match.members.first(where: { $0.id != AppData.shared.user.id }) ?? User()
+    }
+    
     func receivedNotifyStopTypingMessage(_ dataDict: [String: Any]) {
         guard let matchId = dataDict["match_id"] as? String,
               let sendedUserId = dataDict["user_id"] as? String,
