@@ -104,4 +104,6 @@ extension Notification.Name {
 //    static let DidGetListChatSuccess = Notification.Name("DidGetListChatSuccess")
     static let DismissDetailProfileView = Notification.Name("DismissDetailProfileView")
     static let DidReadMessageSuccess = Notification.Name("DidReadMessageSuccess")
+    static let NotifyTypingMessage = Notification.Name("NotifyTypingMessage")
+    static let NotifyStopTypingMessage = Notification.Name("NotifyStopTypingMessage")
 }

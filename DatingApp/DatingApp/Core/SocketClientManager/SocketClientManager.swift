@@ -68,6 +68,24 @@ class SocketClientManager {
             NotificationCenter.default.post(name: .UpdateLastMessage, object: match)
         }
         
+        socket.on("typing_success") { data, ack in
+            guard let dataDict = data.first as? [String: Any],
+                  let isSuccess = dataDict["success"] as? Bool,
+                  isSuccess == true,
+                  let matchData = dataDict["data"] as? [String: Any] else { return }
+            print("DEBUG: typing_success \(matchData)")
+            NotificationCenter.default.post(name: .NotifyTypingMessage, object: matchData)
+        }
+        
+        socket.on("stop_typing_success") { data, ack in
+            guard let dataDict = data.first as? [String: Any],
+                  let isSuccess = dataDict["success"] as? Bool,
+                  isSuccess == true,
+                  let matchData = dataDict["data"] as? [String: Any] else { return }
+            print("DEBUG: stop_typing_success \(matchData)")
+            NotificationCenter.default.post(name: .NotifyStopTypingMessage, object: matchData)
+        }
+        
         socket.connect()
     }
     
@@ -129,5 +147,21 @@ class SocketClientManager {
         dict["match_id"] = matchId
         
         socket.emit("read_message", with: [dict])
+    }
+    
+    func typingMessage(withMatchId matchId: String) {
+        var dict: [String: Any] = [:]
+        dict["match_id"] = matchId
+        dict["user_id"] = AppData.shared.user.id
+
+        socket.emit("typing_message", with: [dict])
+    }
+    
+    func stopTypingMessage(withMatchId matchId: String) {
+        var dict: [String: Any] = [:]
+        dict["match_id"] = matchId
+        dict["user_id"] = AppData.shared.user.id
+
+        socket.emit("stop_typing_message", with: [dict])
     }
 }

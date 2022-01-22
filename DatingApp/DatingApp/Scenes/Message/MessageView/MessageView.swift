@@ -101,6 +101,7 @@ struct MessageView: View {
                 .padding(.leading, K.Constants.ScreenPadding)
                 .onChange(of: viewModel.keyboardIsShowing) { isShow in
                     isKeyboardShowing = isShow
+                    viewModel.notifyTypingMessageIfNeeded(isShow)
                 }
                 .onTapGesture {
                     if !viewModel.keyboardIsShowing {
@@ -210,16 +211,80 @@ struct MessageView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(viewModel.getLikedName())
                         .style(font: .lexendMedium, size: 24, color: Asset.Colors.Global.black100.color)
-                    HStack(spacing: 4) {
-                        Circle()
-                            .fill(Color(Asset.Colors.Global.redD41717.color))
-                            .frame(width: 6, height: 6)
-                        Text("Đang hoạt động")
-                            .style(font: .lexendRegular, size: 10, color: Asset.Colors.Global.gray777777.color)
+                    Group {
+                        if viewModel.isFriendTyping {
+                            TypingAnimationView()
+                        } else {
+                            HStack(spacing: 4) {
+                                Circle()
+                                    .fill(Color(Asset.Colors.Global.redD41717.color))
+                                    .frame(width: 6, height: 6)
+                                Text("Đang hoạt động")
+                                    .style(font: .lexendRegular, size: 10, color: Asset.Colors.Global.gray777777.color)
+                            }
+                        }
+                    }
+                    .frame(height: 15)
+                    .padding(.leading, 2)
+                    .onReceive(.NotifyTypingMessage) { notification in
+                        guard let dataDict = notification.object as? [String: Any] else { return }
+                        viewModel.receivedNotifyTypingMessage(dataDict)
+                    }
+                    .onReceive(.NotifyStopTypingMessage) { notification in
+                        guard let dataDict = notification.object as? [String: Any] else { return }
+                        viewModel.receivedNotifyStopTypingMessage(dataDict)
                     }
                 }
                 
                 Spacer()
+            }
+        }
+    }
+    
+    // MARK: - TypingAnimationView
+    struct TypingAnimationView: View {
+        @State private var isBlinking1: Bool = false
+        @State private var isBlinking2: Bool = false
+        @State private var isBlinking3: Bool = false
+        
+        var body: some View {
+            HStack(spacing: 4) {
+                Circle()
+                    .fill(Color(Asset.Colors.Global.redD41717.color))
+                    .frame(width: 6, height: 6)
+                    .opacity(isBlinking1 ? 0.2 : 1)
+                    .onAppear {
+                        withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: true)) {
+                            isBlinking1 = true
+                        }
+                    }
+                
+                Circle()
+                    .fill(Color(Asset.Colors.Global.redD41717.color))
+                    .frame(width: 6, height: 6)
+                    .opacity(isBlinking2 ? 0.2 : 1)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: true)) {
+                                self.isBlinking2 = true
+                            }
+                        }
+                    }
+                
+                Circle()
+                    .fill(Color(Asset.Colors.Global.redD41717.color))
+                    .frame(width: 6, height: 6)
+                    .opacity(isBlinking3 ? 0.2 : 1)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            withAnimation(.linear(duration: 0.5).repeatForever(autoreverses: true)) {
+                                self.isBlinking3 = true
+                            }
+                        }
+                    }
+                
+                Text("Đang nhập tin nhắn")
+                    .style(font: .lexendRegular, size: 10, color: Asset.Colors.Global.gray777777.color)
             }
         }
     }

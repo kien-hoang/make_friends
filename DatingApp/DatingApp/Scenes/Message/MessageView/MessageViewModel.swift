@@ -19,6 +19,8 @@ class MessageViewModel: ObservableObject {
     @Published var newImage: UIImage?
     @Published var isShowUploadOptionActionSheet = false
     
+    @Published var isFriendTyping = false
+    
     private var isFirstLoadVC = true
     private var isEmptyData = false // TODO: Avoid get more data if not record is got anymore
     var isLoadingMoreData = false // TODO: Avoid scroll to bottom when loading data
@@ -128,6 +130,32 @@ extension MessageViewModel {
 
 // MARK: - Helper
 extension MessageViewModel {
+    func receivedNotifyStopTypingMessage(_ dataDict: [String: Any]) {
+        guard let matchId = dataDict["match_id"] as? String,
+              let sendedUserId = dataDict["user_id"] as? String,
+              matchId == match.id,
+              match.members.contains(where: { $0.id == sendedUserId }) else { return }
+        isFriendTyping = false
+    }
+    
+    func receivedNotifyTypingMessage(_ dataDict: [String: Any]) {
+        guard let matchId = dataDict["match_id"] as? String,
+              let sendedUserId = dataDict["user_id"] as? String,
+              matchId == match.id,
+              match.members.contains(where: { $0.id == sendedUserId }) else { return }
+        isFriendTyping = true
+    }
+
+    func notifyTypingMessageIfNeeded(_ isKeyboardShowing: Bool) {
+        switch isKeyboardShowing {
+        case true:
+            SocketClientManager.shared.typingMessage(withMatchId: match.id)
+            
+        case false:
+            SocketClientManager.shared.stopTypingMessage(withMatchId: match.id)
+        }
+    }
+    
     func loadMoreIfNeeded() {
         guard !isFirstLoadVC, !isEmptyData else {
             isFirstLoadVC = false
