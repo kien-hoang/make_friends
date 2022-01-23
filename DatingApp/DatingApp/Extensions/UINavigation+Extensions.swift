@@ -20,9 +20,16 @@ extension UINavigationController: UIGestureRecognizerDelegate {
 }
 
 struct NavigationUtil {
-    static func popToRootView() {
+    static func popToRootView(completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            completion()
+        }
+        
         findNavigationController(viewController: UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController)?
             .popToRootViewController(animated: true)
+        
+        CATransaction.commit()
     }
     
     static func findNavigationController(viewController: UIViewController?) -> UINavigationController? {

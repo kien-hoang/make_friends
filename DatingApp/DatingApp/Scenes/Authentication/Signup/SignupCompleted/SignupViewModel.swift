@@ -85,8 +85,11 @@ extension SignupViewModel {
                 Helper.showProgressError(error.localizedDescription)
             } else if let _ = user {
                 Helper.showSuccess("Đăng ký tài khoản mới thành công. Vui lòng đăng nhập!")
-                NavigationUtil.popToRootView()
-                NotificationCenter.default.post(name: NSNotification.Name(K.KeyPaths.DidSignupSuccess), object: nil)
+                NavigationUtil.popToRootView {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        NotificationCenter.default.post(name: NSNotification.Name(K.KeyPaths.DidSignupSuccess), object: nil)
+                    }
+                }
             }
         }
     }

@@ -9,9 +9,14 @@ import SwiftUI
 
 class ForgotPasswordViewModel: ObservableObject {
     @Published var isTrueOTP = false
+    @Published var isEnableNextButton = false
     
     @Published var otpField = "" {
         didSet {
+            defer {
+                isEnableNextButton = otpField.count == 6
+            }
+            
             guard otpField.count <= 6,
                   otpField.last?.isNumber ?? true else {
                       DispatchQueue.main.async {
@@ -58,6 +63,22 @@ class ForgotPasswordViewModel: ObservableObject {
             return ""
         }
         return String(Array(otpField)[5])
+    }
+}
+
+// MARK: - API
+extension ForgotPasswordViewModel {
+    func checkOTP() {
+        Helper.showProgress()
+        AuthenticationAPIManager.shared.checkOTP(phone: "0987914956", otpCode: otpField) { [weak self] isSuccess, error in
+            Helper.dismissProgress()
+            guard let self = self else { return }
+            if let error = error {
+                Helper.showProgressError(error.localizedDescription)
+            } else if isSuccess {
+                self.isTrueOTP = true
+            }
+        }
     }
 }
 

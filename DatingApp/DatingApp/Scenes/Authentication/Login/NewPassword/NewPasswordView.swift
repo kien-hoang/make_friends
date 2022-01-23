@@ -146,7 +146,7 @@ struct NewPasswordView: View {
         
         var body: some View {
             PushingButtonWhenTrue(Binding.constant(false), destinationView: EmptyView()) {
-                
+                viewModel.setNewPassword()
             } label: {
                 Text("Xác nhận")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)

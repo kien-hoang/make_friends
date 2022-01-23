@@ -89,8 +89,12 @@ struct ForgotPasswordView: View {
         @ObservedObject var viewModel: ForgotPasswordViewModel
         
         var body: some View {
+            let fillColor = viewModel.isEnableNextButton ? Color(Asset.Colors.Global.redD41717.color) : Color(Asset.Colors.Global.gray777777.color)
             PushingButtonWhenTrue($viewModel.isTrueOTP, destinationView: NewPasswordView()) {
-                viewModel.isTrueOTP = true
+                if viewModel.isEnableNextButton {
+                    viewModel.checkOTP()
+                }
+                
             } label: {
                 Text("Tiếp tục")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)
@@ -98,8 +102,8 @@ struct ForgotPasswordView: View {
                     .frame(width: UIScreen.screenWidth - K.Constants.ScreenPadding * 2, height: 45)
                     .background(
                         RoundedRectangle(cornerRadius: 22)
-                            .fill(Color(Asset.Colors.Global.redD41717.color))
-                            .shadow(color: Color(Asset.Colors.Global.redD41717.color).opacity(0.25), radius: 2, x: 0, y: 0)
+                            .fill(fillColor)
+                            .shadow(color: fillColor.opacity(0.25), radius: 2, x: 0, y: 0)
                     )
             }
         }

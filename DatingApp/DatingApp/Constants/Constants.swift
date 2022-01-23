@@ -42,17 +42,18 @@ struct K {
         
         struct URL {
             #if DEBUG
-            static let BaseUrl = LiveUrl
+            static let BaseUrl = StagingUrl
             #else
-            static let BaseUrl = LiveUrl
+            static let BaseUrl = StagingUrl
             #endif
             static let SocketUrl = BaseUrl.replacingOccurrences(of: "/api/", with: "")
             static let StagingUrl = "http://localhost:3000/api/"
             static let LiveUrl = "https://make-friend.herokuapp.com/api/"
             
             static let InterestedTag = "interested-tags"
-            static let Register = "auth/register"
-            static let Login = "auth/login"
+            static let Auth = "auth"
+            static let Register = Auth + "/register"
+            static let Login = Auth + "/login"
             static let User = "user"
             static let Upload = "upload"
             static let Recs = "recs"
