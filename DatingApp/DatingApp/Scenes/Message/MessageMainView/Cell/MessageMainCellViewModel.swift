@@ -44,6 +44,12 @@ class MessageMainCellViewModel: ObservableObject {
             } else {
                 lastMessageString = "Bạn vừa nhận được ảnh từ đối phương"
             }
+        case .video(_):
+            if message.userId == AppData.shared.user.id {
+                lastMessageString = "Bạn vừa gửi video cho đối phương"
+            } else {
+                lastMessageString = "Bạn vừa nhận được video từ đối phương"
+            }
         }
     }
 }

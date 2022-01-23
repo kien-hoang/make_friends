@@ -12,6 +12,7 @@ class MessageCellViewModel: ObservableObject {
     @Published var fromCurrentUser: Bool = false
     @Published var isShowCreatedTime = false
     @Published var isShowPhotoFullView = false
+    @Published var isShowVideoFullView = false
     
     init(_ message: Message) {
         self.message = message

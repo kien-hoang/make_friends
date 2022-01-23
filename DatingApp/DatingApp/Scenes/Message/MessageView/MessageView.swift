@@ -91,21 +91,17 @@ struct MessageView: View {
         
         var body: some View {
             HStack(spacing: 0) {
-                VStack {
+                HStack {
                     Image(Asset.Global.icAddImage.name)
                         .resizable()
                         .frame(width: 25, height: 25)
                 }
                 .frame(width: isKeyboardShowing ? 0 : 50, height: 50)
                 .clipped()
-                .padding(.leading, K.Constants.ScreenPadding)
-                .onChange(of: viewModel.keyboardIsShowing) { isShow in
-                    isKeyboardShowing = isShow
-                    viewModel.notifyTypingMessageIfNeeded(isShow)
-                }
+                .padding(.leading, K.Constants.ScreenPadding / 2)
                 .onTapGesture {
                     if !viewModel.keyboardIsShowing {
-                        viewModel.isShowUploadOptionActionSheet = true
+                        viewModel.isShowUploadImageOptionActionSheet = true
                     }
                 }
                 .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
@@ -114,8 +110,30 @@ struct MessageView: View {
                 .sheet(isPresented: $viewModel.isShowCamera) {
                     ImagePicker(sourceType: .camera, selectedImage: $viewModel.newImage)
                 }
-                .actionSheet(isPresented: $viewModel.isShowUploadOptionActionSheet) {
-                    uploadOptionActionSheet
+                .actionSheet(isPresented: $viewModel.isShowUploadImageOptionActionSheet) {
+                    uploadImageOptionActionSheet
+                }
+                
+                HStack {
+                    Image(Asset.Global.icAddVideo.name)
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                }
+                .frame(width: isKeyboardShowing ? 0 : 50, height: 50)
+                .clipped()
+                .onTapGesture {
+                    if !viewModel.keyboardIsShowing {
+                        viewModel.isShowUploadVideoOptionActionSheet = true
+                    }
+                }
+                .sheet(isPresented: $viewModel.isShowVideoLibrary) {
+                    EmptyView()
+                }
+                .sheet(isPresented: $viewModel.isShowVideo) {
+                    EmptyView()
+                }
+                .actionSheet(isPresented: $viewModel.isShowUploadVideoOptionActionSheet) {
+                    uploadVideoOptionActionSheet
                 }
                 
                 ZStack(alignment: .trailing) {
@@ -125,7 +143,7 @@ struct MessageView: View {
                         TextField("Aa", text: $typingMessage)
                             .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
                             .textFieldStyle(PlainTextFieldStyle())
-                            .frame(width: __SCREEN_WIDTH__ - 100, height: 45)
+//                            .frame(width: __SCREEN_WIDTH__ - 100, height: 45)
                             .padding(.horizontal)
                         
                         Spacer()
@@ -140,6 +158,7 @@ struct MessageView: View {
                         Text("Gửi")
                             .style(font: .lexendRegular, size: 14, color: typingMessage.isEmpty ? Asset.Colors.Global.gray777777.color : Asset.Colors.Global.redD41717.color)
                     }
+                    .frame(height: 40)
                     .padding(.horizontal)
                 }
                 .frame(height: 40)
@@ -148,7 +167,13 @@ struct MessageView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color(Asset.Colors.Global.gray777777.color).opacity(0.3), lineWidth: 1)
                 )
-                .padding(.trailing, K.Constants.ScreenPadding)
+                .padding(.trailing, K.Constants.ScreenPadding / 2)
+                
+                Spacer()
+            }
+            .onChange(of: viewModel.keyboardIsShowing) { isShow in
+                isKeyboardShowing = isShow
+                viewModel.notifyTypingMessageIfNeeded(isShow)
             }
         }
         
@@ -158,7 +183,7 @@ struct MessageView: View {
         }
         
         // MARK: - UploadOption
-        var uploadOptionActionSheet: ActionSheet {
+        var uploadImageOptionActionSheet: ActionSheet {
             ActionSheet(
                 title: Text("Tải ảnh lên"),
                 buttons: [
@@ -167,6 +192,21 @@ struct MessageView: View {
                     },
                     .default(Text("Bộ sưu tập")) {
                         viewModel.isShowPhotoLibrary = true
+                    },
+                    .cancel(Text("Huỷ bỏ"))
+                ]
+            )
+        }
+        
+        var uploadVideoOptionActionSheet: ActionSheet {
+            ActionSheet(
+                title: Text("Tải video lên"),
+                buttons: [
+                    .default(Text("Quay phim")) {
+                        viewModel.isShowVideo = true
+                    },
+                    .default(Text("Thư viện")) {
+                        viewModel.isShowVideoLibrary = true
                     },
                     .cancel(Text("Huỷ bỏ"))
                 ]

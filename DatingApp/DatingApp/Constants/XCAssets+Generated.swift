@@ -44,6 +44,7 @@ internal enum Asset {
   }
   internal enum Global {
     internal static let icAddImage = ImageAsset(name: "ic_add_image")
+    internal static let icAddVideo = ImageAsset(name: "ic_add_video")
     internal static let icDefaultBack = ImageAsset(name: "ic_default_back")
     internal static let icDefaultClose = ImageAsset(name: "ic_default_close")
     internal static let icDefaultNext = ImageAsset(name: "ic_default_next")
@@ -51,6 +52,7 @@ internal enum Asset {
     internal static let icLightLogo = ImageAsset(name: "ic_light_logo")
     internal static let icLocation = ImageAsset(name: "ic_location")
     internal static let icPlaceholderLogo = ImageAsset(name: "ic_placeholder_logo")
+    internal static let icPlayVideo = ImageAsset(name: "ic_play_video")
     internal static let icSearch = ImageAsset(name: "ic_search")
     internal static let swipeBack = ImageAsset(name: "swipe_back")
     internal static let swipeDislike = ImageAsset(name: "swipe_dislike")

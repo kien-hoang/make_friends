@@ -10,6 +10,7 @@ import UIKit
 enum MessageType: Hashable {
     case text(_ text: String)
     case stillImage(_ imageUrl: URL)
+    case video(_ videoUrl: URL)
     
     func getRawValue() -> String {
         switch self {
@@ -18,6 +19,9 @@ enum MessageType: Hashable {
             
         case .stillImage(_):
             return "IMAGE"
+            
+        case .video(_):
+            return "VIDEO"
         }
     }
 }
@@ -46,6 +50,11 @@ struct Message: Hashable, Equatable {
                   let imageUrlString = dict["image_url"] as? String,
                   let imageUrl = URL(string: imageUrlString) {
             type = .stillImage(imageUrl)
+        } else if let typeString = dict["type"] as? String,
+                  typeString == "VIDEO",
+                  let videoUrlString = dict["video_url"] as? String,
+                  let videoUrl = URL(string: videoUrlString) {
+            type = .video(videoUrl)
         }
         if let createdAt = dict[K.API.ParameterKeys.CreatedAt] as? String {
             let date = Date.dateFullFormat(from: createdAt)

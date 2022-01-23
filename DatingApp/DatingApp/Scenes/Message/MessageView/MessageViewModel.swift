@@ -17,7 +17,11 @@ class MessageViewModel: ObservableObject {
     @Published var isShowPhotoLibrary = false
     @Published var isShowCamera = false
     @Published var newImage: UIImage?
-    @Published var isShowUploadOptionActionSheet = false
+    @Published var isShowUploadImageOptionActionSheet = false
+    
+    @Published var isShowVideoLibrary = false
+    @Published var isShowVideo = false
+    @Published var isShowUploadVideoOptionActionSheet = false
     
     @Published var isFriendTyping = false
     @Published var isPresentDetailProfileView = false

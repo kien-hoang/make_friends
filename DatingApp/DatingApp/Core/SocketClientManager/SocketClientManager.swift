@@ -135,6 +135,10 @@ class SocketClientManager {
         case .stillImage(let imageUrl):
             dict["type"] = message.type.getRawValue()
             dict["image_url"] = imageUrl.absoluteString
+            
+        case .video(let videoUrl):
+            dict["type"] = message.type.getRawValue()
+            dict["video_url"] = videoUrl.absoluteString
         }
         
         socket.emit("send_message", with: [dict]) {

@@ -52,6 +52,7 @@
 		139B7D1E279D38840043A8B4 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D1D279D38840043A8B4 /* ForgotPasswordViewModel.swift */; };
 		139B7D21279D44660043A8B4 /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D20279D44660043A8B4 /* NewPasswordView.swift */; };
 		139B7D23279D446F0043A8B4 /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D22279D446F0043A8B4 /* NewPasswordViewModel.swift */; };
+		139B7D26279D84EA0043A8B4 /* VideoFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D25279D84E90043A8B4 /* VideoFullView.swift */; };
 		139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F0272EEFE300F3B77F /* DatingAppApp.swift */; };
 		139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F4272EEFE700F3B77F /* Assets.xcassets */; };
 		139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */; };
@@ -172,6 +173,7 @@
 		139B7D1D279D38840043A8B4 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		139B7D20279D44660043A8B4 /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
 		139B7D22279D446F0043A8B4 /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
+		139B7D25279D84E90043A8B4 /* VideoFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFullView.swift; sourceTree = "<group>"; };
 		139D67ED272EEFE300F3B77F /* DatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139D67F0272EEFE300F3B77F /* DatingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppApp.swift; sourceTree = "<group>"; };
 		139D67F4272EEFE700F3B77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -531,6 +533,14 @@
 			path = NewPassword;
 			sourceTree = "<group>";
 		};
+		139B7D24279D84DC0043A8B4 /* VideoFullView */ = {
+			isa = PBXGroup;
+			children = (
+				139B7D25279D84E90043A8B4 /* VideoFullView.swift */,
+			);
+			path = VideoFullView;
+			sourceTree = "<group>";
+		};
 		139D67E4272EEFE300F3B77F = {
 			isa = PBXGroup;
 			children = (
@@ -876,6 +886,7 @@
 		13DE8EF4273C29D000E798BF /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				139B7D24279D84DC0043A8B4 /* VideoFullView */,
 				139B7D13279C55CD0043A8B4 /* PhotoFullView */,
 				13FFFC7927523278008D59D8 /* ImagePickerRepresentable */,
 				13DE8EF8273C336A00E798BF /* PushingButtonView */,
@@ -1270,6 +1281,7 @@
 				133F74752782F52400EF79B4 /* Message.swift in Sources */,
 				133F739F2773566700EF79B4 /* MatchSuccessViewModel.swift in Sources */,
 				139B7D1A279D12A70043A8B4 /* SettingsViewModel.swift in Sources */,
+				139B7D26279D84EA0043A8B4 /* VideoFullView.swift in Sources */,
 				132A8FEE274953AB004D0FE9 /* MatchHomeView.swift in Sources */,
 				13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */,
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
