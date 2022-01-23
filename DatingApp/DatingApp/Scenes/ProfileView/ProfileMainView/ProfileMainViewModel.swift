@@ -13,7 +13,7 @@ class ProfileMainViewModel: ObservableObject {
     @Published var name = ""
     @Published var age = 0
     @Published var isVerified: Bool = false
-    @Published var user: User = AppData.shared.user
+    @Published var user: User = User()
     
     @Published var isShowPhotoLibrary = false
     @Published var isShowCamera = false
@@ -24,16 +24,19 @@ class ProfileMainViewModel: ObservableObject {
     var cancellable = Set<AnyCancellable>()
     
     init() {
+        user = AppData.shared.user ?? User()
         $user
             .sink { [weak self] user in
                 guard let self = self else { return }
                 self.avatarUrl = user.images.first ?? ""
                 self.name = user.name
                 
-                let now = Date()
-                let calendar = Calendar.current
-                let ageComponents = calendar.dateComponents([.year], from: user.dateOfBirth!, to: now)
-                self.age = ageComponents.year!
+                if let dateOfBirth = user.dateOfBirth {
+                    let now = Date()
+                    let calendar = Calendar.current
+                    let ageComponents = calendar.dateComponents([.year], from: dateOfBirth, to: now)
+                    self.age = ageComponents.year ?? 0
+                }
                 
                 self.isVerified = user.isVerified
             }

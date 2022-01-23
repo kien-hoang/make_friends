@@ -27,6 +27,10 @@ struct ProfileMainView: View {
         }
         .hiddenNavigationBar()
         .navigationView()
+        // TODO: Reload user data
+        .onReceive(.GetProfileUserSuccess) { _ in
+            viewModel.user = AppData.shared.user
+        }
     }
     
     // MARK: - AvatarView

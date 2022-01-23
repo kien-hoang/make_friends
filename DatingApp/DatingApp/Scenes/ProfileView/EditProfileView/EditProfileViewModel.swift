@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class EditProfileViewModel: ObservableObject {
-    @Published var user: User = AppData.shared.user
+    @Published var user: User = User()
     @Published var imageUrls: [String] = []
     @Published var interestedTagsString: String = ""
 
@@ -19,6 +19,7 @@ class EditProfileViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     
     init() {
+        user = AppData.shared.user ?? User()
         $user
             .sink { newValue in
                 self.getInterestedTagsString()
