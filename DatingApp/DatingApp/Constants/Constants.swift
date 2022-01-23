@@ -42,9 +42,9 @@ struct K {
         
         struct URL {
             #if DEBUG
-            static let BaseUrl = StagingUrl
+            static let BaseUrl = LiveUrl
             #else
-            static let BaseUrl = StagingUrl
+            static let BaseUrl = LiveUrl
             #endif
             static let SocketUrl = BaseUrl.replacingOccurrences(of: "/api/", with: "")
             static let StagingUrl = "http://localhost:3000/api/"
