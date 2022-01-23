@@ -14,8 +14,7 @@ struct ProfileMainView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            MenuView()
-                .padding(.bottom, 34)
+            Spacer()
             
             AvatarView(viewModel: viewModel)
                 .padding(.bottom, 54)
@@ -23,43 +22,11 @@ struct ProfileMainView: View {
             ToolsView(viewModel: viewModel)
             
             Spacer()
+            Spacer()
+            Spacer()
         }
         .hiddenNavigationBar()
         .navigationView()
-    }
-    
-    // MARK: - MenuView
-    struct MenuView: View {
-        var body: some View {
-            HStack {
-                Spacer()
-                PushingButton(destinationView: TestLogout()) {
-                    
-                } label: {
-                    Image(Asset.Profile.icMenu.name)
-                        .frame(width: 30, height: 30)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
-                }
-            }
-        }
-        
-        struct TestLogout: View { // test, delete later
-            @EnvironmentObject private var viewRouter: ViewRouter
-            var body: some View {
-                Button {
-                    Helper.deleteLocalValue(withKey: K.UserDefaults.Token)
-                    viewRouter.selectedTab = AppTabView.MatchHomeView.rawValue
-                    viewRouter.currentView = .LoginView
-                    LocationManager.shared.stopUpdatingLocation()
-                    AppData.shared.isUpdatedLocation = false
-                    AppData.shared.deviceToken = ""
-                    SocketClientManager.shared.userLogout()
-                    
-                } label: {
-                    Text("Logout")
-                }
-            }
-        }
     }
     
     // MARK: - AvatarView
@@ -124,22 +91,21 @@ struct ProfileMainView: View {
                 HStack {
                     Spacer()
                     
-                    VStack(spacing: 15) {
-                        Circle()
-                            .fill(Color(Asset.Colors.Global.white100.color))
-                            .frame(width: 50, height: 50)
-                            .shadow(color: Color(Asset.Colors.Global.black100.color).opacity(0.25), radius: 4, x: 0, y: 0)
-                            .overlay(
-                                Image(Asset.Profile.icSetting.name)
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                            )
-                        
-                        Text("Thiết lập")
-                            .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.black100.color)
-                    }
-                    .onTapGesture {
-                        viewModel.didTapSetting()
+                    NavigationLink(destination: SettingsView()) {
+                        VStack(spacing: 15) {
+                            Circle()
+                                .fill(Color(Asset.Colors.Global.white100.color))
+                                .frame(width: 50, height: 50)
+                                .shadow(color: Color(Asset.Colors.Global.black100.color).opacity(0.25), radius: 4, x: 0, y: 0)
+                                .overlay(
+                                    Image(Asset.Profile.icSetting.name)
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                )
+                            
+                            Text("Thiết lập")
+                                .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.black100.color)
+                        }
                     }
                     
                     Spacer()

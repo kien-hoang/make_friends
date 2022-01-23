@@ -9,16 +9,16 @@ import SwiftUI
 import Combine
 
 class SignupViewModel: ObservableObject {    
-    @Published var phone: String = "0987914956"
-    @Published var password: String = "htkien"
+    @Published var phone: String = ""
+    @Published var password: String = ""
     @Published var isShowPassword: Bool = false
-    @Published var confirmPassword: String = "htkien"
+    @Published var confirmPassword: String = ""
     @Published var isShowConfirmPassword: Bool = false
-    @Published var name: String = "Radley Hoang"
+    @Published var name: String = ""
     @Published var dateOfBirth: Date = Date()
     @Published var dateOfBirthString: String = ""
     @Published var isShowCalendar: Bool = false
-    @Published var email: String = "htkien.dev@gmail.com"
+    @Published var email: String = ""
     
     @Published var isValidUser: Bool = false
     

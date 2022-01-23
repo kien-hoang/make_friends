@@ -46,6 +46,8 @@
 		1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481227832849009AE8DD /* MessageCellViewModel.swift */; };
 		1396481527832854009AE8DD /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481427832854009AE8DD /* MessageViewModel.swift */; };
 		139B7D15279C55FE0043A8B4 /* PhotoFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */; };
+		139B7D18279D12660043A8B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D17279D12660043A8B4 /* SettingsView.swift */; };
+		139B7D1A279D12A70043A8B4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D19279D12A70043A8B4 /* SettingsViewModel.swift */; };
 		139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F0272EEFE300F3B77F /* DatingAppApp.swift */; };
 		139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F4272EEFE700F3B77F /* Assets.xcassets */; };
 		139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */; };
@@ -160,6 +162,8 @@
 		1396481227832849009AE8DD /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
 		1396481427832854009AE8DD /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullView.swift; sourceTree = "<group>"; };
+		139B7D17279D12660043A8B4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		139B7D19279D12A70043A8B4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		139D67ED272EEFE300F3B77F /* DatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139D67F0272EEFE300F3B77F /* DatingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppApp.swift; sourceTree = "<group>"; };
 		139D67F4272EEFE700F3B77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -501,6 +505,15 @@
 			path = PhotoFullView;
 			sourceTree = "<group>";
 		};
+		139B7D16279D124D0043A8B4 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				139B7D19279D12A70043A8B4 /* SettingsViewModel.swift */,
+				139B7D17279D12660043A8B4 /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		139D67E4272EEFE300F3B77F = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +602,7 @@
 				132A900A274BE1D2004D0FE9 /* LikesView */,
 				132A9002274BD872004D0FE9 /* Message */,
 				13A4D5312753BC8300D3775C /* ProfileView */,
+				139B7D16279D124D0043A8B4 /* SettingsView */,
 				139D68D82732FE8B00F3B77F /* Authentication */,
 				13DE8EDC273AD4EF00E798BF /* LaunchScreen */,
 			);
@@ -1203,6 +1217,7 @@
 				133F7472278197C800EF79B4 /* Match.swift in Sources */,
 				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
 				13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */,
+				139B7D18279D12660043A8B4 /* SettingsView.swift in Sources */,
 				13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */,
 				133F74662780873C00EF79B4 /* MessageMainViewModel.swift in Sources */,
 				13FFFC8027529636008D59D8 /* UserAPIManager.swift in Sources */,
@@ -1230,6 +1245,7 @@
 				132A900C274BE1E5004D0FE9 /* LikesView.swift in Sources */,
 				133F74752782F52400EF79B4 /* Message.swift in Sources */,
 				133F739F2773566700EF79B4 /* MatchSuccessViewModel.swift in Sources */,
+				139B7D1A279D12A70043A8B4 /* SettingsViewModel.swift in Sources */,
 				132A8FEE274953AB004D0FE9 /* MatchHomeView.swift in Sources */,
 				13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */,
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
@@ -1437,7 +1453,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
@@ -1463,7 +1479,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1476,7 +1492,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingAppRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
@@ -1502,7 +1518,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -60,10 +60,6 @@ extension ProfileMainViewModel {
         print("didTapVerified")
     }
     
-    func didTapSetting() {
-        print("didTapSetting")
-    }
-    
     func didTapAddMedia() {
         guard user.images.count < 9 else {
             Helper.showProgressError("Đã đạt tối đa ảnh có thể thêm. Vui lòng vào chỉnh sửa ảnh")

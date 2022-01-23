@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignupPhoneView: View {
-    @State private var phoneText = "987914956"
+    @State private var phoneText = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
