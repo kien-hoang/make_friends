@@ -29,14 +29,24 @@ struct LoginView: View {
                     .padding(.bottom, 16)
                 CreateAccountButton()
                     .padding(.bottom, 12)
-                Text("Quên mật khẩu?")
-                    .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.redD41717.color)
-                    .onTapGesture {
-                        print("Quen mat khau")
-                    }
+                
+                ForgotPasswordButton()
             }
         }
         .navigationView()
+    }
+    
+    // MARK: - ForgotPasswordView
+    struct ForgotPasswordButton: View {
+        
+        var body: some View {
+            PushingButton(destinationView: ForgotPasswordView()) {
+                // Do something
+            } label: {
+                Text("Quên mật khẩu?")
+                    .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.redD41717.color)
+            }
+        }
     }
     
     // MARK: - LoginButton

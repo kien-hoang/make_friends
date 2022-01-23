@@ -48,6 +48,10 @@
 		139B7D15279C55FE0043A8B4 /* PhotoFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */; };
 		139B7D18279D12660043A8B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D17279D12660043A8B4 /* SettingsView.swift */; };
 		139B7D1A279D12A70043A8B4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D19279D12A70043A8B4 /* SettingsViewModel.swift */; };
+		139B7D1C279D38780043A8B4 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D1B279D38780043A8B4 /* ForgotPasswordView.swift */; };
+		139B7D1E279D38840043A8B4 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D1D279D38840043A8B4 /* ForgotPasswordViewModel.swift */; };
+		139B7D21279D44660043A8B4 /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D20279D44660043A8B4 /* NewPasswordView.swift */; };
+		139B7D23279D446F0043A8B4 /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D22279D446F0043A8B4 /* NewPasswordViewModel.swift */; };
 		139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139D67F0272EEFE300F3B77F /* DatingAppApp.swift */; };
 		139D67F5272EEFE700F3B77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F4272EEFE700F3B77F /* Assets.xcassets */; };
 		139D67F8272EEFE700F3B77F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139D67F7272EEFE700F3B77F /* Preview Assets.xcassets */; };
@@ -164,6 +168,10 @@
 		139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullView.swift; sourceTree = "<group>"; };
 		139B7D17279D12660043A8B4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		139B7D19279D12A70043A8B4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		139B7D1B279D38780043A8B4 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		139B7D1D279D38840043A8B4 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		139B7D20279D44660043A8B4 /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
+		139B7D22279D446F0043A8B4 /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
 		139D67ED272EEFE300F3B77F /* DatingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139D67F0272EEFE300F3B77F /* DatingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatingAppApp.swift; sourceTree = "<group>"; };
 		139D67F4272EEFE700F3B77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -514,6 +522,15 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
+		139B7D1F279D44530043A8B4 /* NewPassword */ = {
+			isa = PBXGroup;
+			children = (
+				139B7D22279D446F0043A8B4 /* NewPasswordViewModel.swift */,
+				139B7D20279D44660043A8B4 /* NewPasswordView.swift */,
+			);
+			path = NewPassword;
+			sourceTree = "<group>";
+		};
 		139D67E4272EEFE300F3B77F = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +804,7 @@
 		13DE8ED4273AD27800E798BF /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				139B7D1F279D44530043A8B4 /* NewPassword */,
 				13DE8ED9273AD43700E798BF /* ForgotPassword */,
 				13DE8ED8273AD42300E798BF /* LoginPhone */,
 				13DE8ED7273AD41400E798BF /* Login */,
@@ -824,6 +842,8 @@
 		13DE8ED9273AD43700E798BF /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
+				139B7D1D279D38840043A8B4 /* ForgotPasswordViewModel.swift */,
+				139B7D1B279D38780043A8B4 /* ForgotPasswordView.swift */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -1203,10 +1223,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				138D7281278B135200DF9BA4 /* EditProfileViewModel.swift in Sources */,
+				139B7D1C279D38780043A8B4 /* ForgotPasswordView.swift in Sources */,
 				139D68D62731AB4700F3B77F /* XCAssets+Generated.swift in Sources */,
 				133F746B2780A06B00EF79B4 /* MessageMainCellView.swift in Sources */,
 				133F74772782FAC100EF79B4 /* MessageMainCellViewModel.swift in Sources */,
 				1338BD472737F3D4009CA3C0 /* InterestedTag.swift in Sources */,
+				139B7D1E279D38840043A8B4 /* ForgotPasswordViewModel.swift in Sources */,
 				13B190992766296E004A23B1 /* LocationManager.swift in Sources */,
 				138D72872792B1BC00DF9BA4 /* EditInterestedTagsView.swift in Sources */,
 				132A8FF1274A5440004D0FE9 /* ChooseGenderView.swift in Sources */,
@@ -1214,8 +1236,10 @@
 				13FFFC7B2752328D008D59D8 /* ImagePickerRepresentable.swift in Sources */,
 				13DE8EFA273C337A00E798BF /* PushingButtonView.swift in Sources */,
 				132613E827410B0A0016CD92 /* SignupViewModel.swift in Sources */,
+				139B7D23279D446F0043A8B4 /* NewPasswordViewModel.swift in Sources */,
 				133F7472278197C800EF79B4 /* Match.swift in Sources */,
 				1338BD4027364B29009CA3C0 /* UIScreen+Extensions.swift in Sources */,
+				139B7D21279D44660043A8B4 /* NewPasswordView.swift in Sources */,
 				13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */,
 				139B7D18279D12660043A8B4 /* SettingsView.swift in Sources */,
 				13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */,
