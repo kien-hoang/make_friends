@@ -31,6 +31,8 @@
 		133F7472278197C800EF79B4 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F7471278197C800EF79B4 /* Match.swift */; };
 		133F74752782F52400EF79B4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F74742782F52300EF79B4 /* Message.swift */; };
 		133F74772782FAC100EF79B4 /* MessageMainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */; };
+		1388939327A2E23100F439FF /* ForgotPasswordPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388939227A2E23100F439FF /* ForgotPasswordPhoneView.swift */; };
+		1388939527A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388939427A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift */; };
 		138D7279278732AE00DF9BA4 /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7278278732AE00DF9BA4 /* SocketClientManager.swift */; };
 		138D727D278B10AE00DF9BA4 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D727C278B10AB00DF9BA4 /* EditProfileView.swift */; };
 		138D7281278B135200DF9BA4 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7280278B135200DF9BA4 /* EditProfileViewModel.swift */; };
@@ -152,6 +154,8 @@
 		133F7471278197C800EF79B4 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		133F74742782F52300EF79B4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMainCellViewModel.swift; sourceTree = "<group>"; };
+		1388939227A2E23100F439FF /* ForgotPasswordPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPhoneView.swift; sourceTree = "<group>"; };
+		1388939427A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPhoneViewModel.swift; sourceTree = "<group>"; };
 		138D7278278732AE00DF9BA4 /* SocketClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketClientManager.swift; sourceTree = "<group>"; };
 		138D727C278B10AB00DF9BA4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		138D7280278B135200DF9BA4 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -435,6 +439,25 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		1388938A27A2E15500F439FF /* ForgotPasswordPhone */ = {
+			isa = PBXGroup;
+			children = (
+				1388939427A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift */,
+				1388939227A2E23100F439FF /* ForgotPasswordPhoneView.swift */,
+			);
+			path = ForgotPasswordPhone;
+			sourceTree = "<group>";
+		};
+		1388938B27A2E17600F439FF /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				139B7D1F279D44530043A8B4 /* NewPassword */,
+				13DE8ED9273AD43700E798BF /* ForgotPassword */,
+				1388938A27A2E15500F439FF /* ForgotPasswordPhone */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
 		138D72772787323B00DF9BA4 /* SocketClientManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +662,7 @@
 		139D68D82732FE8B00F3B77F /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				1388938B27A2E17600F439FF /* ForgotPassword */,
 				132A8FEF274A542D004D0FE9 /* ChooseGender */,
 				13FFFC7427512556008D59D8 /* UpdateFirstImage */,
 				139D68D92732FEB200F3B77F /* ChooseInterestedTags */,
@@ -814,8 +838,6 @@
 		13DE8ED4273AD27800E798BF /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				139B7D1F279D44530043A8B4 /* NewPassword */,
-				13DE8ED9273AD43700E798BF /* ForgotPassword */,
 				13DE8ED8273AD42300E798BF /* LoginPhone */,
 				13DE8ED7273AD41400E798BF /* Login */,
 			);
@@ -1242,6 +1264,7 @@
 				139B7D1E279D38840043A8B4 /* ForgotPasswordViewModel.swift in Sources */,
 				13B190992766296E004A23B1 /* LocationManager.swift in Sources */,
 				138D72872792B1BC00DF9BA4 /* EditInterestedTagsView.swift in Sources */,
+				1388939527A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift in Sources */,
 				132A8FF1274A5440004D0FE9 /* ChooseGenderView.swift in Sources */,
 				1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */,
 				13FFFC7B2752328D008D59D8 /* ImagePickerRepresentable.swift in Sources */,
@@ -1284,6 +1307,7 @@
 				139B7D26279D84EA0043A8B4 /* VideoFullView.swift in Sources */,
 				132A8FEE274953AB004D0FE9 /* MatchHomeView.swift in Sources */,
 				13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */,
+				1388939327A2E23100F439FF /* ForgotPasswordPhoneView.swift in Sources */,
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
 				132A8FE827492198004D0FE9 /* LoginPhoneView.swift in Sources */,
 				13DE8EF1273C0ECE00E798BF /* SignupPhoneView.swift in Sources */,

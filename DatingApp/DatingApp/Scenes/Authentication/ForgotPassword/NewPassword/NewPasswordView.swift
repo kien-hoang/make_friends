@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewPasswordView: View {
-    @StateObject var viewModel = NewPasswordViewModel()
+    @StateObject var viewModel: NewPasswordViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -164,7 +164,7 @@ struct NewPasswordView: View {
 
 struct NewPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPasswordView()
+        NewPasswordView(viewModel: NewPasswordViewModel(phone: ""))
     }
 }
 

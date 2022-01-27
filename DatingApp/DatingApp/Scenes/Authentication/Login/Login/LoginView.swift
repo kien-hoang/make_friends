@@ -40,7 +40,7 @@ struct LoginView: View {
     struct ForgotPasswordButton: View {
         
         var body: some View {
-            PushingButton(destinationView: ForgotPasswordView()) {
+            PushingButton(destinationView: ForgotPasswordPhoneView()) {
                 // Do something
             } label: {
                 Text("Quên mật khẩu?")

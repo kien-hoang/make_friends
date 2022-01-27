@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
-    @StateObject var viewModel = ForgotPasswordViewModel()
+    @StateObject var viewModel: ForgotPasswordViewModel
     @State var isFocused = false
     
     let textBoxWidth = UIScreen.main.bounds.width / 8
@@ -53,7 +53,7 @@ struct ForgotPasswordView: View {
                 
                 HStack {
                     Spacer()
-                    Text("Thử lại")
+                    Text(viewModel.resendTimeString)
                         .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.gray777777.color)
                         .onTapGesture {
                             viewModel.resendOTP()
@@ -90,7 +90,8 @@ struct ForgotPasswordView: View {
         
         var body: some View {
             let fillColor = viewModel.isEnableNextButton ? Color(Asset.Colors.Global.redD41717.color) : Color(Asset.Colors.Global.gray777777.color)
-            PushingButtonWhenTrue($viewModel.isTrueOTP, destinationView: NewPasswordView()) {
+            let newPasswordViewModel = NewPasswordViewModel(phone: viewModel.phone)
+            PushingButtonWhenTrue($viewModel.isTrueOTP, destinationView: NewPasswordView(viewModel: newPasswordViewModel)) {
                 if viewModel.isEnableNextButton {
                     viewModel.checkOTP()
                 }
@@ -112,6 +113,6 @@ struct ForgotPasswordView: View {
 
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView()
+        ForgotPasswordView(viewModel: ForgotPasswordViewModel(phone: ""))
     }
 }

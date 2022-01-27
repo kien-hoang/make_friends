@@ -12,6 +12,12 @@ class NewPasswordViewModel: ObservableObject {
     @Published var isShowPassword: Bool = false
     @Published var confirmPassword: String = ""
     @Published var isShowConfirmPassword: Bool = false
+    
+    private var phone: String = ""
+    
+    init(phone: String) {
+        self.phone = phone
+    }
 }
 
 // MARK: - API
@@ -23,7 +29,7 @@ extension NewPasswordViewModel {
         }
         
         Helper.showProgress()
-        AuthenticationAPIManager.shared.newPassword(phone: "0987914956", password: password) { [weak self] isSuccess, error in
+        AuthenticationAPIManager.shared.newPassword(phone: phone, password: password) { [weak self] isSuccess, error in
             Helper.dismissProgress()
             guard let _ = self else { return }
             if let error = error {
