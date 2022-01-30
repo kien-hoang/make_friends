@@ -48,6 +48,7 @@ struct K {
             #endif
             static let SocketUrl = BaseUrl.replacingOccurrences(of: "/api/", with: "")
             static let StagingUrl = "http://localhost:3000/api/"
+            static let LocalUrl = "http://192.168.1.9:3000/api/"
             static let LiveUrl = "https://make-friend.herokuapp.com/api/"
             
             static let InterestedTag = "interested-tags"

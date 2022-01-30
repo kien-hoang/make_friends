@@ -153,11 +153,13 @@ struct ProfileMainView: View {
                     viewModel.didTapAddMedia()
                 }
             }
-            .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.newImage)
+            .fullScreenCover(isPresented: $viewModel.isShowPhotoLibrary) {
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.newImage, selectedVideoUrl: Binding.constant(nil))
+                    .ignoresSafeArea()
             }
             .sheet(isPresented: $viewModel.isShowCamera) {
-                ImagePicker(sourceType: .camera, selectedImage: $viewModel.newImage)
+                ImagePicker(sourceType: .stillImage, selectedImage: $viewModel.newImage, selectedVideoUrl: Binding.constant(nil))
+                    .ignoresSafeArea()
             }
             .actionSheet(isPresented: $viewModel.isShowUploadOptionActionSheet) {
                 uploadOptionActionSheet

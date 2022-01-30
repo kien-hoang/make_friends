@@ -21,6 +21,7 @@ class MessageViewModel: ObservableObject {
     
     @Published var isShowVideoLibrary = false
     @Published var isShowVideo = false
+    @Published var newVideoUrl: URL?
     @Published var isShowUploadVideoOptionActionSheet = false
     
     @Published var isFriendTyping = false
@@ -47,6 +48,14 @@ class MessageViewModel: ObservableObject {
                 guard let self = self,
                       let image = image else { return }
                 self.updateNewImage(image)
+            }
+            .store(in: &cancellables)
+        
+        $newVideoUrl
+            .sink { [weak self] videoUrl in
+                guard let self = self,
+                      let videoUrl = videoUrl else { return }
+                self.updateNewVideo(videoUrl)
             }
             .store(in: &cancellables)
         
@@ -92,6 +101,17 @@ class MessageViewModel: ObservableObject {
 
 // MARK: - API
 extension MessageViewModel {
+    func updateNewVideo(_ videoUrl: URL) {
+        Helper.showProgress(interaction: true)
+        UserAPIManager.shared.uploadVideoFile(withVideoUrl: videoUrl) { [weak self] videoUrl in
+            Helper.dismissProgress()
+            guard let self = self else { return }
+            if let videoUrl = videoUrl {
+                self.sendMessage(.video(URL(string: videoUrl)!))
+            }
+        }
+    }
+    
     func updateNewImage(_ image: UIImage) {
         Helper.showProgress(interaction: true)
         UserAPIManager.shared.uploadImageFile(withImage: image) { [weak self] imageUrl in

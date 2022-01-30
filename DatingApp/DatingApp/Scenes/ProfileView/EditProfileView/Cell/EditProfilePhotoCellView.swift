@@ -30,11 +30,13 @@ struct EditProfilePhotoCellView: View {
         .onTapGesture {
             cellViewModel.didTapCell()
         }
-        .sheet(isPresented: $cellViewModel.isShowPhotoLibrary) {
-            ImagePicker(sourceType: .photoLibrary, selectedImage: $cellViewModel.newImage)
+        .fullScreenCover(isPresented: $cellViewModel.isShowPhotoLibrary) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: $cellViewModel.newImage, selectedVideoUrl: Binding.constant(nil))
+                .ignoresSafeArea()
         }
-        .sheet(isPresented: $cellViewModel.isShowCamera) {
-            ImagePicker(sourceType: .camera, selectedImage: $cellViewModel.newImage)
+        .fullScreenCover(isPresented: $cellViewModel.isShowCamera) {
+            ImagePicker(sourceType: .stillImage, selectedImage: $cellViewModel.newImage, selectedVideoUrl: Binding.constant(nil))
+                .ignoresSafeArea()
         }
     }
     

@@ -1521,6 +1521,7 @@
 				INFOPLIST_FILE = DatingApp/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "MakeFriends needs access to your camera to take photos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MakeFriends want to access your location to get nearby other users.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "MakeFriends wants to record sound.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1561,6 +1562,7 @@
 				INFOPLIST_FILE = DatingApp/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "MakeFriends needs access to your camera to take photos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MakeFriends want to access your location to get nearby other users.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "MakeFriends wants to record sound.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

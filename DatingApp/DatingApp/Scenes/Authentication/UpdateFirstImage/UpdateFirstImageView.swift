@@ -26,11 +26,13 @@ struct UpdateFirstImageView: View {
                 .padding(.top, 20)
         }
         .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 10, trailing: K.Constants.ScreenPadding))
-        .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
-            ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.selectedImage)
+        .fullScreenCover(isPresented: $viewModel.isShowPhotoLibrary) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.selectedImage, selectedVideoUrl: Binding.constant(nil))
+                .ignoresSafeArea()
         }
-        .sheet(isPresented: $viewModel.isShowCamera) {
-            ImagePicker(sourceType: .camera, selectedImage: $viewModel.selectedImage)
+        .fullScreenCover(isPresented: $viewModel.isShowCamera) {
+            ImagePicker(sourceType: .stillImage, selectedImage: $viewModel.selectedImage, selectedVideoUrl: Binding.constant(nil))
+                .ignoresSafeArea()
         }
         .actionSheet(isPresented: $viewModel.isShowUploadOptionActionSheet) {
             uploadOptionActionSheet

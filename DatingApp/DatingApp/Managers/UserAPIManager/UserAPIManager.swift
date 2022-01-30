@@ -12,6 +12,46 @@ import CoreLocation
 class UserAPIManager {
     static let shared = UserAPIManager()
     
+    func uploadVideoFile(withVideoUrl videoUrl: URL, completion: @escaping (_ videoUrl: String?) -> Void) {
+        
+        let path = K.API.URL.Upload
+        let urlString = K.API.URL.BaseUrl + path + "/video"
+        let url = URL(string: urlString)!
+        
+        let timestamp = Date().timeIntervalSince1970
+        
+        AF.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(videoUrl, withName: "file", fileName: "\(timestamp).mov", mimeType: "video/quicktime")
+            multipartFormData.append("video".data(using: .utf8)!, withName: "type")
+            
+        }, to: url, method: .post, headers: Helper.defaultHeaders).responseJSON { (response) in
+            switch response.result {
+            
+            case .success(let result as [String:Any]):
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    if let dataDict = result["data"] as? [String:Any] {
+                        let url = dataDict["url"] as? String
+                        DispatchQueue.main.async {
+                            completion(url)
+                        }
+                    }
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                }
+                
+            default:
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
     func updateAllImage(_ imageUrls: [String], completion: @escaping (_ imageUrls: [String]?, _ error: Error?) -> Void) {
         let params: [String: Any] = ["images": imageUrls]
         
@@ -163,7 +203,7 @@ class UserAPIManager {
         AF.upload(multipartFormData: { (multipartFormData) in
             if let imageData = image.jpegData(compressionQuality: 0.7) {
                 multipartFormData.append(imageData, withName: "file", fileName: "\(timestamp).jpeg", mimeType: "image/jpeg")
-                multipartFormData.append("IdentityCard".data(using: String.Encoding.utf8)!, withName: "type")
+                multipartFormData.append("image".data(using: String.Encoding.utf8)!, withName: "type")
             }
         }, to: url, method: .post, headers: Helper.defaultHeaders).responseJSON { (response) in
             switch response.result {

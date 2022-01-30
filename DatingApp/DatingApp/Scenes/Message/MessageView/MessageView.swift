@@ -104,11 +104,13 @@ struct MessageView: View {
                         viewModel.isShowUploadImageOptionActionSheet = true
                     }
                 }
-                .sheet(isPresented: $viewModel.isShowPhotoLibrary) {
-                    ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.newImage)
+                .fullScreenCover(isPresented: $viewModel.isShowPhotoLibrary) {
+                    ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.newImage, selectedVideoUrl: Binding.constant(nil))
+                        .ignoresSafeArea()
                 }
-                .sheet(isPresented: $viewModel.isShowCamera) {
-                    ImagePicker(sourceType: .camera, selectedImage: $viewModel.newImage)
+                .fullScreenCover(isPresented: $viewModel.isShowCamera) {
+                    ImagePicker(sourceType: .stillImage, selectedImage: $viewModel.newImage, selectedVideoUrl: Binding.constant(nil))
+                        .ignoresSafeArea()
                 }
                 .actionSheet(isPresented: $viewModel.isShowUploadImageOptionActionSheet) {
                     uploadImageOptionActionSheet
@@ -126,11 +128,13 @@ struct MessageView: View {
                         viewModel.isShowUploadVideoOptionActionSheet = true
                     }
                 }
-                .sheet(isPresented: $viewModel.isShowVideoLibrary) {
-                    EmptyView()
+                .fullScreenCover(isPresented: $viewModel.isShowVideoLibrary) {
+                    ImagePicker(sourceType: .videoLibrary, selectedImage: Binding.constant(nil), selectedVideoUrl: $viewModel.newVideoUrl)
+                        .ignoresSafeArea()
                 }
-                .sheet(isPresented: $viewModel.isShowVideo) {
-                    EmptyView()
+                .fullScreenCover(isPresented: $viewModel.isShowVideo) {
+                    ImagePicker(sourceType: .videoWithMic, selectedImage: Binding.constant(nil), selectedVideoUrl: $viewModel.newVideoUrl)
+                        .ignoresSafeArea()
                 }
                 .actionSheet(isPresented: $viewModel.isShowUploadVideoOptionActionSheet) {
                     uploadVideoOptionActionSheet

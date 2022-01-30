@@ -7,19 +7,39 @@
 
 import SwiftUI
 
+enum ImagePickerType {
+    case photoLibrary
+    case stillImage
+    case videoLibrary
+    case videoWithMic
+}
+
 struct ImagePicker: UIViewControllerRepresentable {
     
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    var sourceType: ImagePickerType = .photoLibrary
     
     @Binding var selectedImage: UIImage?
+    @Binding var selectedVideoUrl: URL?
     @Environment(\.presentationMode) private var presentationMode
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = sourceType
+        
         imagePicker.delegate = context.coordinator
+        switch sourceType {
+        case .photoLibrary:
+            imagePicker.sourceType = .photoLibrary
+        case .stillImage:
+            imagePicker.sourceType = .camera
+        case .videoLibrary:
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.mediaTypes = ["public.movie"]
+        case .videoWithMic:
+            imagePicker.sourceType = .camera
+            imagePicker.mediaTypes = ["public.movie"]
+        }
         
         return imagePicker
     }
@@ -42,8 +62,17 @@ struct ImagePicker: UIViewControllerRepresentable {
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
+            switch parent.sourceType {
+            case .photoLibrary, .stillImage:
+                if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                    parent.selectedImage = image
+                }
+                
+            default:
+                if let videoUrl = info[.mediaURL] as? URL {
+                    parent.selectedVideoUrl = videoUrl
+                }
+                
             }
             
             parent.presentationMode.wrappedValue.dismiss()
