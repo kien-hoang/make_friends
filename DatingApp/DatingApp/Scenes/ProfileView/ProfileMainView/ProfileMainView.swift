@@ -157,7 +157,7 @@ struct ProfileMainView: View {
                 ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.newImage, selectedVideoUrl: Binding.constant(nil))
                     .ignoresSafeArea()
             }
-            .sheet(isPresented: $viewModel.isShowCamera) {
+            .fullScreenCover(isPresented: $viewModel.isShowCamera) {
                 ImagePicker(sourceType: .stillImage, selectedImage: $viewModel.newImage, selectedVideoUrl: Binding.constant(nil))
                     .ignoresSafeArea()
             }
