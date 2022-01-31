@@ -10,6 +10,43 @@ import UIKit
 class AuthenticationAPIManager {
     static let shared = AuthenticationAPIManager()
     
+    func changePassword(oldPassword: String, newPassword: String, completion: @escaping (_ isSuccess: Bool, _ error: Error?) -> Void) {
+        let path = K.API.URL.Auth
+        let urlString = K.API.URL.BaseUrl + path + "/change-password"
+        let url = URL(string: urlString)!
+        
+        var params: [String: Any] = [:]
+        params["old_password"] = oldPassword
+        params["new_password"] = newPassword
+        
+        Network.shared.request(url, method: .post, params: params, headers: Helper.defaultHeaders) { responseJson in
+            switch responseJson.result {
+            
+            case .success(let result as [String:Any]):
+                
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    DispatchQueue.main.async {
+                        completion(true, nil)
+                    }
+                    
+                } else {
+                    let message = result["message"] as? String ?? "Something went wrong"
+                    DispatchQueue.main.async {
+                        completion(false, message.toError)
+                    }
+                }
+                
+            default:
+                let message = "Something went wrong"
+                DispatchQueue.main.async {
+                    completion(false, message.toError)
+                }
+            }
+        }
+    }
+    
     func newPassword(phone: String, password: String, completion: @escaping (_ isSuccess: Bool, _ error: Error?) -> Void) {
         let path = K.API.URL.Auth
         let urlString = K.API.URL.BaseUrl + path + "/new-password"

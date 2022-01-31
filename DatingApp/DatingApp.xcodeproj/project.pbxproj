@@ -33,6 +33,8 @@
 		133F74772782FAC100EF79B4 /* MessageMainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */; };
 		1388939327A2E23100F439FF /* ForgotPasswordPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388939227A2E23100F439FF /* ForgotPasswordPhoneView.swift */; };
 		1388939527A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1388939427A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift */; };
+		138893BA27A7D60E00F439FF /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138893B927A7D60E00F439FF /* ChangePasswordView.swift */; };
+		138893BC27A7D61600F439FF /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138893BB27A7D61600F439FF /* ChangePasswordViewModel.swift */; };
 		138D7279278732AE00DF9BA4 /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7278278732AE00DF9BA4 /* SocketClientManager.swift */; };
 		138D727D278B10AE00DF9BA4 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D727C278B10AB00DF9BA4 /* EditProfileView.swift */; };
 		138D7281278B135200DF9BA4 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138D7280278B135200DF9BA4 /* EditProfileViewModel.swift */; };
@@ -156,6 +158,8 @@
 		133F74762782FAC100EF79B4 /* MessageMainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMainCellViewModel.swift; sourceTree = "<group>"; };
 		1388939227A2E23100F439FF /* ForgotPasswordPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPhoneView.swift; sourceTree = "<group>"; };
 		1388939427A2E23D00F439FF /* ForgotPasswordPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPhoneViewModel.swift; sourceTree = "<group>"; };
+		138893B927A7D60E00F439FF /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		138893BB27A7D61600F439FF /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		138D7278278732AE00DF9BA4 /* SocketClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketClientManager.swift; sourceTree = "<group>"; };
 		138D727C278B10AB00DF9BA4 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		138D7280278B135200DF9BA4 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -458,6 +462,24 @@
 			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
+		138893B727A7D5AA00F439FF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				138893B827A7D5CC00F439FF /* ChangePasswordView */,
+				139B7D16279D124D0043A8B4 /* SettingsView */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		138893B827A7D5CC00F439FF /* ChangePasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				138893BB27A7D61600F439FF /* ChangePasswordViewModel.swift */,
+				138893B927A7D60E00F439FF /* ChangePasswordView.swift */,
+			);
+			path = ChangePasswordView;
+			sourceTree = "<group>";
+		};
 		138D72772787323B00DF9BA4 /* SocketClientManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,7 +674,7 @@
 				132A900A274BE1D2004D0FE9 /* LikesView */,
 				132A9002274BD872004D0FE9 /* Message */,
 				13A4D5312753BC8300D3775C /* ProfileView */,
-				139B7D16279D124D0043A8B4 /* SettingsView */,
+				138893B727A7D5AA00F439FF /* Settings */,
 				139D68D82732FE8B00F3B77F /* Authentication */,
 				13DE8EDC273AD4EF00E798BF /* LaunchScreen */,
 			);
@@ -1298,6 +1320,7 @@
 				13BE45482764CC7B0097CDD9 /* CardView.swift in Sources */,
 				139D690527343CF500F3B77F /* String+Extensions.swift in Sources */,
 				133F746E278196D900EF79B4 /* ChatAPIManager.swift in Sources */,
+				138893BA27A7D60E00F439FF /* ChangePasswordView.swift in Sources */,
 				139D69032734322900F3B77F /* Strings+Generated.swift in Sources */,
 				132A9000274BCD35004D0FE9 /* RootView.swift in Sources */,
 				132A900C274BE1E5004D0FE9 /* LikesView.swift in Sources */,
@@ -1309,6 +1332,7 @@
 				13DE8EC82739841C00E798BF /* InterestedTagAPIManager.swift in Sources */,
 				1388939327A2E23100F439FF /* ForgotPasswordPhoneView.swift in Sources */,
 				139D68DB2732FECC00F3B77F /* ChooseInterestedTagsView.swift in Sources */,
+				138893BC27A7D61600F439FF /* ChangePasswordViewModel.swift in Sources */,
 				132A8FE827492198004D0FE9 /* LoginPhoneView.swift in Sources */,
 				13DE8EF1273C0ECE00E798BF /* SignupPhoneView.swift in Sources */,
 				138D7284278B2CD500DF9BA4 /* EditProfilePhotoCellView.swift in Sources */,

@@ -158,6 +158,28 @@ struct SettingsView: View {
                 }
                 .frame(height: 40)
                 .background(Color(Asset.Colors.Global.white100.color))
+                
+                Rectangle()
+                    .fill(Color(Asset.Colors.Global.grayF2F2F7.color))
+                    .frame(height: 1)
+                    .padding(.horizontal, K.Constants.ScreenPadding)
+                
+                NavigationLink(destination: ChangePasswordView()) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Text("Đổi mật khẩu")
+                                .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
+                            Spacer()
+                                
+                            Image(Asset.Global.icDefaultNext.name)
+                                .resizable()
+                                .frame(width: 8, height: 12)
+                        }
+                        .padding(.horizontal, K.Constants.ScreenPadding)
+                    }
+                    .frame(height: 40)
+                    .background(Color(Asset.Colors.Global.white100.color))
+                }
             }
         }
     }
