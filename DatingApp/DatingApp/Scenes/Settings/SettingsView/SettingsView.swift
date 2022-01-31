@@ -48,7 +48,7 @@ struct SettingsView: View {
                     Spacer()
                 }
             }
-            .frame(height: 40)
+            .frame(height: 45)
             .background(Color(Asset.Colors.Global.white100.color))
             .onTapGesture {
                 viewModel.deleteAccount()
@@ -68,7 +68,7 @@ struct SettingsView: View {
                     Spacer()
                 }
             }
-            .frame(height: 40)
+            .frame(height: 45)
             .background(Color(Asset.Colors.Global.white100.color))
             .onTapGesture {
                 Helper.deleteLocalValue(withKey: K.UserDefaults.Token)
@@ -98,7 +98,7 @@ struct SettingsView: View {
                     }
                     .padding(.horizontal, K.Constants.ScreenPadding)
                 }
-                .frame(height: 40)
+                .frame(height: 45)
                 .background(Color(Asset.Colors.Global.white100.color))
                 
                 Text("Trong khi tắt, bạn sẽ không được hiển thị trong tìm kiếm của người khác. Bạn vẫn có thể xem và trò chuyện với bạn bè của mình.")
@@ -133,7 +133,7 @@ struct SettingsView: View {
                     }
                     .padding(.horizontal, K.Constants.ScreenPadding)
                 }
-                .frame(height: 40)
+                .frame(height: 45)
                 .background(Color(Asset.Colors.Global.white100.color))
                 
                 Rectangle()
@@ -156,7 +156,7 @@ struct SettingsView: View {
                     }
                     .padding(.horizontal, K.Constants.ScreenPadding)
                 }
-                .frame(height: 40)
+                .frame(height: 45)
                 .background(Color(Asset.Colors.Global.white100.color))
                 
                 Rectangle()
@@ -177,7 +177,7 @@ struct SettingsView: View {
                         }
                         .padding(.horizontal, K.Constants.ScreenPadding)
                     }
-                    .frame(height: 40)
+                    .frame(height: 45)
                     .background(Color(Asset.Colors.Global.white100.color))
                 }
             }
