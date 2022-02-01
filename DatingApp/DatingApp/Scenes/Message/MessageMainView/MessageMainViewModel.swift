@@ -12,6 +12,8 @@ class MessageMainViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var showCancelButton: Bool = false
     @Published var matches: [Match] = []
+    @Published var isShowReportPopup: Bool = false
+    @Published var isShowReportAlert = false
     
     var cancellables = Set<AnyCancellable>()
     

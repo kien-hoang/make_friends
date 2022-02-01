@@ -39,6 +39,16 @@ struct MessageMainView: View {
                             NavigationLink(destination: messageView) {
                                 MessageMainCellView(cellViewModel: MessageMainCellViewModel(match: viewModel.matches[index]))
                                     .padding(.horizontal, K.Constants.ScreenPadding)
+                                    .swipeActions(trailing: [
+                                        SwipeActionButton(text: Text("BÁO CÁO"), icon: Image(systemName: "flag"), action: {
+                                            viewModel.isShowReportPopup = true
+                                        }, tint: Color(Asset.Colors.Global.gray777777.color).opacity(0.5)),
+                                        SwipeActionButton(text: Text("HUỶ\nKẾT NỐI"), icon: nil, action: {
+                                            viewModel.isShowReportAlert = true
+                                        }, tint: Color(Asset.Colors.Global.redD41717.color))
+                                    ])
+                                    .frame(height: 50)
+                                    .padding(.bottom, 12)
                             }
                         }
                     }
@@ -51,6 +61,25 @@ struct MessageMainView: View {
             .onReceive(.UpdateLastMessage) { notification in
                 guard let match = notification.object as? Match else { return }
                 viewModel.updateLastMessage(match)
+            }
+            // TODO: Show report popup
+            .fullScreenCover(isPresented: $viewModel.isShowReportPopup) {
+                ReportUserMainView(isShowPopup: $viewModel.isShowReportPopup)
+            }
+            // TODO: Dismiss report popup
+            .onReceive(.DidReportUserSuccess) { _ in
+                viewModel.isShowReportPopup = false
+                Helper.showSuccess("Báo cáo người dùng thành công")
+            }
+            .alert(isPresented: $viewModel.isShowReportAlert) {
+                Alert(
+                    title: Text("Huỷ kết nối"),
+                    message: Text("Bạn có chắc chắn muốn huỷ kết nối hay không?"),
+                    primaryButton: .default (Text("Có")) {
+                        Helper.showSuccess("Tính năng sắp phát triển")
+                    },
+                    secondaryButton: .cancel(Text("Không"))
+                )
             }
         }
     }
@@ -97,15 +126,15 @@ struct MessageMainView: View {
                 ZStack {
                     Rectangle()
                         .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(Color.gray.opacity(0.3), lineWidth: 3)
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(Color.gray.opacity(0.3), lineWidth: 3)
                         ).foregroundColor(Color.gray.opacity(0.05))
                         .frame(width: 130, height: 200)
                         .offset(y: 20)
                     Rectangle()
                         .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(Color.green, lineWidth: 3)
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(Color.green, lineWidth: 3)
                         ).foregroundColor(Color.green.opacity(0.05))
                         .frame(width: 130, height: 200)
                         .rotationEffect(.degrees(15))
@@ -116,9 +145,9 @@ struct MessageMainView: View {
                         .foregroundColor(.green)
                         .padding(.horizontal, 8)
                         .overlay(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.green, lineWidth: 3)
-                            )
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.green, lineWidth: 3)
+                        )
                         .offset(x: 30)
                 }
                 VStack(spacing: 20) {

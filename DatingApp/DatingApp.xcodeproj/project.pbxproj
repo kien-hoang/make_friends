@@ -104,6 +104,7 @@
 		13DE8EF3273C280500E798BF /* UINavigation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */; };
 		13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */; };
 		13DE8EFA273C337A00E798BF /* PushingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF9273C337A00E798BF /* PushingButtonView.swift */; };
+		13F9177D27A953A800DEC4C9 /* SwipeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F9177C27A953A800DEC4C9 /* SwipeActionButton.swift */; };
 		13FFFC73275113FA008D59D8 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */; };
 		13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */; };
 		13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */; };
@@ -238,6 +239,7 @@
 		13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extensions.swift"; sourceTree = "<group>"; };
 		13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationView.swift; sourceTree = "<group>"; };
 		13DE8EF9273C337A00E798BF /* PushingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushingButtonView.swift; sourceTree = "<group>"; };
+		13F9177C27A953A800DEC4C9 /* SwipeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionButton.swift; sourceTree = "<group>"; };
 		13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
 		13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageView.swift; sourceTree = "<group>"; };
 		13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageViewModel.swift; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 		13DE8EF4273C29D000E798BF /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				13F9177B27A9537F00DEC4C9 /* SwipeActionButton */,
 				139B7D24279D84DC0043A8B4 /* VideoFullView */,
 				139B7D13279C55CD0043A8B4 /* PhotoFullView */,
 				13FFFC7927523278008D59D8 /* ImagePickerRepresentable */,
@@ -967,6 +970,14 @@
 				13DE8EF9273C337A00E798BF /* PushingButtonView.swift */,
 			);
 			path = PushingButtonView;
+			sourceTree = "<group>";
+		};
+		13F9177B27A9537F00DEC4C9 /* SwipeActionButton */ = {
+			isa = PBXGroup;
+			children = (
+				13F9177C27A953A800DEC4C9 /* SwipeActionButton.swift */,
+			);
+			path = SwipeActionButton;
 			sourceTree = "<group>";
 		};
 		13FFFC7427512556008D59D8 /* UpdateFirstImage */ = {
@@ -1359,6 +1370,7 @@
 				138D7291279455DA00DF9BA4 /* DetailProfileView.swift in Sources */,
 				1396481527832854009AE8DD /* MessageViewModel.swift in Sources */,
 				13B1909627661593004A23B1 /* MatchHomeCellViewModel.swift in Sources */,
+				13F9177D27A953A800DEC4C9 /* SwipeActionButton.swift in Sources */,
 				13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */,
 				13BE454C2764F7690097CDD9 /* MatchHomeCellView.swift in Sources */,
 				138D7293279455E800DF9BA4 /* DetailProfileViewModel.swift in Sources */,
