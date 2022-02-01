@@ -30,6 +30,9 @@ struct DetailProfileView: View {
                             .padding(.top, K.Constants.ScreenPadding)
                     }
                     
+                    ReportView(viewModel: viewModel)
+                        .padding(.top, K.Constants.ScreenPadding)
+                    
                     Rectangle()
                         .fill(Color.clear)
                         .frame(height: 100)
@@ -52,6 +55,45 @@ struct DetailProfileView: View {
             .frame(height: 44)
         }
         .hiddenNavigationBar()
+    }
+    
+    // MARK: - ReportView
+    struct ReportView: View {
+        @ObservedObject var viewModel: DetailProfileViewModel
+        
+        var body: some View {
+            VStack(spacing: 0) {
+                Rectangle()
+                    .fill(Color(Asset.Colors.Global.grayF2F2F7.color))
+                    .frame(height: 1)
+                    .padding(.horizontal, K.Constants.ScreenPadding)
+                
+                Spacer()
+                
+                Text("BÁO CÁO VI PHẠM")
+                    .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.gray777777.color)
+                
+                Spacer()
+                
+                Rectangle()
+                    .fill(Color(Asset.Colors.Global.grayF2F2F7.color))
+                    .frame(height: 1)
+                    .padding(.horizontal, K.Constants.ScreenPadding)
+            }
+            .frame(height: 50)
+            .onTapGesture {
+                viewModel.isShowReportPopup = true
+            }
+            // TODO: Show report popup
+            .fullScreenCover(isPresented: $viewModel.isShowReportPopup) {
+                ReportUserMainView(isShowPopup: $viewModel.isShowReportPopup)
+            }
+            // TODO: Dismiss report popup
+            .onReceive(.DidReportUserSuccess) { _ in
+                viewModel.isShowReportPopup = false
+                Helper.showSuccess("Báo cáo người dùng thành công")
+            }
+        }
     }
     
     // MARK: - InterestedInView

@@ -76,7 +76,7 @@ struct MatchHomeView: View {
                     data: viewModel.users,
                     onSwipe: { card, direction in
                         viewModel.swipingUser(card, direction: direction)
-                        viewModel.loadMoreIfNeeded(card)
+                        viewModel.loadMoreIfNeeded()
                     },
                     content: { user, direction, _ in
                         ZStack {

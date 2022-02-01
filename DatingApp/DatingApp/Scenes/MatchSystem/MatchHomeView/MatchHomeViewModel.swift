@@ -149,7 +149,7 @@ extension MatchHomeViewModel {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
     
-    func loadMoreIfNeeded(_ user: User) {
+    func loadMoreIfNeeded() {
         let halfLimit = Int((Float(limit) / 2).rounded(.up))
         guard innerUsers.count <= halfLimit, !isOutOfUser, !isLoading else { return }
         DispatchQueue.global().async {

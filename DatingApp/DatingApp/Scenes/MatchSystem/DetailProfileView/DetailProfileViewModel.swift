@@ -10,6 +10,7 @@ import SwiftUI
 class DetailProfileViewModel: ObservableObject {
     @Published var user: User
     @Published var currentImageIndex: Int = 0
+    @Published var isShowReportPopup: Bool = false
     
     init(user: User) {
         self.user = user
