@@ -109,4 +109,5 @@ extension Notification.Name {
     static let NotifyTypingMessage = Notification.Name("NotifyTypingMessage")
     static let NotifyStopTypingMessage = Notification.Name("NotifyStopTypingMessage")
     static let DidReportUserSuccess = Notification.Name("DidReportUserSuccess")
+    static let DidVerifyPhoneSuccess = Notification.Name("DidVerifyPhoneSuccess")
 }

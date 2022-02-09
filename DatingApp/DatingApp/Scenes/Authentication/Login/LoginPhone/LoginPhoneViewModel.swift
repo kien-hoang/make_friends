@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginPhoneViewModel: ObservableObject {
-    @Published var phone: String = "0123456789"
+    @Published var phone: String = "0987914956"
     @Published var password: String = "htkien.dev"
     @Published var isShowPassword: Bool = false
     @Published var isLoginSuccess = false

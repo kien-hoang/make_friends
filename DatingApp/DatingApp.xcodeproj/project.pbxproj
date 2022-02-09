@@ -105,6 +105,7 @@
 		13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */; };
 		13DE8EFA273C337A00E798BF /* PushingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF9273C337A00E798BF /* PushingButtonView.swift */; };
 		13F9177D27A953A800DEC4C9 /* SwipeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F9177C27A953A800DEC4C9 /* SwipeActionButton.swift */; };
+		13F917C927B406FD00DEC4C9 /* SignupPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F917C827B406FD00DEC4C9 /* SignupPhoneViewModel.swift */; };
 		13FFFC73275113FA008D59D8 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */; };
 		13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */; };
 		13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */; };
@@ -240,6 +241,7 @@
 		13DE8EF6273C29EE00E798BF /* DefaultNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationView.swift; sourceTree = "<group>"; };
 		13DE8EF9273C337A00E798BF /* PushingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushingButtonView.swift; sourceTree = "<group>"; };
 		13F9177C27A953A800DEC4C9 /* SwipeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionButton.swift; sourceTree = "<group>"; };
+		13F917C827B406FD00DEC4C9 /* SignupPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneViewModel.swift; sourceTree = "<group>"; };
 		13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
 		13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageView.swift; sourceTree = "<group>"; };
 		13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageViewModel.swift; sourceTree = "<group>"; };
@@ -929,6 +931,7 @@
 		13DE8EEE273C0EB100E798BF /* SignupPhone */ = {
 			isa = PBXGroup;
 			children = (
+				13F917C827B406FD00DEC4C9 /* SignupPhoneViewModel.swift */,
 				13DE8EF0273C0ECE00E798BF /* SignupPhoneView.swift */,
 			);
 			path = SignupPhone;
@@ -1323,6 +1326,7 @@
 				139B7D21279D44660043A8B4 /* NewPasswordView.swift in Sources */,
 				13DE8EDB273AD46500E798BF /* LoginView.swift in Sources */,
 				139B7D18279D12660043A8B4 /* SettingsView.swift in Sources */,
+				13F917C927B406FD00DEC4C9 /* SignupPhoneViewModel.swift in Sources */,
 				13DE8EF7273C29EE00E798BF /* DefaultNavigationView.swift in Sources */,
 				133F74662780873C00EF79B4 /* MessageMainViewModel.swift in Sources */,
 				13FFFC8027529636008D59D8 /* UserAPIManager.swift in Sources */,
@@ -1565,7 +1569,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
@@ -1606,7 +1610,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingAppRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;

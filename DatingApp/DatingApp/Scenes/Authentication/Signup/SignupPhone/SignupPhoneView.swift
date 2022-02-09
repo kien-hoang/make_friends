@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignupPhoneView: View {
-    @State private var phoneText = ""
+    @StateObject var viewModel = SignupPhoneViewModel()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -37,7 +37,7 @@ struct SignupPhoneView: View {
                     
                     VStack(alignment: .leading, spacing: 3) {
                         HStack(spacing: 2) {
-                            TextField("", text: $phoneText)
+                            TextField("", text: $viewModel.phoneText)
                                 .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
                                 .keyboardType(.numberPad)
                                 .allowsHitTesting(true)
@@ -56,7 +56,7 @@ struct SignupPhoneView: View {
                     .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.gray9A9A9A.color)
                     .padding(.bottom, 44)
                 
-                ContinueButton(phoneText: $phoneText)
+                ContinueButton(viewModel: viewModel)
             }
             .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 0, trailing: K.Constants.ScreenPadding))
             
@@ -66,13 +66,12 @@ struct SignupPhoneView: View {
     
     // MARK: - ContinueButton
     struct ContinueButton: View {
-        @State var isValidPhone: Bool = false
-        @Binding var phoneText: String
+        @StateObject var viewModel = SignupPhoneViewModel()
         
         var body: some View {
-            let signupCompletedView = SignupCompletedView(phone: phoneText)
-            PushingButtonWhenTrue($isValidPhone, destinationView: signupCompletedView) {
-                isValidPhone = validatePhone()
+            let signupCompletedView = SignupCompletedView(phone: viewModel.phoneText)
+            PushingButtonWhenTrue($viewModel.isValidPhone, destinationView: signupCompletedView) {
+                viewModel.checkExistPhone()
             } label: {
                 Text("Tiếp tục")
                     .style(font: .lexendMedium, size: 16, color: Asset.Colors.Global.white100.color)
@@ -84,19 +83,6 @@ struct SignupPhoneView: View {
                             .shadow(color: Color(Asset.Colors.Global.redD41717.color).opacity(0.25), radius: 2, x: 0, y: 0)
                     )
             }
-        }
-        
-        private func validatePhone() -> Bool {
-            if phoneText.trim().isEmpty {
-                Helper.showToast("Vui lòng nhập số điện thoại")
-                return false
-            }
-            if !phoneText.isValidPhone() {
-                Helper.showToast("Vui lòng nhập số điện thoại hợp lệ")
-                return false
-            }
-            
-            return true
         }
     }
 }

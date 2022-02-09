@@ -20,7 +20,7 @@ struct SettingsView: View {
                         .padding(.top, 8)
                     
                     ShowMeOnCardStackView(viewModel: viewModel)
-                        .padding(.top, 24)
+                        .padding(.top, 16)
                     
                     LogoutView()
                         .padding(.top, 24)
@@ -123,6 +123,16 @@ struct SettingsView: View {
                     HStack {
                         Text("Số điện thoại")
                             .style(font: .lexendRegular, size: 14, color: Asset.Colors.Global.black100.color)
+                        if !viewModel.currentUser.isVerified {
+                            Text("Chưa xác thực")
+                                .style(font: .lexendLight, size: 10, color: Asset.Colors.Global.redD41717.color)
+                                .padding(3)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color(Asset.Colors.Global.redD41717.color), lineWidth: 1)
+                                )
+                        }
+                        
                         Spacer()
 //                        Text("0987914956")
                         Text(viewModel.currentUser.phone)
@@ -135,6 +145,42 @@ struct SettingsView: View {
                 }
                 .frame(height: 45)
                 .background(Color(Asset.Colors.Global.white100.color))
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    if !viewModel.currentUser.isVerified {
+                        viewModel.isShowVerifyPhoneAlert = true
+                    }
+                }
+                .alert(isPresented: $viewModel.isShowVerifyPhoneAlert) {
+                    Alert(
+                        title: Text("Gửi mã xác thực"),
+                        message: Text("Chúng tôi sẽ gửi mã xác thực về số điện thoại của bạn"),
+                        primaryButton: .default (Text("OK")) {
+                            viewModel.isShowOTPScreen = true
+                            viewModel.verifyPhone()
+                        },
+                        secondaryButton: .cancel(Text("Không"))
+                    )
+                }
+                // TODO: Show OTP screen
+                .fullScreenCover(isPresented: $viewModel.isShowOTPScreen) {
+                    if !viewModel.currentUser.phone.isEmpty {
+                        ForgotPasswordView(viewModel: ForgotPasswordViewModel(.VerifyPhone, phone: viewModel.currentUser.phone))
+                    }
+                }
+                // TODO: Dismiss OTP screen
+                .onReceive(.DidVerifyPhoneSuccess) { _ in
+                    viewModel.isShowOTPScreen = false
+                    Helper.showSuccess("Xác thực tài khoản thành công")
+                }
+                
+                if !viewModel.currentUser.isVerified {
+                    Text("Vui lòng xác thực số điện thoại để hồ sơ của bạn có thể được hiển thị với người khác.")
+                        .style(font: .lexendRegular, size: 12, color: Asset.Colors.Global.redD41717.color.withAlphaComponent(0.75))
+                        .padding(.horizontal, K.Constants.ScreenPadding)
+                        .padding(.top, 4)
+                        .padding(.bottom, 8)
+                }
                 
                 Rectangle()
                     .fill(Color(Asset.Colors.Global.grayF2F2F7.color))

@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum OTPType {
+    case ForgotPassword
+    case VerifyPhone
+}
+
 class ForgotPasswordViewModel: ObservableObject {
     @Published var isTrueOTP = false
     @Published var isEnableNextButton = false
@@ -28,10 +33,12 @@ class ForgotPasswordViewModel: ObservableObject {
         }
     }
     var phone: String = ""
+    private var otpType: OTPType = .ForgotPassword
     private var timer: Timer?
     private var countDownTime: Int = 120
     
-    init(phone: String) {
+    init(_ type: OTPType, phone: String) {
+        self.otpType = type
         self.phone = phone
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.forgotPassword()
@@ -42,11 +49,46 @@ class ForgotPasswordViewModel: ObservableObject {
         timer?.invalidate()
         timer = nil
     }
+    
+    func destinationView() -> AnyView {
+        switch otpType {
+        case .ForgotPassword:
+            let newPasswordViewModel = NewPasswordViewModel(phone: phone)
+            return AnyView(NewPasswordView(viewModel: newPasswordViewModel))
+        case .VerifyPhone:
+            return AnyView(EmptyView())
+        }
+    }
 }
 
 // MARK: - API
 extension ForgotPasswordViewModel {
     func checkOTP() {
+        switch otpType {
+        case .ForgotPassword:
+            checkOTPForgotPassword()
+            
+        case .VerifyPhone:
+            verifyPhone()
+        }
+    }
+    
+    private func verifyPhone() {
+        Helper.showProgress()
+        UserAPIManager.shared.verifyUser(otpCode: otpField) { [weak self] isSuccess, error in
+            Helper.dismissProgress()
+            guard let self = self else { return }
+            if let error = error {
+                Helper.showProgressError(error.localizedDescription)
+            } else if isSuccess {
+                AppData.shared.user.isVerified = true
+                self.isTrueOTP = true
+                NotificationCenter.default.post(name: .DidVerifyPhoneSuccess, object: nil)
+            }
+        }
+    }
+    
+    private func checkOTPForgotPassword() {
         Helper.showProgress()
         AuthenticationAPIManager.shared.checkOTP(phone: phone, otpCode: otpField) { [weak self] isSuccess, error in
             Helper.dismissProgress()

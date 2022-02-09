@@ -90,8 +90,8 @@ struct ForgotPasswordView: View {
         
         var body: some View {
             let fillColor = viewModel.isEnableNextButton ? Color(Asset.Colors.Global.redD41717.color) : Color(Asset.Colors.Global.gray777777.color)
-            let newPasswordViewModel = NewPasswordViewModel(phone: viewModel.phone)
-            PushingButtonWhenTrue($viewModel.isTrueOTP, destinationView: NewPasswordView(viewModel: newPasswordViewModel)) {
+            
+            PushingButtonWhenTrue($viewModel.isTrueOTP, destinationView: viewModel.destinationView()) {
                 if viewModel.isEnableNextButton {
                     viewModel.checkOTP()
                 }
@@ -113,6 +113,6 @@ struct ForgotPasswordView: View {
 
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView(viewModel: ForgotPasswordViewModel(phone: ""))
+        ForgotPasswordView(viewModel: ForgotPasswordViewModel(.ForgotPassword, phone: ""))
     }
 }

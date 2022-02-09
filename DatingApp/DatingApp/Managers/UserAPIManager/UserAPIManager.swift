@@ -12,6 +12,42 @@ import CoreLocation
 class UserAPIManager {
     static let shared = UserAPIManager()
     
+    func verifyUser(otpCode: String, completion: @escaping (_ isSuccess: Bool, _ error: Error?) -> Void) {
+        let path = K.API.URL.User
+        let urlString = K.API.URL.BaseUrl + path + "/verify-user"
+        let url = URL(string: urlString)!
+        
+        var params: [String: Any] = [:]
+        params["otp_code"] = otpCode
+        
+        Network.shared.request(url, method: .post, params: params, headers: Helper.defaultHeaders) { responseJson in
+            switch responseJson.result {
+            
+            case .success(let result as [String:Any]):
+                
+                let success = result["success"] as? Bool ?? false
+                
+                if success {
+                    DispatchQueue.main.async {
+                        completion(true, nil)
+                    }
+                    
+                } else {
+                    let message = result["message"] as? String ?? "Something went wrong"
+                    DispatchQueue.main.async {
+                        completion(false, message.toError)
+                    }
+                }
+                
+            default:
+                let message = "Something went wrong"
+                DispatchQueue.main.async {
+                    completion(false, message.toError)
+                }
+            }
+        }
+    }
+    
     func uploadVideoFile(withVideoUrl videoUrl: URL, completion: @escaping (_ videoUrl: String?) -> Void) {
         
         let path = K.API.URL.Upload

@@ -69,7 +69,7 @@ struct ForgotPasswordPhoneView: View {
         @ObservedObject var viewModel: ForgotPasswordPhoneViewModel
         
         var body: some View {
-            let forgotPasswordView = ForgotPasswordView(viewModel: ForgotPasswordViewModel(phone: viewModel.phoneText))
+            let forgotPasswordView = ForgotPasswordView(viewModel: ForgotPasswordViewModel(.ForgotPassword, phone: viewModel.phoneText))
             PushingButtonWhenTrue($viewModel.isValidPhone, destinationView: forgotPasswordView) {
                 viewModel.isValidPhone = viewModel.validatePhone()
             } label: {
