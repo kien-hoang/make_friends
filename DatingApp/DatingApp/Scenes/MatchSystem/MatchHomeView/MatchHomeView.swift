@@ -27,6 +27,12 @@ struct MatchHomeView: View {
             viewModel.checkLocationPermission()
             SocketClientManager.shared.connected()
         }
+        .onAppear {
+            if AppData.shared.needRefreshCardStack {
+                AppData.shared.needRefreshCardStack = false
+                viewModel.reloadHome()
+            }
+        }
     }
     
     // MARK: - DisableLocationView

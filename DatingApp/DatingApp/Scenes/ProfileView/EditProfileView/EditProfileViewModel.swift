@@ -59,6 +59,7 @@ extension EditProfileViewModel {
             } else if let user = user {
                 AppData.shared.user = user // Save to singleton
                 NotificationCenter.default.post(name: .DidUpdateProfileSuccess, object: nil)
+                AppData.shared.needRefreshCardStack = true
             }
         }
     }
