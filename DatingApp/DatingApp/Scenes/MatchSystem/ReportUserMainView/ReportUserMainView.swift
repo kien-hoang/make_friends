@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReportUserMainView: View {
-    @StateObject var viewModel = ReportUserMainViewModel()
+    @StateObject var viewModel: ReportUserMainViewModel
     @Binding var isShowPopup: Bool
     
     var body: some View {
@@ -112,6 +112,6 @@ struct ReportUserMainView: View {
 
 struct ReportUserPopupView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportUserMainView(isShowPopup: Binding.constant(true))
+        ReportUserMainView(viewModel: ReportUserMainViewModel(reportedUserId: ""), isShowPopup: Binding.constant(true))
     }
 }

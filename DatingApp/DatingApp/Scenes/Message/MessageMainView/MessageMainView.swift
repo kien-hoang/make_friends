@@ -42,9 +42,11 @@ struct MessageMainView: View {
                                     .swipeActions(trailing: [
                                         SwipeActionButton(text: Text("BÁO CÁO"), icon: Image(systemName: "flag"), action: {
                                             viewModel.isShowReportPopup = true
+                                            viewModel.selectedMatch = viewModel.matches[index]
                                         }, tint: Color(Asset.Colors.Global.gray777777.color).opacity(0.5)),
                                         SwipeActionButton(text: Text("HUỶ\nKẾT NỐI"), icon: nil, action: {
                                             viewModel.isShowReportAlert = true
+                                            viewModel.selectedMatch = viewModel.matches[index]
                                         }, tint: Color(Asset.Colors.Global.redD41717.color))
                                     ])
                                     .frame(height: 50)
@@ -64,7 +66,7 @@ struct MessageMainView: View {
             }
             // TODO: Show report popup
             .fullScreenCover(isPresented: $viewModel.isShowReportPopup) {
-                ReportUserMainView(isShowPopup: $viewModel.isShowReportPopup)
+                ReportUserMainView(viewModel: ReportUserMainViewModel(reportedUserId: viewModel.getReportedUserId()), isShowPopup: $viewModel.isShowReportPopup)
             }
             // TODO: Dismiss report popup
             .onReceive(.DidReportUserSuccess) { _ in
@@ -76,7 +78,7 @@ struct MessageMainView: View {
                     title: Text("Huỷ kết nối"),
                     message: Text("Bạn có chắc chắn muốn huỷ kết nối hay không?"),
                     primaryButton: .default (Text("Có")) {
-                        Helper.showSuccess("Tính năng sắp phát triển")
+                        viewModel.unmatchUser()
                     },
                     secondaryButton: .cancel(Text("Không"))
                 )

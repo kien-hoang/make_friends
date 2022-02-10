@@ -86,7 +86,7 @@ struct DetailProfileView: View {
             }
             // TODO: Show report popup
             .fullScreenCover(isPresented: $viewModel.isShowReportPopup) {
-                ReportUserMainView(isShowPopup: $viewModel.isShowReportPopup)
+                ReportUserMainView(viewModel: ReportUserMainViewModel(reportedUserId: viewModel.user.id), isShowPopup: $viewModel.isShowReportPopup)
             }
             // TODO: Dismiss report popup
             .onReceive(.DidReportUserSuccess) { _ in
