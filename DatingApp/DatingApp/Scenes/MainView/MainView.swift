@@ -59,7 +59,7 @@ struct MainView: View {
                         ProfileMainView()
                             .tabItem {
                                 Image(systemName: "person.crop.circle.fill")
-                                Text("Người dùng")
+                                Text("Cá nhân")
                             }
                             .tag(tabView.rawValue)
                     }
