@@ -33,6 +33,10 @@ struct MessageMainView: View {
                     .padding([.leading, .trailing, .bottom], K.Constants.ScreenPadding)
                 
                 ScrollView {
+                    PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        viewModel.getListChat()
+                    }
+                    
                     LazyVStack(spacing: 0) {
                         ForEach(0..<viewModel.matches.count, id: \.self) { index in
                             let messageView = MessageView(viewModel: MessageViewModel(match: viewModel.matches[index]))
@@ -55,6 +59,7 @@ struct MessageMainView: View {
                         }
                     }
                 }
+                .coordinateSpace(name: "pullToRefresh")
                 
                 Spacer()
             }

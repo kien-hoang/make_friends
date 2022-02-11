@@ -106,6 +106,7 @@
 		13DE8EFA273C337A00E798BF /* PushingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DE8EF9273C337A00E798BF /* PushingButtonView.swift */; };
 		13F9177D27A953A800DEC4C9 /* SwipeActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F9177C27A953A800DEC4C9 /* SwipeActionButton.swift */; };
 		13F917C927B406FD00DEC4C9 /* SignupPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F917C827B406FD00DEC4C9 /* SignupPhoneViewModel.swift */; };
+		13F917F027B6CA7100DEC4C9 /* MessageMainPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F917EF27B6CA7100DEC4C9 /* MessageMainPullToRefresh.swift */; };
 		13FFFC73275113FA008D59D8 /* ChooseGenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */; };
 		13FFFC7627512594008D59D8 /* UpdateFirstImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */; };
 		13FFFC78275125CE008D59D8 /* UpdateFirstImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */; };
@@ -242,6 +243,7 @@
 		13DE8EF9273C337A00E798BF /* PushingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushingButtonView.swift; sourceTree = "<group>"; };
 		13F9177C27A953A800DEC4C9 /* SwipeActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionButton.swift; sourceTree = "<group>"; };
 		13F917C827B406FD00DEC4C9 /* SignupPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneViewModel.swift; sourceTree = "<group>"; };
+		13F917EF27B6CA7100DEC4C9 /* MessageMainPullToRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMainPullToRefresh.swift; sourceTree = "<group>"; };
 		13FFFC72275113FA008D59D8 /* ChooseGenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGenderViewModel.swift; sourceTree = "<group>"; };
 		13FFFC7527512594008D59D8 /* UpdateFirstImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageView.swift; sourceTree = "<group>"; };
 		13FFFC77275125CE008D59D8 /* UpdateFirstImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFirstImageViewModel.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				133F74692780A05300EF79B4 /* Cell */,
+				13F917EF27B6CA7100DEC4C9 /* MessageMainPullToRefresh.swift */,
 				133F74652780873C00EF79B4 /* MessageMainViewModel.swift */,
 				132A9006274BD8CA004D0FE9 /* MessageMainView.swift */,
 			);
@@ -1365,6 +1368,7 @@
 				138893BC27A7D61600F439FF /* ChangePasswordViewModel.swift in Sources */,
 				132A8FE827492198004D0FE9 /* LoginPhoneView.swift in Sources */,
 				13DE8EF1273C0ECE00E798BF /* SignupPhoneView.swift in Sources */,
+				13F917F027B6CA7100DEC4C9 /* MessageMainPullToRefresh.swift in Sources */,
 				138D7284278B2CD500DF9BA4 /* EditProfilePhotoCellView.swift in Sources */,
 				132A9007274BD8CA004D0FE9 /* MessageMainView.swift in Sources */,
 				138D72892792B1EA00DF9BA4 /* EditInterestedTagsViewModel.swift in Sources */,
@@ -1569,7 +1573,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
@@ -1610,7 +1614,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingAppRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
