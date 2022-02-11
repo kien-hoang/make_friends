@@ -212,15 +212,16 @@ extension MessageViewModel {
     }
     
     func groupMessagesBaseDate() {
-        let groupedMessage = Dictionary(grouping: messages) { message -> String in
-            return (message.createdAt ?? Date()).ddMMyyyy
+        let groupedMessage = Dictionary(grouping: messages) { message -> Int in
+            return Int((message.createdAt ?? Date()).ddMMyyyy.toDate(withDateFormatter: Date.ddMMyyyyFormatter).timeIntervalSince1970)
         }
         
         groupedMessages = []
         let sortedKeys = groupedMessage.keys.sorted()
-        sortedKeys.forEach { date in
-            let messages = groupedMessage[date] ?? []
-            groupedMessages.append((date, messages))
+        sortedKeys.forEach { dateInt in
+            let messages = groupedMessage[dateInt] ?? []
+            let dateString = Date(timeIntervalSince1970: TimeInterval(dateInt)).ddMMyyyy
+            groupedMessages.append((dateString, messages))
         }
     }
     

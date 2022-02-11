@@ -48,4 +48,8 @@ extension String {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
+    
+    func toDate(withDateFormatter dateFormatter: DateFormatter) -> Date {
+        return dateFormatter.date(from: self) ?? Date()
+    }
 }

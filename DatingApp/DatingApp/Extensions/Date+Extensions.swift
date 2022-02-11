@@ -14,7 +14,7 @@ extension Date {
         return $0
     }(DateFormatter())
     
-    private static let ddMMyyyyFormatter: DateFormatter = {
+    static let ddMMyyyyFormatter: DateFormatter = {
         $0.dateFormat = "dd/MM/yyyy"
         return $0
     }(DateFormatter())
