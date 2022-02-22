@@ -10,7 +10,7 @@ import Kingfisher
 import AVFoundation
 
 struct MessageCellView: View {
-    @ObservedObject var cellViewModel: MessageCellViewModel
+    @StateObject var cellViewModel: MessageCellViewModel
     
     var body: some View {
         HStack {

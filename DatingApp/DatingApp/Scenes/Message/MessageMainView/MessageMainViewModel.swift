@@ -11,7 +11,8 @@ import Combine
 class MessageMainViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var showCancelButton: Bool = false
-    @Published var matches: [Match] = []
+    @Published var renderMatches: [Match] = [] // FIXME: MessageMainViewModel.1
+    var matches: [Match] = []
     @Published var isShowReportPopup: Bool = false
     @Published var isShowReportAlert = false
     @Published var selectedMatch: Match?
@@ -57,6 +58,7 @@ extension MessageMainViewModel {
                 Helper.showProgressError(error.localizedDescription)
             } else if isSuccess {
                 if let firstIndex = self.matches.firstIndex(where: { $0.id == selectedMatch.id }) {
+                    self.renderMatches.remove(at: firstIndex)
                     self.matches.remove(at: firstIndex)
                     Helper.showSuccess("Huỷ kết nối thành công")
                 }
@@ -64,11 +66,11 @@ extension MessageMainViewModel {
         }
     }
     
-//    func updateLastMessage(_ match: Match) {
-//        guard let firstIndex = matches.firstIndex(where: { $0.id == match.id }) else { return }
-//        matches[firstIndex].isRead = match.isRead
-//        matches[firstIndex].lastMessage = match.lastMessage
-//    }
+    func updateLastMessage(_ match: Match) {
+        guard let firstIndex = matches.firstIndex(where: { $0.id == match.id }) else { return }
+        matches[firstIndex].isRead = match.isRead
+        matches[firstIndex].lastMessage = match.lastMessage
+    }
     
     func getListChat() {
         Helper.showProgress()
@@ -79,6 +81,7 @@ extension MessageMainViewModel {
             if let error = error {
                 Helper.showProgressError(error.localizedDescription)
             } else if let matches = listChat {
+                self.renderMatches = matches
                 self.matches = matches
 //                self.joinRoomDG.leave()
                 SocketClientManager.shared.joinRoom(withMatchIds: self.matches.map({ $0.id }))
@@ -90,3 +93,14 @@ extension MessageMainViewModel {
         
     }
 }
+
+// FIXME: MessageMainViewModel.1
+/*
+ @Published var matches: [Match] = []
+ When only use 1 line code above. When send a message. State of ObserverObject will be updated and NavigationStack will pop current view. That's mean when user in chat => Enter new message => App will pop to chat list immediately.
+ 
+ => Temp resolve:
+ Use 2 line code:
+ @Published var renderMatches: [Match] = []
+ var matches: [Match] = []
+ */

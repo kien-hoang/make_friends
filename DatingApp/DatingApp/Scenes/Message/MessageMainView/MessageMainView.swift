@@ -16,6 +16,10 @@ struct MessageMainView: View {
                 EmptyMessageView()
             } else {
                 ListChatView(viewModel: viewModel)
+                    .navigationView()
+                    .onAppear {
+                        viewModel.renderMatches = viewModel.matches
+                    }
             }
         }
         .onReceive(.DidGotMatch) { _ in
@@ -34,12 +38,13 @@ struct MessageMainView: View {
                 
                 ScrollView {
                     PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        viewModel.renderMatches.removeAll()
                         viewModel.matches.removeAll()
                         viewModel.getListChat()
                     }
                     
                     LazyVStack(spacing: 0) {
-                        ForEach(0..<viewModel.matches.count, id: \.self) { index in
+                        ForEach(viewModel.renderMatches.indices, id: \.self) { index in
                             let messageView = MessageView(viewModel: MessageViewModel(match: viewModel.matches[index]))
                             NavigationLink(destination: messageView) {
                                 MessageMainCellView(cellViewModel: MessageMainCellViewModel(match: viewModel.matches[index]))
@@ -65,11 +70,10 @@ struct MessageMainView: View {
                 Spacer()
             }
             .hiddenNavigationBar()
-            .navigationView()
-//            .onReceive(.UpdateLastMessage) { notification in
-//                guard let match = notification.object as? Match else { return }
-//                viewModel.updateLastMessage(match)
-//            }
+            .onReceive(.UpdateLastMessage) { notification in
+                guard let match = notification.object as? Match else { return }
+                viewModel.updateLastMessage(match)
+            }
             // TODO: Show report popup
             .fullScreenCover(isPresented: $viewModel.isShowReportPopup) {
                 ReportUserMainView(viewModel: ReportUserMainViewModel(reportedUserId: viewModel.getReportedUserId()), isShowPopup: $viewModel.isShowReportPopup)
