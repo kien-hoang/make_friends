@@ -34,6 +34,7 @@ struct MessageMainView: View {
                 
                 ScrollView {
                     PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        viewModel.matches.removeAll()
                         viewModel.getListChat()
                     }
                     
@@ -65,10 +66,10 @@ struct MessageMainView: View {
             }
             .hiddenNavigationBar()
             .navigationView()
-            .onReceive(.UpdateLastMessage) { notification in
-                guard let match = notification.object as? Match else { return }
-                viewModel.updateLastMessage(match)
-            }
+//            .onReceive(.UpdateLastMessage) { notification in
+//                guard let match = notification.object as? Match else { return }
+//                viewModel.updateLastMessage(match)
+//            }
             // TODO: Show report popup
             .fullScreenCover(isPresented: $viewModel.isShowReportPopup) {
                 ReportUserMainView(viewModel: ReportUserMainViewModel(reportedUserId: viewModel.getReportedUserId()), isShowPopup: $viewModel.isShowReportPopup)

@@ -64,10 +64,11 @@ extension MessageMainViewModel {
         }
     }
     
-    func updateLastMessage(_ match: Match) {
-        guard let firstIndex = matches.firstIndex(where: { $0.id == match.id }) else { return }
-        matches[firstIndex] = match
-    }
+//    func updateLastMessage(_ match: Match) {
+//        guard let firstIndex = matches.firstIndex(where: { $0.id == match.id }) else { return }
+//        matches[firstIndex].isRead = match.isRead
+//        matches[firstIndex].lastMessage = match.lastMessage
+//    }
     
     func getListChat() {
         Helper.showProgress()

@@ -59,15 +59,18 @@ extension MessageMainCellViewModel {
     
     func updateLastMessage(_ match: Match) {
         guard self.match.id == match.id else { return }
-        self.match = match
+        self.match.isRead = match.isRead
+        self.match.lastMessage = match.lastMessage
+        self.match.members = match.members
         if let lastMessage = match.lastMessage {
             updateLastMessageString(lastMessage)
         }
     }
     
     func didReadMessageSuccess(_ match: Match) {
-        guard match.lastMessage?.receiverId == AppData.shared.user.id else { return }
-        self.match = match
+        guard self.match.id == match.id,
+              match.lastMessage?.receiverId == AppData.shared.user.id else { return }
+        self.match.isRead = match.isRead
     }
     
     func getImageUrl() -> URL? {

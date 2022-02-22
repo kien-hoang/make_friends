@@ -59,6 +59,13 @@ class MessageViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
+        switch match.lastMessage?.type {
+        case .text(let text):
+            print("DEBUG: lastMessage \(text)")
+        default:
+            break
+        }
+        
         if let lastMessage = match.lastMessage,
             !match.isRead, lastMessage.receiverId == AppData.shared.user.id {
             SocketClientManager.shared.readMessage(withMatchId: match.id)
