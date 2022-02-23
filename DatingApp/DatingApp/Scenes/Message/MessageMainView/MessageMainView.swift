@@ -33,8 +33,8 @@ struct MessageMainView: View {
         
         var body: some View {
             VStack(spacing: 0) {
-                SearchView(viewModel: viewModel)
-                    .padding([.leading, .trailing, .bottom], K.Constants.ScreenPadding)
+//                SearchView(viewModel: viewModel)
+//                    .padding([.leading, .trailing, .bottom], K.Constants.ScreenPadding)
                 
                 ScrollView {
                     PullToRefresh(coordinateSpaceName: "pullToRefresh") {
@@ -70,6 +70,7 @@ struct MessageMainView: View {
                 Spacer()
             }
             .hiddenNavigationBar()
+            .padding(.bottom, K.Constants.ScreenPadding)
             .onReceive(.UpdateLastMessage) { notification in
                 guard let match = notification.object as? Match else { return }
                 viewModel.updateLastMessage(match)
@@ -97,38 +98,38 @@ struct MessageMainView: View {
     }
     
     // MARK: - SearchView
-    struct SearchView: View {
-        @ObservedObject var viewModel: MessageMainViewModel
-        
-        var body: some View {
-            HStack {
-                HStack {
-                    Image(uiImage: Asset.Global.icSearch.image)
-                    
-                    TextField("Search", text: $viewModel.searchText, onEditingChanged: { isEditing in
-                        viewModel.showCancelButton = true
-                    }, onCommit: {
-                        viewModel.searchText = ""
-                        viewModel.searchChat()
-                    })
-                        .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.black100.color)
-                }
-                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                .foregroundColor(.secondary)
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(10.0)
-                
-                if viewModel.showCancelButton {
-                    Button("Cancel") {
-                        UIApplication.shared.endEditing(true) // this must be placed before the other commands here
-                        viewModel.searchText = ""
-                        viewModel.showCancelButton = false
-                    }
-                    .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.black100.color)
-                }
-            }
-        }
-    }
+//    struct SearchView: View {
+//        @ObservedObject var viewModel: MessageMainViewModel
+//        
+//        var body: some View {
+//            HStack {
+//                HStack {
+//                    Image(uiImage: Asset.Global.icSearch.image)
+//                    
+//                    TextField("Search", text: $viewModel.searchText, onEditingChanged: { isEditing in
+//                        viewModel.showCancelButton = true
+//                    }, onCommit: {
+//                        viewModel.searchText = ""
+//                        viewModel.searchChat()
+//                    })
+//                        .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.black100.color)
+//                }
+//                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+//                .foregroundColor(.secondary)
+//                .background(Color(.secondarySystemBackground))
+//                .cornerRadius(10.0)
+//                
+//                if viewModel.showCancelButton {
+//                    Button("Cancel") {
+//                        UIApplication.shared.endEditing(true) // this must be placed before the other commands here
+//                        viewModel.searchText = ""
+//                        viewModel.showCancelButton = false
+//                    }
+//                    .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.black100.color)
+//                }
+//            }
+//        }
+//    }
     
     // MARK: - EmptyMessageView
     struct EmptyMessageView: View {

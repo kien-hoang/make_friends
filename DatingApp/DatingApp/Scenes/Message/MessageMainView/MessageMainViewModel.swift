@@ -9,8 +9,8 @@ import SwiftUI
 import Combine
 
 class MessageMainViewModel: ObservableObject {
-    @Published var searchText = ""
-    @Published var showCancelButton: Bool = false
+//    @Published var searchText = ""
+//    @Published var showCancelButton: Bool = false
     @Published var renderMatches: [Match] = [] // FIXME: MessageMainViewModel.1
     var matches: [Match] = []
     @Published var isShowReportPopup: Bool = false
@@ -89,9 +89,9 @@ extension MessageMainViewModel {
         }
     }
     
-    func searchChat() {
-        
-    }
+//    func searchChat() {
+//        
+//    }
 }
 
 // FIXME: MessageMainViewModel.1
