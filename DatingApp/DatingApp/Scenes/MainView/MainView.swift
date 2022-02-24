@@ -24,6 +24,11 @@ struct MainView: View {
         // Unselected item color: UITabBar.appearance().unselectedItemTintColor = .black.withAlphaComponent(0.5)
         let attributedString: [NSAttributedString.Key: Any] = [.font: UIFont(name: K.Fonts.lexendMedium.rawValue, size: 10)!]
         UITabBarItem.appearance().setTitleTextAttributes(attributedString, for: .normal)
+        
+        //On iOS 15, tabbar changed the background color, this code make it same design at <=iOS 14
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().backgroundColor = .gray.withAlphaComponent(0.2)
+        }
     }
     
     var body: some View {

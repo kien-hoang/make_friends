@@ -8,32 +8,65 @@
 import SwiftUI
 
 struct LikesView: View {
+    @StateObject var viewModel = LikesViewModel()
     var body: some View {
-        VStack(spacing: 50) {
-            Spacer()
-            VStack(spacing: 30) {
-                Image(systemName: "camera")
-                    .font(.system(size: 60))
-                    .foregroundColor(.purple)
-                    .rotationEffect(.degrees(20))
-                HStack(spacing: 40) {
-                    Image(systemName: "music.note.list")
-                        .foregroundColor(.blue).opacity(0.7)
-                    Image(systemName: "photo")
-                        .foregroundColor(.orange)
-                        .rotationEffect(.degrees(-20))
+        VStack {
+            switch viewModel.viewType {
+            case .Empty:
+                LikesEmptyView()
+                
+            case .HasUserLikeMe:
+                ListUsersLikeMeView(viewModel: viewModel)
+                
+            case .LoadingData:
+                ProgressView()
+            }
+        }
+    }
+    
+    // MARK: - ListUsersLikeMeView
+    struct ListUsersLikeMeView: View {
+        @ObservedObject var viewModel: LikesViewModel
+        
+        let columns = [
+            GridItem(.flexible(minimum: 100), spacing: 10),
+            GridItem(.flexible(minimum: 100), spacing: 0)
+        ]
+        
+        var body: some View {
+            VStack {
+                ScrollView(showsIndicators: false) {
+                    PullToRefresh(coordinateSpaceName: "pullToRefresh") {
+                        viewModel.reloadData()
+                    }
+                    
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(viewModel.likingUsers.indices, id: \.self) { index in
+                            let cellViewModel = LikesCellViewModel(user: viewModel.likingUsers[index])
+                            LikesCellView(cellViewModel: cellViewModel)
+                                // TODO: Show/dismiss Detail Profile View
+                                .fullScreenCover(isPresented: $viewModel.isPresentDetailProfileView) {
+                                    let viewModel = DetailProfileViewModel(user: viewModel.likingUsers[viewModel.selectedUser])
+                                    DetailProfileView(viewModel: viewModel)
+                                        .hiddenNavigationBar()
+                                        .navigationView()
+                                }
+                                .onReceive(.DismissDetailProfileView) { _ in
+                                    viewModel.isPresentDetailProfileView = false
+                                }
+                                .onTapGesture {
+                                    viewModel.showDetailProfile(atIndex: index)
+                                }
+                                .onReceive(.DidLikeOrDislikeSuccess) { notification in
+                                    guard let removedUserId = notification.object as? String else { return }
+                                    viewModel.removeUser(userId: removedUserId)
+                                }
+                        }
+                    }
                 }
-                .font(.system(size: 60))
+                .coordinateSpace(name: "pullToRefresh")
             }
-            VStack(spacing: 20) {
-                Text("Tính năng đang phát triển")
-                    .style(font: .lexendBold, size: 18, color: Asset.Colors.Global.black100.color)
-                Text("Hãy nâng cấp lên bản Pro để biết được ai đã thích bạn.")
-                    .frame(width: 300)
-                    .multilineTextAlignment(.center)
-                    .style(font: .lexendRegular, size: 16, color: Asset.Colors.Global.gray9A9A9A.color)
-            }
-            Spacer()
+            .padding([.leading, .trailing], 20)
         }
     }
 }
