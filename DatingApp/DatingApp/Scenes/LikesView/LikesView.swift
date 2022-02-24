@@ -13,7 +13,9 @@ struct LikesView: View {
         VStack {
             switch viewModel.viewType {
             case .Empty:
-                LikesEmptyView()
+                LikesEmptyView {
+                    viewModel.reloadData()
+                }
                 
             case .HasUserLikeMe:
                 ListUsersLikeMeView(viewModel: viewModel)

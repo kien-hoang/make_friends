@@ -1597,7 +1597,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
@@ -1638,7 +1638,7 @@
 				CODE_SIGN_ENTITLEMENTS = DatingApp/DatingAppRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"DatingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 28VFK8UFRD;
 				ENABLE_PREVIEWS = YES;
