@@ -44,19 +44,19 @@ struct MessageMainView: View {
                     }
                     
                     LazyVStack(spacing: 0) {
-                        ForEach(viewModel.renderMatches.indices, id: \.self) { index in
-                            let messageView = MessageView(viewModel: MessageViewModel(match: viewModel.matches[index]))
+                        ForEach(viewModel.renderMatches, id: \.id) { match in
+                            let messageView = MessageView(viewModel: MessageViewModel(match: match))
                             NavigationLink(destination: messageView) {
-                                MessageMainCellView(cellViewModel: MessageMainCellViewModel(match: viewModel.matches[index]))
+                                MessageMainCellView(cellViewModel: MessageMainCellViewModel(match: match))
                                     .padding(.horizontal, K.Constants.ScreenPadding)
                                     .swipeActions(trailing: [
                                         SwipeActionButton(text: Text("BÁO CÁO"), icon: Image(systemName: "flag"), action: {
                                             viewModel.isShowReportPopup = true
-                                            viewModel.selectedMatch = viewModel.matches[index]
+                                            viewModel.selectedMatch = match
                                         }, tint: Color(Asset.Colors.Global.gray777777.color).opacity(0.5)),
                                         SwipeActionButton(text: Text("HUỶ\nKẾT NỐI"), icon: nil, action: {
                                             viewModel.isShowReportAlert = true
-                                            viewModel.selectedMatch = viewModel.matches[index]
+                                            viewModel.selectedMatch = match
                                         }, tint: Color(Asset.Colors.Global.redD41717.color))
                                     ])
                                     .frame(height: 50)
