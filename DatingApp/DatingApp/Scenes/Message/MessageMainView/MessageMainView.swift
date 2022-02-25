@@ -43,6 +43,15 @@ struct MessageMainView: View {
                         viewModel.getListChat()
                     }
                     
+                    HStack {
+                        Text("Danh sách trò chuyện:")
+                            .style(font: .lexendBold, size: 24, color: Asset.Colors.Global.black100.color)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, K.Constants.ScreenPadding)
+                        
+                        Spacer()
+                    }
+                    
                     LazyVStack(spacing: 0) {
                         ForEach(viewModel.renderMatches, id: \.id) { match in
                             let messageView = MessageView(viewModel: MessageViewModel(match: match))

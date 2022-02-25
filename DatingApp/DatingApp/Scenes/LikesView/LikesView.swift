@@ -42,6 +42,14 @@ struct LikesView: View {
                         viewModel.reloadData()
                     }
                     
+                    HStack {
+                        Text("Ai đã thích bạn:")
+                            .style(font: .lexendBold, size: 24, color: Asset.Colors.Global.black100.color)
+                            .padding(.vertical, 8)
+                        
+                        Spacer()
+                    }
+                    
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(viewModel.likingUsers, id: \.id) { user in
                             let cellViewModel = LikesCellViewModel(user: user)
