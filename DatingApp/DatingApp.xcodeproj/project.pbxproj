@@ -793,8 +793,8 @@
 		13A4539827C7CFE200DFFD90 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				13A4539927C7CFF900DFFD90 /* LikesCellView.swift */,
 				13A4539B27C7D02400DFFD90 /* LikesCellViewModel.swift */,
+				13A4539927C7CFF900DFFD90 /* LikesCellView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

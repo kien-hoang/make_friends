@@ -17,7 +17,7 @@ class LikesViewModel: ObservableObject {
     @Published var viewType: LikesViewType = .Empty
     @Published var likingUsers: [User] = []
     @Published var isPresentDetailProfileView = false
-    var selectedUser = 0
+    @Published var selectedUser = User()
     
     init() {
 //        for _ in 0..<10 {
@@ -53,8 +53,8 @@ extension LikesViewModel {
         viewType = likingUsers.isEmpty ? .Empty : .HasUserLikeMe
     }
     
-    func showDetailProfile(atIndex index: Int) {
-        selectedUser = index
+    func showDetailProfile(ofUser user: User) {
+        selectedUser = user
         isPresentDetailProfileView = true
     }
     

@@ -43,12 +43,12 @@ struct LikesView: View {
                     }
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(viewModel.likingUsers.indices, id: \.self) { index in
-                            let cellViewModel = LikesCellViewModel(user: viewModel.likingUsers[index])
+                        ForEach(viewModel.likingUsers, id: \.id) { user in
+                            let cellViewModel = LikesCellViewModel(user: user)
                             LikesCellView(cellViewModel: cellViewModel)
                                 // TODO: Show/dismiss Detail Profile View
                                 .fullScreenCover(isPresented: $viewModel.isPresentDetailProfileView) {
-                                    let viewModel = DetailProfileViewModel(user: viewModel.likingUsers[viewModel.selectedUser])
+                                    let viewModel = DetailProfileViewModel(user: viewModel.selectedUser)
                                     DetailProfileView(viewModel: viewModel)
                                         .hiddenNavigationBar()
                                         .navigationView()
@@ -57,7 +57,7 @@ struct LikesView: View {
                                     viewModel.isPresentDetailProfileView = false
                                 }
                                 .onTapGesture {
-                                    viewModel.showDetailProfile(atIndex: index)
+                                    viewModel.showDetailProfile(ofUser: user)
                                 }
                                 .onReceive(.DidLikeOrDislikeSuccess) { notification in
                                     guard let removedUserId = notification.object as? String else { return }
