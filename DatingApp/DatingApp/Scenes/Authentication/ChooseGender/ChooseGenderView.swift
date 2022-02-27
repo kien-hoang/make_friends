@@ -22,6 +22,7 @@ struct ChooseGenderView: View {
             ContinueButton(viewModel: viewModel)
         }
         .padding(EdgeInsets(top: 28, leading: K.Constants.ScreenPadding, bottom: 10, trailing: K.Constants.ScreenPadding))
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - GenderView

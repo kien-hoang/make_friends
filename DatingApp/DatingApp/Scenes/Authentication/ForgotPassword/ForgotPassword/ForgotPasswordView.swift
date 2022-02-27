@@ -68,6 +68,7 @@ struct ForgotPasswordView: View {
             
             Spacer()
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     private func otpText(text: String) -> some View {

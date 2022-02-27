@@ -29,6 +29,17 @@ extension View {
     }
 }
 
+// MARK: - Helper
+extension View {
+    func setBackgroundColor(_ color: Color) -> some View {
+        ZStack {
+            color
+                .edgesIgnoringSafeArea(.all)
+            self
+        }
+    }
+}
+
 // MARK: - Frame
 extension View {
     func fullParentFrame(alignment: Alignment = .topLeading) -> some View {

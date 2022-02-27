@@ -17,6 +17,7 @@ struct EditInterestedTagsView: View {
             InterestedTagsList(viewModel: viewModel)
         }
         .hiddenNavigationBar()
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - InterestedTagsList

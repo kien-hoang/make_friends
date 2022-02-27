@@ -24,6 +24,7 @@ struct LikesView: View {
                 ProgressView()
             }
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - ListUsersLikeMeView

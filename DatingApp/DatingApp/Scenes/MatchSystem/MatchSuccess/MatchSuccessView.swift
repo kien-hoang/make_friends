@@ -72,6 +72,7 @@ struct MatchSuccessView: View {
             SayHelloButton(viewModel: viewModel)
             KeepSwipingButton(viewModel: viewModel)
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
         .onAppear {
             viewModel.firstUserImageString = firstImageUrlString
             viewModel.secondUserImageString = secondImageUrlString

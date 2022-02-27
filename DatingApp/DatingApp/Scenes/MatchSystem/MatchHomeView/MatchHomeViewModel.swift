@@ -20,7 +20,7 @@ class MatchHomeViewModel: ObservableObject {
     @Published var isPresentDetailProfileView = false
     private var innerUsers: [User] = [] // FIXME: MatchHomeViewModel.1
     private var currentPage: Int = 0
-    private var limit = 4
+    private var limit = 10
     private var isEnableLocation = false
     private var isOutOfUser = false
     private var isLoading = false

@@ -53,6 +53,7 @@ struct MessageView: View {
                 .padding(.vertical, 4)
         }
         .hiddenNavigationBar()
+        .setBackgroundColor(K.Constants.DefaultColor)
         .onAppear {
             IQKeyboardManager.shared.enable = false
         }

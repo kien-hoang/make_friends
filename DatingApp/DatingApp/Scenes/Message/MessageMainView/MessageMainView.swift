@@ -16,12 +16,14 @@ struct MessageMainView: View {
                 EmptyMessageView(viewModel: viewModel)
             } else {
                 ListChatView(viewModel: viewModel)
+                    .setBackgroundColor(K.Constants.DefaultColor)
                     .navigationView()
                     .onAppear {
                         viewModel.renderMatches = viewModel.matches
                     }
             }
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
         .onReceive(.DidGotMatch) { _ in
             viewModel.getListChat()
         }

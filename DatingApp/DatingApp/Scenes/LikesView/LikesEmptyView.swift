@@ -47,6 +47,7 @@ struct LikesEmptyView: View {
         }
         .coordinateSpace(name: "pullToRefresh")
         .frame(height: __SCREEN_HEIGHT__)
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
 }
 

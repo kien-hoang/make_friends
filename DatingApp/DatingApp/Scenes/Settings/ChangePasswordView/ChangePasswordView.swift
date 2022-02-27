@@ -30,6 +30,7 @@ struct ChangePasswordView: View {
             Spacer()
         }
         .hiddenNavigationBar()
+        .setBackgroundColor(K.Constants.DefaultColor)
         .onReceive(viewModel.popViewPublisher) { shouldPop in
             if shouldPop {
                 self.presentationMode.wrappedValue.dismiss()

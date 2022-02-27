@@ -26,6 +26,7 @@ struct ProfileMainView: View {
             Spacer()
         }
         .hiddenNavigationBar()
+        .setBackgroundColor(K.Constants.DefaultColor)
         .navigationView()
         // TODO: Reload user data
         .onReceive(.GetProfileUserSuccess) { _ in

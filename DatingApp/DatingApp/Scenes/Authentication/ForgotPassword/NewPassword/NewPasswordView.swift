@@ -28,6 +28,7 @@ struct NewPasswordView: View {
             
             Spacer()
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - MainBody

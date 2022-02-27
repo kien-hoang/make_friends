@@ -29,6 +29,7 @@ struct ChooseInterestedTagsView: View {
             
             ContinueButton(viewModel: viewModel)
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - ContinueButton

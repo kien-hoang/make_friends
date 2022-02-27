@@ -33,6 +33,7 @@ struct LoginView: View {
                 ForgotPasswordButton()
             }
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
         .navigationView()
     }
     

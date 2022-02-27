@@ -62,6 +62,7 @@ struct SignupPhoneView: View {
             
             Spacer()
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - ContinueButton

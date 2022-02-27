@@ -55,6 +55,7 @@ struct DetailProfileView: View {
             .frame(height: 44)
         }
         .hiddenNavigationBar()
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - ReportView

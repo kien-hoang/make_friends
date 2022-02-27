@@ -33,6 +33,7 @@ struct MatchHomeView: View {
                 viewModel.reloadHome()
             }
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - DisableLocationView

@@ -56,6 +56,7 @@ struct SignupCompletedView: View {
                     .animation(.easeInOut)
             }
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
         .onAppear {
             viewModel.phone = phone
         }

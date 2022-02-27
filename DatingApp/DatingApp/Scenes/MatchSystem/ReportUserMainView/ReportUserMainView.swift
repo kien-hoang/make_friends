@@ -33,6 +33,7 @@ struct ReportUserMainView: View {
             Spacer()
         }
         .hiddenNavigationBar()
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - ReasonListView

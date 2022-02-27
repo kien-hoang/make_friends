@@ -28,6 +28,7 @@ struct LoginPhoneView: View {
             
             Spacer()
         }
+        .setBackgroundColor(K.Constants.DefaultColor)
     }
     
     // MARK: - MainBody

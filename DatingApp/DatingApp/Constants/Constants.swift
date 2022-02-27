@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 let __SCREEN_WIDTH__ = UIScreen.main.bounds.width
 let __SCREEN_HEIGHT__ = UIScreen.main.bounds.height
@@ -24,6 +25,7 @@ struct K {
     }
     
     struct Constants {
+        static let DefaultColor: Color = Color(Asset.Colors.Global.grayF2F2F7.color)
         static let NavigationHeight: CGFloat = 44
         static let ScreenPadding: CGFloat = 20
         static let PagingLimit: Int = 10
