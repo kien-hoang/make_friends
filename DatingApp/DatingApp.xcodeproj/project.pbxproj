@@ -52,6 +52,8 @@
 		139648112783283E009AE8DD /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139648102783283E009AE8DD /* MessageCellView.swift */; };
 		1396481327832849009AE8DD /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481227832849009AE8DD /* MessageCellViewModel.swift */; };
 		1396481527832854009AE8DD /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396481427832854009AE8DD /* MessageViewModel.swift */; };
+		1398757327E9C8D600AA6A31 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398757227E9C8D600AA6A31 /* UIAlertController+Extensions.swift */; };
+		1398757527E9C90900AA6A31 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398757427E9C90900AA6A31 /* AlertHelper.swift */; };
 		139B7D15279C55FE0043A8B4 /* PhotoFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */; };
 		139B7D18279D12660043A8B4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D17279D12660043A8B4 /* SettingsView.swift */; };
 		139B7D1A279D12A70043A8B4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B7D19279D12A70043A8B4 /* SettingsViewModel.swift */; };
@@ -186,6 +188,8 @@
 		139648102783283E009AE8DD /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
 		1396481227832849009AE8DD /* MessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
 		1396481427832854009AE8DD /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		1398757227E9C8D600AA6A31 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		1398757427E9C90900AA6A31 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		139B7D14279C55FD0043A8B4 /* PhotoFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFullView.swift; sourceTree = "<group>"; };
 		139B7D17279D12660043A8B4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		139B7D19279D12A70043A8B4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -778,6 +782,7 @@
 				1338BD3F27364B29009CA3C0 /* UIScreen+Extensions.swift */,
 				13DE8EF2273C280500E798BF /* UINavigation+Extensions.swift */,
 				133F746727809AAD00EF79B4 /* UIApplication+Extensions.swift */,
+				1398757227E9C8D600AA6A31 /* UIAlertController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -894,6 +899,7 @@
 				13DE8ED0273ACC0F00E798BF /* Helper.swift */,
 				13DE8ED2273ACD1C00E798BF /* Network.swift */,
 				13FFFC81275332C0008D59D8 /* AppData.swift */,
+				1398757427E9C90900AA6A31 /* AlertHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1364,10 +1370,12 @@
 				132613EB2741656E0016CD92 /* SignupCalendar.swift in Sources */,
 				139D67F1272EEFE300F3B77F /* DatingAppApp.swift in Sources */,
 				138893C427A837BF00F439FF /* ReportUserMainViewModel.swift in Sources */,
+				1398757527E9C90900AA6A31 /* AlertHelper.swift in Sources */,
 				133F746827809AAE00EF79B4 /* UIApplication+Extensions.swift in Sources */,
 				1396480E2783281F009AE8DD /* MessageView.swift in Sources */,
 				139D68F32733003C00F3B77F /* View+Extensions.swift in Sources */,
 				139B7D15279C55FE0043A8B4 /* PhotoFullView.swift in Sources */,
+				1398757327E9C8D600AA6A31 /* UIAlertController+Extensions.swift in Sources */,
 				139D68F52733006A00F3B77F /* Date+Extensions.swift in Sources */,
 				13A4539E27C7D98C00DFFD90 /* LikesEmptyView.swift in Sources */,
 				13FFFC7D27529141008D59D8 /* MainViewModel.swift in Sources */,

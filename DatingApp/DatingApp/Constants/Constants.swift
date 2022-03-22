@@ -43,12 +43,18 @@ struct K {
         }
         
         struct URL {
-            #if DEBUG
-            static let BaseUrl = LiveUrl
-            #else
-            static let BaseUrl = LiveUrl
-            #endif
-            static let SocketUrl = BaseUrl.replacingOccurrences(of: "/api/", with: "")
+            static var BaseUrl: String {
+                get {
+                    if let newUrl = Helper.getLocalValue(withKey: "SERVER_IP") {
+                        return "http://\(newUrl):3000/api/"
+                    } else {
+                        return LiveUrl
+                    }
+                }
+            }
+            static var SocketUrl: String {
+                return BaseUrl.replacingOccurrences(of: "/api/", with: "")
+            }
             static let StagingUrl = "http://localhost:3000/api/"
             static let LocalUrl = "http://192.168.1.9:3000/api/"
             static let LiveUrl = "https://make-friend.herokuapp.com/api/"
@@ -69,8 +75,6 @@ struct K {
             static let Name = "name"
             static let Email = "email"
             static let Password = "password"
-//            static let User = "user"
-//            static let AccessToken = "accessToken"
             static let Phone = "phone"
             static let DateOfBirth = "date_of_birth"
             static let CreatedAt = "createdAt"
@@ -105,7 +109,6 @@ extension Notification.Name {
     static let DidChooseImageForUpdatingSuccess = Notification.Name("DidChooseImageForUpdatingSuccess")
     static let DidChooseImageForDeletingSuccess = Notification.Name("DidChooseImageForDeletingSuccess")
     static let DidSocketConnectSuccess = Notification.Name("DidSocketConnectSuccess")
-//    static let DidGetListChatSuccess = Notification.Name("DidGetListChatSuccess")
     static let DismissDetailProfileView = Notification.Name("DismissDetailProfileView")
     static let DidReadMessageSuccess = Notification.Name("DidReadMessageSuccess")
     static let NotifyTypingMessage = Notification.Name("NotifyTypingMessage")

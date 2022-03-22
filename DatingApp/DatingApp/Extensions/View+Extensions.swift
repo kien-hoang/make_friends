@@ -95,3 +95,9 @@ extension View {
         )
     }
 }
+
+extension View {
+    public func alert(isPresented: Binding<Bool>, _ alert: AlertConfig) -> some View {
+        AlertHelper(isPresented: isPresented, alert: alert, content: self)
+    }
+}

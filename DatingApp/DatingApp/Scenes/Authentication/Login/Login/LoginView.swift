@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
+    @StateObject var viewModel = LoginViewModel()
+    @State var isAlert = false
+    
     var body: some View {
         VStack {
             Spacer()
@@ -22,6 +25,23 @@ struct LoginView: View {
                         .style(font: .lexendBlack, size: 22, color: Asset.Colors.Global.redD41717.color)
                 }
             }
+            .alert(isPresented: $isAlert, AlertConfig(title: "Title", action: {
+                if let serverIP = $0 {
+                    if serverIP.isEmpty {
+                        Helper.deleteLocalValue(withKey: "SERVER_IP")
+                        viewModel.showDebugLog("DEBUG: Delete SERVER_IP")
+                    } else {
+                        Helper.saveLocal(value: serverIP, key: "SERVER_IP")
+                        viewModel.showDebugLog("DEBUG: Save SERVER_IP = \(serverIP)")
+                    }
+                } else {
+                    viewModel.showDebugLog("DEBUG: Cancel")
+                }
+            }))
+            .onLongPressGesture {
+                isAlert = true
+            }
+            
             Spacer()
             
             VStack(spacing: 0) {
@@ -33,7 +53,8 @@ struct LoginView: View {
                 ForgotPasswordButton()
             }
         }
-        .setBackgroundColor(K.Constants.DefaultColor)
+//        .setBackgroundColor(K.Constants.DefaultColor)
+        .setBackgroundColor(.white)
         .navigationView()
     }
     
@@ -101,3 +122,14 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
     }
 }
+
+// MARK: - VM
+class LoginViewModel: ObservableObject {
+    func showDebugLog(_ text: String) {
+        Helper.showProgress(text)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            Helper.dismissProgress()
+        }
+    }
+}
+
