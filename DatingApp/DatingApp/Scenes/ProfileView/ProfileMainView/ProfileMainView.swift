@@ -78,11 +78,14 @@ struct ProfileMainView: View {
                     Text("\(viewModel.name), \(viewModel.age)")
                         .style(font: .lexendMedium, size: 20, color: Asset.Colors.Global.black100.color)
                     
-                    Image(viewModel.isVerified ? Asset.Profile.icVerified.name : Asset.Profile.icUnverified.name)
-                        .frame(width: 25, height: 25)
-                        .onTapGesture {
-                            viewModel.didTapVerified()
-                        }
+                    if viewModel.isVerified {
+                        Image(Asset.Profile.icVerified.name)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .onTapGesture {
+                                viewModel.didTapVerified()
+                            }
+                    }
                 }
             }
         }

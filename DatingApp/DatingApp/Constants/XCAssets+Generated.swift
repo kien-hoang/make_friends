@@ -61,9 +61,7 @@ internal enum Asset {
   }
   internal enum Profile {
     internal static let icEditProfile = ImageAsset(name: "ic_edit_profile")
-    internal static let icMenu = ImageAsset(name: "ic_menu")
     internal static let icSetting = ImageAsset(name: "ic_setting")
-    internal static let icUnverified = ImageAsset(name: "ic_unverified")
     internal static let icVerified = ImageAsset(name: "ic_verified")
     internal static let profileAdd = ImageAsset(name: "profile_add")
     internal static let profileDownArrow = ImageAsset(name: "profile_down_arrow")
